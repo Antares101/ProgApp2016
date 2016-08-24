@@ -1,14 +1,16 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package help4travelling;
 
-/**
- *
- * @author agustin
+import java.sql.Blob;
+
+/*
+ * @author Antares
  */
-public class Servicio {
+
+public class Servicio extends Articulo{   
+    private Blob[] image;
+    private String descripcion;
+    //private Categoria[] cat;  //Crear clase categoria
+    //private Promocion[] prom;
     
+    public void AddImage(Blob Image){}
 }
