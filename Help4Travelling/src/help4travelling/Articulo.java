@@ -1,4 +1,4 @@
-package help4travel;
+package help4travelling;
 
 /*
  * @author Antares
