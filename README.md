@@ -1,4 +1,2 @@
 # ProgApp2016
-Programa para el Laboratorio de Programacion de aplicaciones 2016
-
-ESTA PLATAFORMA ES UNA MIERDA!!!!!!!!!!!!!!!!!!!!!!
+Antares: Los que esten desarrollando algo, hagan pull del brench "Antares-desarrollo" para mantener un orden de las cosas
