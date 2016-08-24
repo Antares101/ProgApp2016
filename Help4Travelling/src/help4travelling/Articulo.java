@@ -1,14 +1,13 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-package help4travelling;
+package help4travel;
 
-/**
- *
- * @author agustin
+/*
+ * @author Antares
  */
-public class Articulo {
+
+public abstract class Articulo {
     
+    private String nombre;
+    //private Ciudad[] city;  //Si el articulo necesita conocer la ciudad
+    //private Provedor prov;    // "
+    //private InfoReserva info; //Luego de crearse InfoReserva decomentar
 }
