@@ -1,14 +1,51 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package help4travelling;
+
+import java.sql.Blob;
 
 /**
  *
- * @author agustin
+ * @author Bruno
  */
 public class DtCliente {
+    
+    private String nick;
+    private String nombre;
+    private String apellido;
+    private String email;
+    private DtFecha fechaN;
+    private Blob[] avatar;
+    
+    public DtCliente(String nick, String nombre, String apellido, String email, DtFecha fechaN, Blob[] avatar){
+        this.nick=nick;
+        this.nombre=nombre;
+        this.apellido=apellido;
+        this.email=email;
+        this.fechaN=fechaN;
+        this.avatar=avatar;       
+    }
+    
+    public String getNick(){
+        return this.nick;
+    }
+    
+    public String getNombre(){
+        return this.nombre;
+    }
+    
+    public String getApellido(){
+        return this.apellido;
+    }
+    
+    public String getEmail(){
+        return this.email;
+    }
+    
+    public DtFecha getFechaN(){
+        return this.fechaN;
+    }
+    
+    public Blob[] getAvatar(){
+        return this.avatar;
+    }
     
 }

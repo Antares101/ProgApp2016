@@ -1,7 +1,7 @@
 package help4travelling;
 
 /**
- * @author agustin
+ * @author Antares
  */
 public class Promocion extends Articulo {
     private float descuento;
