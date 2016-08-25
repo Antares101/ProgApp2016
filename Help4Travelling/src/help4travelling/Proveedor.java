@@ -1,5 +1,8 @@
 package help4travelling;
 
+import java.util.HashMap;
+import java.util.ArrayList;
+
 /**
  *
  * @author Bruno
@@ -8,6 +11,7 @@ public class Proveedor extends Usuario{
     
     private String nombreEmpresa;
     private String url;
+    private HashMap<String, Servicio> servicios = new HashMap<String, Servicio>();
     
     public Proveedor (DtProveedor u){
         this.nick= u.getNick();
@@ -31,8 +35,12 @@ public class Proveedor extends Usuario{
         return this.nick;
     }
     
-    //falta lista de servicios
+    
     public DtProveedor getDtProveedor(){
-        return new DtProveedor(nick, nombre, apellido, email, fechaN, avatar, nombreEmpresa, url);
+        ArrayList<Servicio> servicioss = new ArrayList<Servicio>();
+        for (String name: servicios.keySet()) {
+            servicioss.add(servicios.get(name));
+        }
+        return new DtProveedor(nick, nombre, apellido, email, fechaN, avatar, nombreEmpresa, url, servicioss);
     }
 }

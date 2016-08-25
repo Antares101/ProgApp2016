@@ -1,6 +1,7 @@
 package help4travelling;
 
 import java.sql.Blob;
+import java.util.ArrayList;
 
 /**
  *
@@ -14,14 +15,17 @@ public class DtCliente {
     private String email;
     private DtFecha fechaN;
     private Blob[] avatar;
+    private ArrayList<Reserva> reserva;
     
-    public DtCliente(String nick, String nombre, String apellido, String email, DtFecha fechaN, Blob[] avatar){
+    
+    public DtCliente(String nick, String nombre, String apellido, String email, DtFecha fechaN, Blob[] avatar, ArrayList<Reserva> reserva){
         this.nick=nick;
         this.nombre=nombre;
         this.apellido=apellido;
         this.email=email;
         this.fechaN=fechaN;
-        this.avatar=avatar;       
+        this.avatar=avatar;
+        this.reserva=reserva;
     }
     
     public String getNick(){

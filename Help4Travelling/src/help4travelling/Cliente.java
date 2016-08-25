@@ -1,10 +1,16 @@
 package help4travelling;
 
+import java.util.HashMap;
+import java.util.ArrayList;
+
+
 /**
  *
  * @author Bruno
  */
 public class Cliente extends Usuario{
+    
+    private HashMap<String, Reserva> reservas = new HashMap<String, Reserva>();
     
     public Cliente (DtCliente u){
         this.nick= u.getNick();
@@ -26,10 +32,13 @@ public class Cliente extends Usuario{
         return "";
     }
     
-    
-    //falta lista de reservas
+ 
     public DtCliente getDtCliente(){
-        return new DtCliente(nick, nombre, apellido, email, fechaN, avatar);
+        ArrayList<Reserva> reservass = new ArrayList<Reserva>();
+        for (String name: reservas.keySet()) {
+            reservass.add(reservas.get(name));
+        }
+        return new DtCliente(nick, nombre, apellido, email, fechaN, avatar, reservass);
     }
     
 }
