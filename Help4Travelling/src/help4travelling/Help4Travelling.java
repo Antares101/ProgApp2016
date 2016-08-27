@@ -49,15 +49,15 @@ public class Help4Travelling extends javax.swing.JFrame {
         jLabel87 = new javax.swing.JLabel();
         txt_apellido = new javax.swing.JTextField();
         jLabel88 = new javax.swing.JLabel();
-        jTextField7 = new javax.swing.JTextField();
+        txt_email = new javax.swing.JTextField();
         jLabel89 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
         jLabel37 = new javax.swing.JLabel();
         chk_cliente = new javax.swing.JRadioButton();
         chk_proveedor = new javax.swing.JRadioButton();
         jLabel90 = new javax.swing.JLabel();
-        jTextField8 = new javax.swing.JTextField();
-        jTextField9 = new javax.swing.JTextField();
+        txt_nombreEmpresa = new javax.swing.JTextField();
+        txt_linkEmpresa = new javax.swing.JTextField();
         jLabel91 = new javax.swing.JLabel();
         jLabel71 = new javax.swing.JLabel();
         jLabel159 = new javax.swing.JLabel();
@@ -631,9 +631,9 @@ public class Help4Travelling extends javax.swing.JFrame {
         panel_ingreso_usuarios.add(jLabel88);
         jLabel88.setBounds(30, 380, 50, 20);
 
-        jTextField7.setFont(new java.awt.Font("Nimbus Sans", 0, 14)); // NOI18N
-        panel_ingreso_usuarios.add(jTextField7);
-        jTextField7.setBounds(170, 380, 270, 22);
+        txt_email.setFont(new java.awt.Font("Nimbus Sans", 0, 14)); // NOI18N
+        panel_ingreso_usuarios.add(txt_email);
+        txt_email.setBounds(170, 380, 270, 22);
 
         jLabel89.setBackground(java.awt.Color.darkGray);
         jLabel89.setFont(new java.awt.Font("FreeSans", 1, 14)); // NOI18N
@@ -687,13 +687,13 @@ public class Help4Travelling extends javax.swing.JFrame {
         panel_ingreso_usuarios.add(jLabel90);
         jLabel90.setBounds(30, 430, 120, 20);
 
-        jTextField8.setFont(new java.awt.Font("Nimbus Sans", 0, 14)); // NOI18N
-        panel_ingreso_usuarios.add(jTextField8);
-        jTextField8.setBounds(170, 430, 270, 22);
+        txt_nombreEmpresa.setFont(new java.awt.Font("Nimbus Sans", 0, 14)); // NOI18N
+        panel_ingreso_usuarios.add(txt_nombreEmpresa);
+        txt_nombreEmpresa.setBounds(170, 430, 270, 22);
 
-        jTextField9.setFont(new java.awt.Font("Nimbus Sans", 0, 14)); // NOI18N
-        panel_ingreso_usuarios.add(jTextField9);
-        jTextField9.setBounds(170, 480, 270, 22);
+        txt_linkEmpresa.setFont(new java.awt.Font("Nimbus Sans", 0, 14)); // NOI18N
+        panel_ingreso_usuarios.add(txt_linkEmpresa);
+        txt_linkEmpresa.setBounds(170, 480, 270, 22);
 
         jLabel91.setBackground(java.awt.Color.darkGray);
         jLabel91.setFont(new java.awt.Font("FreeSans", 0, 14)); // NOI18N
@@ -3708,9 +3708,6 @@ public class Help4Travelling extends javax.swing.JFrame {
     private javax.swing.JTextField jTextField44;
     private javax.swing.JTextField jTextField45;
     private javax.swing.JTextField jTextField46;
-    private javax.swing.JTextField jTextField7;
-    private javax.swing.JTextField jTextField8;
-    private javax.swing.JTextField jTextField9;
     private javax.swing.JTextPane jTextPane1;
     private javax.swing.JTextPane jTextPane2;
     private javax.swing.JTextPane jTextPane3;
@@ -3745,7 +3742,10 @@ public class Help4Travelling extends javax.swing.JFrame {
     private javax.swing.JPanel panel_izq_consultas;
     private javax.swing.JPanel panel_izq_eliminaciones;
     private javax.swing.JTextField txt_apellido;
+    private javax.swing.JTextField txt_email;
+    private javax.swing.JTextField txt_linkEmpresa;
     private javax.swing.JTextField txt_nickname;
     private javax.swing.JTextField txt_nombre;
+    private javax.swing.JTextField txt_nombreEmpresa;
     // End of variables declaration//GEN-END:variables
 }
