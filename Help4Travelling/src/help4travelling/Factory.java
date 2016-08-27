@@ -1,8 +1,8 @@
-package help4travel;
+package help4travelling;
 
 /**
  *
- * @author Antares
+ * @author Bruno
  */
 public class Factory {
     
@@ -16,6 +16,21 @@ public class Factory {
        return instance;
    }
    
-   //public IControladorUsuario getIControladorUsuario(){}
+    public IControladorArticulo getIControladorArticulo() {
+      return new ControladorArticulo();
+    }
+
+    public IControladorCategoria getIControladorCategoria() {
+      return new ControladorCategoria();
+    }
+
+    public IControladorReserva getIControladorReserva() {
+      return new ControladorReserva();
+    }
+
+    public IControladorUsuario getIControladorUsuario() {
+      return new ControladorUsuario();
+    }
+
 
  }
