@@ -3,11 +3,21 @@ import java.awt.*;
 import java.util.*;
 import java.lang.*;
 import javax.swing.*;
+import java.util.ArrayList;
 
 public class Help4Travelling extends javax.swing.JFrame {
 
+    private IControladorArticulo ICArticulo;
+    private IControladorCategoria ICCategoria;
+    private IControladorReserva ICReserva;
+    private IControladorUsuario ICUsuario;   
+    
     public Help4Travelling() {
         initComponents();
+        ICArticulo = Factory.GetInstance().getIControladorArticulo();
+        ICCategoria = Factory.GetInstance().getIControladorCategoria();
+        ICReserva = Factory.GetInstance().getIControladorReserva();
+        ICUsuario = Factory.GetInstance().getIControladorUsuario();       
     }
 
     @SuppressWarnings("unchecked")
@@ -262,12 +272,13 @@ public class Help4Travelling extends javax.swing.JFrame {
         panel_actualizar_reserva = new javax.swing.JPanel();
         jLabel114 = new javax.swing.JLabel();
         jLabel121 = new javax.swing.JLabel();
-        jLabel135 = new javax.swing.JLabel();
         jLabel136 = new javax.swing.JLabel();
-        jComboBox9 = new javax.swing.JComboBox<>();
         jLabel139 = new javax.swing.JLabel();
         jScrollPane6 = new javax.swing.JScrollPane();
         jList3 = new javax.swing.JList<>();
+        jButton4 = new javax.swing.JButton();
+        jScrollPane14 = new javax.swing.JScrollPane();
+        jTable3 = new javax.swing.JTable();
         panel_eliminar_reserva = new javax.swing.JPanel();
         jLabel132 = new javax.swing.JLabel();
         jLabel133 = new javax.swing.JLabel();
@@ -406,11 +417,11 @@ public class Help4Travelling extends javax.swing.JFrame {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jLabel11MouseClicked(evt);
             }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                jLabel11MouseExited(evt);
-            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 jLabel11MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jLabel11MouseExited(evt);
             }
         });
         getContentPane().add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 190, 40, 40));
@@ -428,11 +439,11 @@ public class Help4Travelling extends javax.swing.JFrame {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jLabel12MouseClicked(evt);
             }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                jLabel12MouseExited(evt);
-            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 jLabel12MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jLabel12MouseExited(evt);
             }
         });
         getContentPane().add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 250, 40, 40));
@@ -2130,24 +2141,12 @@ public class Help4Travelling extends javax.swing.JFrame {
         panel_actualizar_reserva.add(jLabel121);
         jLabel121.setBounds(-2, 0, 1310, 40);
 
-        jLabel135.setIcon(new javax.swing.ImageIcon(getClass().getResource("/help4travelling/img/confirmar.png"))); // NOI18N
-        jLabel135.setVerticalAlignment(javax.swing.SwingConstants.TOP);
-        jLabel135.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        jLabel135.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        jLabel135.setVerticalTextPosition(javax.swing.SwingConstants.TOP);
-        panel_actualizar_reserva.add(jLabel135);
-        jLabel135.setBounds(970, 530, 45, 46);
-
         jLabel136.setBackground(java.awt.Color.darkGray);
         jLabel136.setFont(new java.awt.Font("FreeSans", 0, 14)); // NOI18N
         jLabel136.setForeground(java.awt.Color.darkGray);
         jLabel136.setText("Estado Nuevo");
         panel_actualizar_reserva.add(jLabel136);
-        jLabel136.setBounds(10, 100, 130, 40);
-
-        jComboBox9.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        panel_actualizar_reserva.add(jComboBox9);
-        jComboBox9.setBounds(170, 60, 390, 24);
+        jLabel136.setBounds(490, 90, 130, 40);
 
         jLabel139.setBackground(java.awt.Color.darkGray);
         jLabel139.setFont(new java.awt.Font("FreeSans", 0, 14)); // NOI18N
@@ -2164,7 +2163,32 @@ public class Help4Travelling extends javax.swing.JFrame {
         jScrollPane6.setViewportView(jList3);
 
         panel_actualizar_reserva.add(jScrollPane6);
-        jScrollPane6.setBounds(170, 110, 390, 150);
+        jScrollPane6.setBounds(650, 100, 120, 150);
+
+        jButton4.setText("Aceptar");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
+        panel_actualizar_reserva.add(jButton4);
+        jButton4.setBounds(913, 550, 100, 25);
+
+        jTable3.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane14.setViewportView(jTable3);
+
+        panel_actualizar_reserva.add(jScrollPane14);
+        jScrollPane14.setBounds(10, 90, 453, 402);
 
         getContentPane().add(panel_actualizar_reserva, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 370, 160, 110));
         getContentPane().remove(panel_actualizar_reserva);
@@ -2770,6 +2794,7 @@ public class Help4Travelling extends javax.swing.JFrame {
                         ImageIcon img = new ImageIcon("Help4Travelling.jpg");
                 this.setIconImage(img.getImage());
                 
+                
     }//GEN-LAST:event_formWindowOpened
 
     private void jLabel9FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jLabel9FocusGained
@@ -3135,6 +3160,19 @@ public class Help4Travelling extends javax.swing.JFrame {
         jLabel12.setVisible(false);
         jLabel13.setVisible(false);
         lbl_acercaDe.setVisible(false);
+        
+        //bruno llenar datos
+        /*ArrayList<DtReserva> arrayReservas = ICReserva.listarReservas();
+        //String datos[] = new String[5]
+          	for(int j = 0; j < arrayReservas.size(); j++){
+                    datos[0] = Integer.toString(arrayReservas.get(i).getNumero());
+                    datos[1] = arrayReservas.get(i).getFecha().getDia() +  arrayReservas.get(i).getFecha().getMes() + arrayReservas.get(i).getFecha().getAnio();
+                    datos[2] = Emun.toString(arrayReservas.get(i).getEstado());
+                    datos[3] = Float.toString(arrayReservas.get(i).getPrecioTotal());
+                    datos[4] = arrayReservas.get(i).getCliente())
+                    jTable3.addRow(datos);
+                }	  
+        */
     }//GEN-LAST:event_actualizacion_reservasMouseClicked
 
     private void jLabel114MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel114MouseClicked
@@ -3418,6 +3456,7 @@ public class Help4Travelling extends javax.swing.JFrame {
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
+    private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton6;
     private javax.swing.JButton jButton7;
     private javax.swing.JComboBox<String> jComboBox1;
@@ -3437,7 +3476,6 @@ public class Help4Travelling extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> jComboBox6;
     private javax.swing.JComboBox<String> jComboBox7;
     private javax.swing.JComboBox<String> jComboBox8;
-    private javax.swing.JComboBox<String> jComboBox9;
     private javax.swing.JFrame jFrame1;
     private javax.swing.JFrame jFrame2;
     private javax.swing.JFrame jFrame3;
@@ -3482,7 +3520,6 @@ public class Help4Travelling extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel132;
     private javax.swing.JLabel jLabel133;
     private javax.swing.JLabel jLabel134;
-    private javax.swing.JLabel jLabel135;
     private javax.swing.JLabel jLabel136;
     private javax.swing.JLabel jLabel137;
     private javax.swing.JLabel jLabel138;
@@ -3665,6 +3702,7 @@ public class Help4Travelling extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane11;
     private javax.swing.JScrollPane jScrollPane12;
     private javax.swing.JScrollPane jScrollPane13;
+    private javax.swing.JScrollPane jScrollPane14;
     private javax.swing.JScrollPane jScrollPane15;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
@@ -3676,6 +3714,7 @@ public class Help4Travelling extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane9;
     private javax.swing.JTable jTable1;
     private javax.swing.JTable jTable2;
+    private javax.swing.JTable jTable3;
     private javax.swing.JTextField jTextField10;
     private javax.swing.JTextField jTextField11;
     private javax.swing.JTextField jTextField12;
