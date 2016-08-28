@@ -5,36 +5,27 @@
  */
 package help4travelling;
 
-import java.util.HashSet;
-import java.util.Iterator;
+import java.util.HashMap;
+import java.util.ArrayList;
 
 /**
  *
  * @author Nacho
  */
 public class DtCategoria {
-    String Nombre;
-    private HashSet<Categoria> cathijas;        
-    //private HashSet<Servicios> servasociados;
+    private String nombre;
+    private String nombrePadre;
     
-    public DtCategoria(String nombre){
-        this.Nombre=nombre;
-    }
-    
-    public DtCategoria(String nombre, HashSet<Categoria> hijas){
-        this.Nombre=nombre;
-        cathijas = new HashSet<Categoria>();
-        Iterator it = hijas.iterator();
-        while(it.hasNext()){
-            cathijas.add(it.Next());
-        }
+    public DtCategoria(String nombre,String nombrePadre){
+       this.nombre=nombre;
+       this.nombrePadre=nombrePadre;       
     }
     
     public String getNombre(){
-        return this.Nombre;
+        return this.nombre;
     }
     
-    public HashSet<Categoria> getCategoriasHijas(){
-        return this.cathijas;
+    public String getNombrePadre(){
+        return this.nombrePadre;
     }
 }

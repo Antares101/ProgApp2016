@@ -8,11 +8,15 @@ import java.util.ArrayList;
  */
 public class ControladorCategoria implements IControladorCategoria{
     
-    public ArrayList<String> listarCategorias(){
+    public ArrayList<DtCategoria> listarCategorias(){
         return ManejadorCategoria.GetInstance().listarCategorias();
     }
     
     public ArrayList<String> listarServicios(String nombre){
         return ManejadorCategoria.GetInstance().listarServicios(nombre);
+    }
+    
+    public DtServicio datosServicio(String nombreServ){
+        return ManejadorCategoria.GetInstance().datosServicio(nombreServ);
     }
 }

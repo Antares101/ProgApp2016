@@ -7,6 +7,7 @@ import java.util.ArrayList;
  * @author Bruno
  */
 public interface IControladorCategoria {
-     public abstract ArrayList<String> listarCategorias();
+     public abstract ArrayList<DtCategoria> listarCategorias();
      public abstract ArrayList<String> listarServicios(String nombre);
+     public abstract DtServicio datosServicio(String nombreServ);
 }

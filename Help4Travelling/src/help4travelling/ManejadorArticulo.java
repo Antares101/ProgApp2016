@@ -1,5 +1,8 @@
 package help4travelling;
 
+import java.util.HashMap;
+import java.util.ArrayList;
+
 /**
  * @author Antares
  */
@@ -9,12 +12,10 @@ import java.util.Map;
 
 public class ManejadorArticulo {
     
-    private Map articulos;
+    private HashMap<String, Articulo> articulos = new HashMap<String, Articulo>();
+    private Articulo promo;
     private static ManejadorArticulo instance = null;
     
-    private ManejadorArticulo(){
-        articulos = new HashMap();
-    }
     
     public static ManejadorArticulo GetInstance(){
         if (instance==null)
@@ -30,4 +31,23 @@ public class ManejadorArticulo {
     public boolean IsPromocion(String name){
         return articulos.containsKey(name);
     }
+    
+     public ArrayList<String> listarPromociones(){
+        ArrayList<String> ArrayPromociones = new ArrayList<String>();
+        for (String name: articulos.keySet()) {
+            if (articulos.get(name).isPromocion())
+                ArrayPromociones.add(articulos.get(name).GetNombre());
+        }
+        return ArrayPromociones;
+    }
+     
+    public DtPromocion datosPromociones(String nombreProm){
+         promo = articulos.get(nombreProm);
+         return promo.getDtPromocion();
+    }
+    
+    public DtServicio datosServicio(String nombreServ){
+         return promo.getDatosServProm(nombreServ);
+    }
+     
 }

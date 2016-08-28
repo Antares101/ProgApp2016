@@ -19,5 +19,11 @@ public abstract class Articulo {
     
     protected void SetNombre(String name){
         this.nombre = name;
-    }    
+    }
+    
+    protected abstract boolean isPromocion();
+    
+    public abstract DtPromocion getDtPromocion();
+    
+    public abstract DtServicio getDatosServProm(String nombreServ);
 }

@@ -28,4 +28,20 @@ public class Servicio extends Articulo{
         return new DtServicio(nombre, precio,image, descripcion, ArrayCategorias, ciudadOrigen.getNombre(), ciudadDestino.getNombre());
     }
     
+    public boolean isPromocion(){
+        return false;
+    }
+    
+    public Float getPrecio(){
+        return this.precio;
+    }
+    
+    public DtPromocion getDtPromocion(){
+        return null;
+    }
+    
+    public DtServicio getDatosServProm(String nombreServ){
+        return null;
+    }
+    
 }
