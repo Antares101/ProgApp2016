@@ -1,14 +1,28 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package help4travelling;
+
+import java.util.HashMap;
+import java.util.ArrayList;
 
 /**
  *
- * @author agustin
+ * @author Bruno
  */
 public class Categoria {
+  
+      private String nombre;
+      
+      private HashMap<String, Servicio> servicios = new HashMap<String, Servicio>();
+      
+      public String getNombre(){
+        return this.nombre;
+      }
+      
+      public ArrayList<String> listarServicios(){
+        ArrayList<String> ArrayServicios = new ArrayList<String>();
+        for (String name: servicios.keySet()) {
+            ArrayServicios.add(servicios.get(name).GetNombre());
+        }
+        return ArrayServicios;
+      }
     
 }

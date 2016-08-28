@@ -34,11 +34,11 @@ public class Cliente extends Usuario{
     
  
     public DtCliente getDtCliente(){
-        ArrayList<Reserva> reservass = new ArrayList<Reserva>();
+        ArrayList<Reserva> ArrayReservas = new ArrayList<Reserva>();
         for (String name: reservas.keySet()) {
-            reservass.add(reservas.get(name));
+            ArrayReservas.add(reservas.get(name));
         }
-        return new DtCliente(nick, nombre, apellido, email, fechaN, avatar, reservass);
+        return new DtCliente(nick, nombre, apellido, email, fechaN, avatar, ArrayReservas);
     }
     
 }

@@ -37,10 +37,10 @@ public class Proveedor extends Usuario{
     
     
     public DtProveedor getDtProveedor(){
-        ArrayList<Servicio> servicioss = new ArrayList<Servicio>();
+        ArrayList<Servicio> ArrayServicios = new ArrayList<Servicio>();
         for (String name: servicios.keySet()) {
-            servicioss.add(servicios.get(name));
+            ArrayServicios.add(servicios.get(name));
         }
-        return new DtProveedor(nick, nombre, apellido, email, fechaN, avatar, nombreEmpresa, url, servicioss);
+        return new DtProveedor(nick, nombre, apellido, email, fechaN, avatar, nombreEmpresa, url, ArrayServicios);
     }
 }

@@ -8,16 +8,16 @@ import java.sql.Blob;
 
 public abstract class Articulo {
     
-    private String nombre;    
+    protected String nombre;    
     //private Ciudad[] city;  //Si el articulo necesita conocer la ciudad
     //private Provedor prov;    // "
     //private InfoReserva info; //Luego de crearse InfoReserva decomentar
     
-    public String GetNombre(){
+    protected String GetNombre(){
         return this.nombre;
     }
     
-    public void SetNombre(String name){
+    protected void SetNombre(String name){
         this.nombre = name;
     }    
 }
