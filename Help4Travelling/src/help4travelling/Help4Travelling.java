@@ -4,6 +4,8 @@ import java.util.*;
 import java.lang.*;
 import javax.swing.*;
 import java.util.ArrayList;
+import javax.swing.tree.DefaultMutableTreeNode;
+import javax.swing.tree.DefaultTreeModel;
 
 public class Help4Travelling extends javax.swing.JFrame {
 
@@ -1154,7 +1156,7 @@ public class Help4Travelling extends javax.swing.JFrame {
         jLabel41.setForeground(java.awt.Color.white);
         jLabel41.setText("Version 0.1");
         panel_izq_acerca_de.add(jLabel41);
-        jLabel41.setBounds(270, 80, 88, 21);
+        jLabel41.setBounds(270, 80, 90, 24);
 
         jLabel40.setFont(new java.awt.Font("FreeSans", 2, 15)); // NOI18N
         jLabel40.setForeground(java.awt.Color.gray);
@@ -2325,7 +2327,7 @@ public class Help4Travelling extends javax.swing.JFrame {
 
         jComboBox11.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         panel_consultas_reservas.add(jComboBox11);
-        jComboBox11.setBounds(110, 55, 390, 20);
+        jComboBox11.setBounds(90, 60, 390, 20);
 
         jLabel145.setBackground(java.awt.Color.darkGray);
         jLabel145.setFont(new java.awt.Font("FreeSans", 0, 14)); // NOI18N
@@ -3196,6 +3198,20 @@ public class Help4Travelling extends javax.swing.JFrame {
         jLabel12.setVisible(false);
         jLabel13.setVisible(false);
         lbl_acercaDe.setVisible(false);
+        
+        //bruno llenar datos
+        /*ArrayList<DtReserva> arrayReservas = ICReserva.listarReservas();
+        //String datos[] = new String[5]
+          	for(int j = 0; j < arrayReservas.size(); j++){
+                    datos[0] = Integer.toString(arrayReservas.get(i).getNumero());
+                    datos[1] = arrayReservas.get(i).getFecha().getDia() +  arrayReservas.get(i).getFecha().getMes() + arrayReservas.get(i).getFecha().getAnio();
+                    datos[2] = Emun.toString(arrayReservas.get(i).getEstado());
+                    datos[3] = Float.toString(arrayReservas.get(i).getPrecioTotal());
+                    datos[4] = arrayReservas.get(i).getCliente())
+                    jTable3.addRow(datos);
+                }	  
+        */
+        
     }//GEN-LAST:event_actualizacion_reservasMouseClicked
 
     private void jLabel114MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel114MouseClicked
@@ -3208,18 +3224,6 @@ public class Help4Travelling extends javax.swing.JFrame {
         jLabel13.setVisible(true);
         lbl_acercaDe.setVisible(true);
       
-   //bruno llenar datos
-        /*ArrayList<DtReserva> arrayReservas = ICReserva.listarReservas();
-        //String datos[] = new String[5]
-          	for(int j = 0; j < arrayReservas.size(); j++){
-                    datos[0] = Integer.toString(arrayReservas.get(i).getNumero());
-                    datos[1] = arrayReservas.get(i).getFecha().getDia() +  arrayReservas.get(i).getFecha().getMes() + arrayReservas.get(i).getFecha().getAnio();
-                    datos[2] = Emun.toString(arrayReservas.get(i).getEstado());
-                    datos[3] = Float.toString(arrayReservas.get(i).getPrecioTotal());
-                    datos[4] = arrayReservas.get(i).getCliente())
-                    jTable3.addRow(datos);
-                }	  
-        */
     }//GEN-LAST:event_jLabel114MouseClicked
 
     private void jLabel132MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel132MouseClicked
@@ -3297,6 +3301,42 @@ public class Help4Travelling extends javax.swing.JFrame {
         jLabel12.setVisible(false);
         jLabel13.setVisible(false);
         lbl_acercaDe.setVisible(false);
+        
+        //bruno llenar datos
+      
+        ArrayList<DtCategoria> categorias = ICCategoria.listarCategorias();
+        HashMap<String, DefaultMutableTreeNode> nodes = new HashMap<String, DefaultMutableTreeNode>();
+        nodes.put("todo",new DefaultMutableTreeNode("todo"));
+        //DefaultMutableTreeNode raiz = new DefaultMutableTreeNode("todo");
+        
+        DefaultTreeModel modeloArbol = new DefaultTreeModel(nodes.get("todo"));
+        
+        HashMap<Integer, Integer> niveles = new HashMap<Integer, Integer>();
+        int max =0;
+        for (int i = 0; i < categorias.size(); i++){
+            if (max < categorias.get(i).getNivel()){
+                max =categorias.get(i).getNivel();
+            }
+        }
+        
+        for (int j = 0; j < max; j++){
+            for (int i = 0; i < categorias.size(); i++){
+                if(categorias.get(i).getNivel() == j){
+                   nodes.put(categorias.get(i).getNombre(),new DefaultMutableTreeNode(categorias.get(i).getNombre()));
+                   modeloArbol.insertNodeInto(nodes.get(categorias.get(i).getNombrePadre()),nodes.get(categorias.get(i).getNombre()),i);
+                }
+            }
+        }
+       
+        //modeloArbol.insertNodeInto(new DefaultMutableTreeNode(categorias.get(i).getNombrePadre()),new DefaultMutableTreeNode(categorias.get(i).getNombre()),i);
+            /*DefaultMutableTreeNode nodo = new DefaultMutableTreeNode();
+            nodo.setUserObject(categorias.get(i).getNombre());
+            raiz.add(nodo);
+            //nodo.insertNodeInto(categorias.get(i).getNombrePadre(),categorias.get(i).getNombre(),i);
+            */
+        
+       this.jTree1.setModel(modeloArbol);
+       
     }//GEN-LAST:event_consultar_serviciosMouseClicked
 
     private void jLabel162MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel162MouseClicked

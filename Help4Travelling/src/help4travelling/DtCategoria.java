@@ -15,10 +15,12 @@ import java.util.ArrayList;
 public class DtCategoria {
     private String nombre;
     private String nombrePadre;
+    private int nivel;
     
-    public DtCategoria(String nombre,String nombrePadre){
+    public DtCategoria(String nombre,String nombrePadre, int nivel){
        this.nombre=nombre;
-       this.nombrePadre=nombrePadre;       
+       this.nombrePadre=nombrePadre; 
+       this.nivel=nivel;
     }
     
     public String getNombre(){
@@ -28,4 +30,8 @@ public class DtCategoria {
     public String getNombrePadre(){
         return this.nombrePadre;
     }
+    public int getNivel(){
+        return this.nivel;
+    }
+    
 }

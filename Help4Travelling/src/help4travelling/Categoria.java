@@ -36,9 +36,9 @@ public class Categoria {
        return servicios.get(nombreServ).getDtServicio();
     }
    
-    public DtCategoria getDtCategoria(String nombrePadre){
+    /*public DtCategoria getDtCategoria(String nombrePadre){
        return new DtCategoria(this.nombre, nombrePadre);
-    }
+    }*/
     
     public ArrayList<Categoria> getHijos(){
         if (cathijas.size() == 0){

@@ -28,16 +28,16 @@ public class ManejadorCategoria {
     }*/
     
      public ArrayList<DtCategoria> listarCategorias(){
-        return listarCategoriasAux("todo");        
+        return listarCategoriasAux("todo", 0);        
     }
      
-    public ArrayList<DtCategoria> listarCategoriasAux(String padre){
+    public ArrayList<DtCategoria> listarCategoriasAux(String padre, int nivel){
         if (categorias.get(padre).getHijos() != null){
            ArrayList<DtCategoria> ArrayCategorias = new ArrayList<DtCategoria>();
            ArrayList<Categoria> ArrayHijos = categorias.get(padre).getHijos();
            for (int i = 0; i < ArrayHijos.size(); i++) {
-               ArrayCategorias.add(new DtCategoria(ArrayHijos.get(i).getNombre(),padre));
-               ArrayList<DtCategoria> hijo = listarCategoriasAux(ArrayHijos.get(i).getNombre());
+               ArrayCategorias.add(new DtCategoria(ArrayHijos.get(i).getNombre(),padre,nivel));
+               ArrayList<DtCategoria> hijo = listarCategoriasAux(ArrayHijos.get(i).getNombre(), nivel+1);
                if (hijo.get(0) != null){
                    for (int j = 0; j < hijo.size(); j++) {
                        ArrayCategorias.add(hijo.get(j));
