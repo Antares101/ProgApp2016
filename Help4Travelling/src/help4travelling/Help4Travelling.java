@@ -3311,7 +3311,6 @@ public class Help4Travelling extends javax.swing.JFrame {
         
         DefaultTreeModel modeloArbol = new DefaultTreeModel(nodes.get("todo"));
         
-        HashMap<Integer, Integer> niveles = new HashMap<Integer, Integer>();
         int max =0;
         for (int i = 0; i < categorias.size(); i++){
             if (max < categorias.get(i).getNivel()){
