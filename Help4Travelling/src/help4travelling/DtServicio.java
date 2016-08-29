@@ -26,6 +26,13 @@ public class DtServicio {
         this.ciudadOrigen=ciudadOrigen; 
         this.ciudadDestino=ciudadDestino;
     }
+     
+     public DtServicio(Servicio serv){
+        this.nombre = serv.GetNombre();
+        this.precio = serv.getPrecio();
+        this.imagen = serv.GetImage();
+        this.descripcion = serv.GetDescripcion();
+     }
     
     public String getNombre(){
         return this.nombre;

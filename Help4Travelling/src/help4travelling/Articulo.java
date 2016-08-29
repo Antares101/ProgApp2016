@@ -23,7 +23,11 @@ public abstract class Articulo {
     
     protected abstract boolean isPromocion();
     
+    public abstract boolean IsServicio();
+    
     public abstract DtPromocion getDtPromocion();
+    
+    public abstract DtServicio GetDtServicio();
     
     public abstract DtServicio getDatosServProm(String nombreServ);
 }
