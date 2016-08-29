@@ -22,10 +22,9 @@ public class Promocion extends Articulo {
         return true;
     }
     
-    public boolean IsServicio(){
+      public boolean IsServicio(){
         return false;
     }
-    
     
     public DtPromocion getDtPromocion(){
         ArrayList<String> ArrayServicios = new ArrayList<String>();
@@ -48,4 +47,5 @@ public class Promocion extends Articulo {
     public void AgregarServicio(Servicio ser){
         servicios.put(ser.GetNombre(), ser);
     }
+    
 }

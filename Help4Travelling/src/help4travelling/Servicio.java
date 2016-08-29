@@ -28,7 +28,7 @@ public class Servicio extends Articulo{
         return new DtServicio(nombre, precio,image, descripcion, ArrayCategorias, ciudadOrigen.getNombre(), ciudadDestino.getNombre());
     }
     
-    public Blob[] GetImage(){
+      public Blob[] GetImage(){
         return this.image;
     }
     
@@ -63,4 +63,5 @@ public class Servicio extends Articulo{
     public DtServicio getDatosServProm(String nombreServ){
         return null;
     }    
+    
 }

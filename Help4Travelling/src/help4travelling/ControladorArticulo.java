@@ -21,8 +21,7 @@ public class ControladorArticulo implements IControladorArticulo{
         if(ok == false){
             Promocion p = new Promocion(DtProm);
             manArt.AgregarPromocion(p);
-            this.prom = p;
-        }        
+        }
         
         return !ok;
     }
@@ -41,7 +40,6 @@ public class ControladorArticulo implements IControladorArticulo{
         this.prom.AgregarServicio(ser);
         this.prom = null;
     }
-    
     
     public DtPromocion datosPromociones(String nombreProm){
         return ManejadorArticulo.GetInstance().datosPromociones(nombreProm);

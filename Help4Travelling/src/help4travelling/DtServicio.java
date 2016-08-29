@@ -26,8 +26,8 @@ public class DtServicio {
         this.ciudadOrigen=ciudadOrigen; 
         this.ciudadDestino=ciudadDestino;
     }
-     
-     public DtServicio(Servicio serv){
+    
+    public DtServicio(Servicio serv){
         this.nombre = serv.GetNombre();
         this.precio = serv.getPrecio();
         this.imagen = serv.GetImage();
@@ -61,4 +61,5 @@ public class DtServicio {
       public String getCiudadDestino(){
         return this.ciudadDestino;
     }
+
 }
