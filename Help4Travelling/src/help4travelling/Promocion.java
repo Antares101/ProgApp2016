@@ -10,5 +10,13 @@ package help4travelling;
  * @author agustin
  */
 public class Promocion {
+
+    Promocion(DtPromocion DtProm) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    String GetNombre() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
     
 }

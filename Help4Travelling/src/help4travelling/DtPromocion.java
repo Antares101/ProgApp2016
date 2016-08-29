@@ -10,5 +10,9 @@ package help4travelling;
  * @author Agustin
  */
 public class DtPromocion {
+
+    String GetNombre() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
     
 }

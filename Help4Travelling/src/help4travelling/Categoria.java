@@ -5,10 +5,20 @@
  */
 package help4travelling;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author agustin
  */
 public class Categoria {
+
+    String getNombre() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    ArrayList<String> listarServicios() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
     
 }

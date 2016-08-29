@@ -1,14 +1,23 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package help4travelling;
 
-/**
- *
- * @author agustin
- */
-public class Usuario {
+import java.io.Serializable;
+import java.sql.Blob;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+
+@Entity
+public abstract class Usuario implements Serializable {
+    
+     @Id protected String nick;
+     protected String nombre; 
+     protected String apellido;
+     protected String email; 
+     protected DtFecha fechaN; 
+     protected Blob[] avatar; 
+     
+     public abstract String getNickCliente();
+     public abstract String getNickProveedor();
+     
     
 }
