@@ -2,6 +2,7 @@ package help4travelling;
 import java.awt.*;
 import java.util.*;
 import java.lang.*;
+import java.sql.Blob;
 import javax.swing.*;
 import java.util.ArrayList;
 import javax.swing.tree.DefaultMutableTreeNode;
@@ -67,7 +68,7 @@ public class Help4Travelling extends javax.swing.JFrame {
         txt_nombreEmpresa = new javax.swing.JTextField();
         txt_linkEmpresa = new javax.swing.JTextField();
         lbl_linkEmpresa = new javax.swing.JLabel();
-        jLabel71 = new javax.swing.JLabel();
+        btn_confirmarIngresoUsuario = new javax.swing.JLabel();
         jLabel159 = new javax.swing.JLabel();
         cmb_mes = new javax.swing.JComboBox<>();
         cmb_anio = new javax.swing.JComboBox<>();
@@ -693,13 +694,18 @@ public class Help4Travelling extends javax.swing.JFrame {
         lbl_linkEmpresa.setBounds(30, 480, 100, 19);
         lbl_linkEmpresa.setVisible(false);
 
-        jLabel71.setIcon(new javax.swing.ImageIcon(getClass().getResource("/help4travelling/img/confirmar.png"))); // NOI18N
-        jLabel71.setVerticalAlignment(javax.swing.SwingConstants.TOP);
-        jLabel71.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        jLabel71.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        jLabel71.setVerticalTextPosition(javax.swing.SwingConstants.TOP);
-        panel_ingreso_usuarios.add(jLabel71);
-        jLabel71.setBounds(980, 540, 45, 46);
+        btn_confirmarIngresoUsuario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/help4travelling/img/confirmar.png"))); // NOI18N
+        btn_confirmarIngresoUsuario.setVerticalAlignment(javax.swing.SwingConstants.TOP);
+        btn_confirmarIngresoUsuario.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        btn_confirmarIngresoUsuario.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        btn_confirmarIngresoUsuario.setVerticalTextPosition(javax.swing.SwingConstants.TOP);
+        btn_confirmarIngresoUsuario.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btn_confirmarIngresoUsuarioMouseClicked(evt);
+            }
+        });
+        panel_ingreso_usuarios.add(btn_confirmarIngresoUsuario);
+        btn_confirmarIngresoUsuario.setBounds(980, 540, 45, 46);
 
         jLabel159.setBackground(java.awt.Color.darkGray);
         jLabel159.setFont(new java.awt.Font("FreeSans", 1, 12)); // NOI18N
@@ -3527,6 +3533,13 @@ public class Help4Travelling extends javax.swing.JFrame {
         lbl_linkEmpresa.setVisible(true);
     }//GEN-LAST:event_chk_proveedorMouseClicked
 
+    private void btn_confirmarIngresoUsuarioMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_confirmarIngresoUsuarioMouseClicked
+        if(chk_cliente.isSelected()){
+            Blob b = null;
+            DtCliente u = new DtCliente(txt_nickname.getText(),txt_nombre.getText(), txt_apellido.getText(), txt_email.getText(), new DtFecha(), b);
+        }
+    }//GEN-LAST:event_btn_confirmarIngresoUsuarioMouseClicked
+
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         java.awt.EventQueue.invokeLater(() -> {
@@ -3541,6 +3554,7 @@ public class Help4Travelling extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel actualizacion_reservas;
     private javax.swing.JPanel actualizacion_servicios;
+    private javax.swing.JLabel btn_confirmarIngresoUsuario;
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JRadioButton chk_cliente;
     private javax.swing.JRadioButton chk_proveedor;
@@ -3764,7 +3778,6 @@ public class Help4Travelling extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel69;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel70;
-    private javax.swing.JLabel jLabel71;
     private javax.swing.JLabel jLabel72;
     private javax.swing.JLabel jLabel73;
     private javax.swing.JLabel jLabel74;

@@ -3,10 +3,6 @@ package help4travelling;
 import java.sql.Blob;
 import java.util.ArrayList;
 
-/**
- *
- * @author Bruno
- */
 public class DtCliente {
     
     private String nick;
@@ -26,6 +22,19 @@ public class DtCliente {
         this.fechaN=fechaN;
         this.avatar=avatar;
         this.reserva=reserva;
+    }
+    
+    public DtCliente(String nick, String nombre, String apellido, String email, DtFecha fechaN, Blob[] avatar){
+        this.nick=nick;
+        this.nombre=nombre;
+        this.apellido=apellido;
+        this.email=email;
+        this.fechaN=fechaN;
+        this.avatar=avatar;
+    }
+
+    DtCliente(String text, String text0, String text1, String text2, DtFecha dtFecha, Blob b) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
     public String getNick(){

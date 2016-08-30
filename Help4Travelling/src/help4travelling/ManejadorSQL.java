@@ -9,22 +9,15 @@ public class ManejadorSQL {
     public static EntityManagerFactory emf;
     public static EntityManager em;
 
-    public ManejadorSQL() {
-        init();
-    }
-    
-    public static void init(){
-        if(em == null){
-            ManejadorSQL.emf = Persistence.createEntityManagerFactory("Help4Traveling");
-            ManejadorSQL.em = ManejadorSQL.emf.createEntityManager();
-        }
-    }
-
     public static EntityManagerFactory getEmf() {
         return emf;
     }
 
     public static EntityManager getEm() {
+        if(em == null){
+            ManejadorSQL.emf = Persistence.createEntityManagerFactory("Help4Traveling");
+            ManejadorSQL.em = ManejadorSQL.emf.createEntityManager();
+        }
         return em;
     }
 
