@@ -7,6 +7,7 @@ import java.util.ArrayList;
  */
 
 public class DtPromocion {
+<<<<<<< HEAD
     private String nombre;
     private float descuento;
     private float precioTotal;
@@ -27,6 +28,12 @@ public class DtPromocion {
     public float GetDescuento() {
         return this.descuento;
     }     
+=======
+
+    String GetNombre() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+>>>>>>> 73f5a92178f8b3fcfa205a495a509eb919a0f27b
     
      public float GetPrecioTotal() {
         return this.precioTotal;

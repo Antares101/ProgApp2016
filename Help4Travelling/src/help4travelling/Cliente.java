@@ -7,18 +7,90 @@ import javax.persistence.Entity;
 
 @Entity(name="Cliente")
 public class Cliente extends Usuario{
+<<<<<<< HEAD
 
     private HashMap<String, Reserva> reservas = new HashMap<String, Reserva>();
 
+=======
+   
+    private HashMap<String, Reserva> reservas;
+    
+>>>>>>> 73f5a92178f8b3fcfa205a495a509eb919a0f27b
     public Cliente (DtCliente u){
         this.nick= u.getNick();
         this.nombre= u.getNombre();
         this.apellido= u.getApellido();
         this.email= u.getEmail();
         this.fechaN= u.getFechaN();
+<<<<<<< HEAD
         this.avatar= u.getAvatar();
     }
 
+=======
+        this.avatar= u.getAvatar();        
+    }
+
+    public Cliente() {
+        
+    }
+    
+    public HashMap<String, Reserva> getReservas() {
+        return reservas;
+    }
+
+    public String getNick() {
+        return nick;
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public String getApellido() {
+        return apellido;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public DtFecha getFechaN() {
+        return fechaN;
+    }
+
+    public Blob[] getAvatar() {
+        return avatar;
+    }
+
+    public void setReservas(HashMap<String, Reserva> reservas) {
+        this.reservas = reservas;
+    }
+
+    public void setNick(String nick) {
+        this.nick = nick;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public void setApellido(String apellido) {
+        this.apellido = apellido;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public void setFechaN(DtFecha fechaN) {
+        this.fechaN = fechaN;
+    }
+
+    public void setAvatar(Blob[] avatar) {
+        this.avatar = avatar;
+    }
+ 
+>>>>>>> 73f5a92178f8b3fcfa205a495a509eb919a0f27b
     public DtCliente getDtCliente(){
         ArrayList<Reserva> ArrayReservas = new ArrayList<Reserva>();
         for (String name: reservas.keySet()) {
@@ -27,8 +99,19 @@ public class Cliente extends Usuario{
         return new DtCliente(nick, nombre, apellido, email, fechaN, avatar, ArrayReservas);
     }
 
+<<<<<<< HEAD
     public Cliente() {
         
+=======
+    @Override
+    public String getNickCliente() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public String getNickProveedor() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+>>>>>>> 73f5a92178f8b3fcfa205a495a509eb919a0f27b
     }
     
     public HashMap<String, Reserva> getReservas() {

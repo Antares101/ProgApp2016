@@ -1,8 +1,11 @@
 package help4travelling;
 
+<<<<<<< HEAD
 import java.util.ArrayList;
 import java.util.Set;
 
+=======
+>>>>>>> 73f5a92178f8b3fcfa205a495a509eb919a0f27b
 /**
  * @author Antares
  */
@@ -25,6 +28,7 @@ public class ControladorArticulo implements IControladorArticulo{
         
         return !ok;
     }
+<<<<<<< HEAD
     
     public ArrayList<String> listarPromociones(){
         return ManejadorArticulo.GetInstance().listarPromociones();
@@ -48,4 +52,6 @@ public class ControladorArticulo implements IControladorArticulo{
     public DtServicio datosServicio(String nombreServ){
         return ManejadorArticulo.GetInstance().datosServicio(nombreServ);
     }
+=======
+>>>>>>> 73f5a92178f8b3fcfa205a495a509eb919a0f27b
 }

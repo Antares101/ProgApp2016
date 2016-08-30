@@ -6,6 +6,7 @@ import java.util.ArrayList;
 /**
  * @author Antares
  */
+<<<<<<< HEAD
 public class Promocion extends Articulo {
     private float descuento;
     private float precioTotal;
@@ -46,6 +47,16 @@ public class Promocion extends Articulo {
     
     public void AgregarServicio(Servicio ser){
         servicios.put(ser.GetNombre(), ser);
+=======
+public class Promocion {
+
+    Promocion(DtPromocion DtProm) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    String GetNombre() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+>>>>>>> 73f5a92178f8b3fcfa205a495a509eb919a0f27b
     }
     
 }

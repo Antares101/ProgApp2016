@@ -19,6 +19,7 @@ public abstract class Articulo {
     
     protected void SetNombre(String name){
         this.nombre = name;
+<<<<<<< HEAD
     }
     
     protected abstract boolean isPromocion();
@@ -30,4 +31,7 @@ public abstract class Articulo {
     public abstract DtServicio GetDtServicio();
     
     public abstract DtServicio getDatosServProm(String nombreServ);
+=======
+    }    
+>>>>>>> 73f5a92178f8b3fcfa205a495a509eb919a0f27b
 }

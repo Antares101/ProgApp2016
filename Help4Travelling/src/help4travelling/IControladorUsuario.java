@@ -5,6 +5,7 @@ package help4travelling;
  * @author Bruno
  */
 public interface IControladorUsuario {
+<<<<<<< HEAD
   /*
   +datosCliente(nick:string):DtCliente
   +datosProveedor(nick:string)
@@ -18,4 +19,7 @@ public interface IControladorUsuario {
   public List<String> listarClientes()
   public List<String> listarProveedores()
     */
+=======
+    
+>>>>>>> 73f5a92178f8b3fcfa205a495a509eb919a0f27b
 }

@@ -10,7 +10,11 @@ import java.util.ArrayList;
 public class ManejadorCategoria {
     
     private HashMap<String, Categoria> categorias = new HashMap<String, Categoria>();
+<<<<<<< HEAD
     private Categoria categ;
+=======
+    
+>>>>>>> 73f5a92178f8b3fcfa205a495a509eb919a0f27b
     private static ManejadorCategoria instance = null;
     
     public static ManejadorCategoria GetInstance(){
@@ -19,12 +23,17 @@ public class ManejadorCategoria {
         return instance;
     }
     
+<<<<<<< HEAD
     /*public ArrayList<String> listarCategorias(){
+=======
+    public ArrayList<String> listarCategorias(){
+>>>>>>> 73f5a92178f8b3fcfa205a495a509eb919a0f27b
         ArrayList<String> ArrayCategorias = new ArrayList<String>();
         for (String name: categorias.keySet()) {
             ArrayCategorias.add(categorias.get(name).getNombre());
         }
         return ArrayCategorias;
+<<<<<<< HEAD
     }*/
     
      public ArrayList<DtCategoria> listarCategorias(){
@@ -58,6 +67,12 @@ public class ManejadorCategoria {
      
      public DtServicio datosServicio(String nombreServ){
          return categ.listarServicios(nombreServ);
+=======
+    }
+    
+     public ArrayList<String> listarServicios(String nombre){
+         return categorias.get(nombre).listarServicios();
+>>>>>>> 73f5a92178f8b3fcfa205a495a509eb919a0f27b
     }
     
 }
