@@ -2,6 +2,8 @@ package help4travelling;
 
 import java.util.HashMap;
 import java.util.ArrayList;
+import java.util.Set;
+import java.util.HashSet;
 
 /**
  * @author Antares
@@ -41,6 +43,17 @@ public class ManejadorArticulo {
         return ArrayPromociones;
     }
      
+    public Set<DtServicio> ListarServicios(){
+        Set<DtServicio> ret = new HashSet<DtServicio>();
+        for (String key: articulos.keySet()){
+            if(articulos.get(key).IsServicio()){
+                ret.add(articulos.get(key).GetDtServicio());
+            }
+        }
+        return ret;
+    }
+     
+     
     public DtPromocion datosPromociones(String nombreProm){
          promo = articulos.get(nombreProm);
          return promo.getDtPromocion();
@@ -48,6 +61,10 @@ public class ManejadorArticulo {
     
     public DtServicio datosServicio(String nombreServ){
          return promo.getDatosServProm(nombreServ);
+    }
+    
+    public Servicio BuscarServicio(String nameServ){
+        return (Servicio)articulos.get(nameServ);
     }
      
 }

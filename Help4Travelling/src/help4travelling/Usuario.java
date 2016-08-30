@@ -1,15 +1,15 @@
 
 package help4travelling;
 
+import java.io.Serializable;
 import java.sql.Blob;
+import javax.persistence.Entity;
+import javax.persistence.Id;
 
-/**
- *
- * @author Bruno
- */
-public abstract class Usuario {
+@Entity
+public abstract class Usuario implements Serializable {
     
-     protected String nick;
+     @Id protected String nick;
      protected String nombre; 
      protected String apellido;
      protected String email; 

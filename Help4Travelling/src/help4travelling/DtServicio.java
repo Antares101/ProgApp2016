@@ -27,6 +27,13 @@ public class DtServicio {
         this.ciudadDestino=ciudadDestino;
     }
     
+    public DtServicio(Servicio serv){
+        this.nombre = serv.GetNombre();
+        this.precio = serv.getPrecio();
+        this.imagen = serv.GetImage();
+        this.descripcion = serv.GetDescripcion();
+     }
+    
     public String getNombre(){
         return this.nombre;
     }
@@ -54,4 +61,5 @@ public class DtServicio {
       public String getCiudadDestino(){
         return this.ciudadDestino;
     }
+
 }

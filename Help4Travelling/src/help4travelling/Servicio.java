@@ -28,8 +28,24 @@ public class Servicio extends Articulo{
         return new DtServicio(nombre, precio,image, descripcion, ArrayCategorias, ciudadOrigen.getNombre(), ciudadDestino.getNombre());
     }
     
+      public Blob[] GetImage(){
+        return this.image;
+    }
+    
+    public String GetDescripcion(){
+        return this.descripcion;
+    }
+    
+    public Float GetFloat(){
+        return this.precio;
+    }
+    
     public boolean isPromocion(){
         return false;
+    }
+    
+    public boolean IsServicio(){
+        return true;
     }
     
     public Float getPrecio(){
@@ -40,8 +56,12 @@ public class Servicio extends Articulo{
         return null;
     }
     
+    public DtServicio GetDtServicio(){
+        return new DtServicio(this);        
+    }
+    
     public DtServicio getDatosServProm(String nombreServ){
         return null;
-    }
+    }    
     
 }
