@@ -264,7 +264,6 @@ public class ManejadorSQL {
     public boolean agregarUsuario(DtProveedor p){
         String sql1 = "INSERT INTO USUARIOS(nickname, nombre, apellido, email, fechaNac) VALUES ('" + p.getNick() + "','" + p.getNombre() + "','" + p.getApellido() + "','" + p.getEmail()+ "','" + p.getFechaN().getAnio() + "/" + p.getFechaN().getMes() + "/" + p.getFechaN().getDia() + "');";
         String sql2 = "INSERT INTO PROVEEDORES(nicknameProveedor, nombreEmp, linkEmp) VALUES ('" + p.getNick() + "','" + p.getNombreEmpresa() + "','" + p.getUrl() + "');";
-        //System.out.println("PRov");
         Statement usuario;
         boolean ret = false;
         try {
@@ -339,6 +338,7 @@ public class ManejadorSQL {
         try {
             Connection conex = getConex();
             usuario = conex.createStatement();
+            ManejadorSQL.GetInstance().setForeignKeysOff(usuario);
             usuario.executeUpdate(sql1);
             usuario.executeUpdate(sql2);
             for(int x = 0; x < servicios.size(); x++){
@@ -346,6 +346,7 @@ public class ManejadorSQL {
                 usuario.executeUpdate(sql3); // ingreso las categorias, asumo que estas ya existen debido a que fueron seleccionadas.
             }
             ret = true;
+            ManejadorSQL.GetInstance().setForeignKeysOn(usuario);
             conex.close();
         } catch (SQLException ex) {
             Logger.getLogger(ManejadorSQL.class.getName()).log(Level.SEVERE, null, ex);
@@ -363,6 +364,7 @@ public class ManejadorSQL {
         try {
             Connection conex = getConex();
             usuario = conex.createStatement();
+            ManejadorSQL.GetInstance().setForeignKeysOff(usuario);
             ResultSet rs = usuario.executeQuery(sql2);
             rs.next();
             int id = rs.getInt("MAX(id)")+1;
@@ -375,9 +377,10 @@ public class ManejadorSQL {
                 sql3 += inf.GetFechaIni().getAnio() + "/" + inf.GetFechaIni().getMes() + "/" + inf.GetFechaIni().getDia() + "','";
                 sql3 += inf.GetFechaFin().getAnio() + "/" + inf.GetFechaFin().getMes() + "/" + inf.GetFechaFin().getDia() + "',";
                 sql3 += inf.getPrecioArticulo() + "," + (inf.getPrecioArticulo()*inf.GetCantidad()) + ");";
-                //System.out.println(sql3);
+                
                 usuario.executeUpdate(sql3);
             }
+            ManejadorSQL.GetInstance().setForeignKeysOn(usuario);
             conex.close();
             ret = true;
         } catch(SQLException ex){
@@ -524,7 +527,7 @@ public class ManejadorSQL {
         String sql2 = "SELECT nombreArticuloServ FROM COMPUESTOS WHERE nicknameProvProm = '" + nickProveedor + "' AND nombreArticuloProm = '"+ nombre + "';";
         ArrayList<String> servicios = new ArrayList<String>();
         Statement usuario;
-        Float p, descu;
+        float p, descu;
         DtPromocion ret = null;
         try{
             try (Connection conex = getConex()) {
@@ -639,7 +642,7 @@ public class ManejadorSQL {
     public void setForeignKeysOff(Statement usuario){
         try {
             String sql1 = "SET FOREIGN_KEY_CHECKS=0;";
-            usuario.executeUpdate(sql1);
+            usuario.execute(sql1);
         } catch (SQLException ex) {
             Logger.getLogger(ManejadorSQL.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -648,7 +651,7 @@ public class ManejadorSQL {
     public void setForeignKeysOn(Statement usuario){
         try {
             String sql1 = "SET FOREIGN_KEY_CHECKS=1;";
-            usuario.executeUpdate(sql1);
+            usuario.execute(sql1);
         } catch (SQLException ex) {
             Logger.getLogger(ManejadorSQL.class.getName()).log(Level.SEVERE, null, ex);
         }

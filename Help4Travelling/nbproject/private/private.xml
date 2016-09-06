@@ -5,29 +5,25 @@
             <url>src/help4travelling/Help4Travelling.java</url>
             <bookmark id="1">
                 <name/>
-                <line>4042</line>
+                <line>4178</line>
                 <key/>
             </bookmark>
             <bookmark id="2">
                 <name/>
-                <line>4536</line>
+                <line>4638</line>
                 <key/>
             </bookmark>
         </file>
     </editor-bookmarks>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/bruno/Desktop/tarea1Gr01/tarea1Gr01/Help4Traveling/src/help4travelling/ConectarBD.java</file>
-            <file>file:/C:/Users/bruno/Desktop/tarea1Gr01/tarea1Gr01/Help4Traveling/src/help4travelling/ManejadorArticulo.java</file>
-            <file>file:/C:/Users/bruno/Desktop/tarea1Gr01/tarea1Gr01/Help4Traveling/src/help4travelling/Articulo.java</file>
-            <file>file:/C:/Users/bruno/Desktop/tarea1Gr01/tarea1Gr01/Help4Traveling/src/help4travelling/ManejadorUsuario.java</file>
-            <file>file:/C:/Users/bruno/Desktop/tarea1Gr01/tarea1Gr01/Help4Traveling/src/help4travelling/ManejadorSQL.java</file>
-            <file>file:/C:/Users/bruno/Desktop/tarea1Gr01/tarea1Gr01/Help4Traveling/src/help4travelling/ControladorArticulo.java</file>
-            <file>file:/C:/Users/bruno/Desktop/tarea1Gr01/tarea1Gr01/Help4Traveling/src/help4travelling/ManejadorCategoria.java</file>
-            <file>file:/C:/Users/bruno/Desktop/tarea1Gr01/tarea1Gr01/Help4Traveling/src/help4travelling/Help4Travelling.java</file>
-            <file>file:/C:/Users/bruno/Desktop/tarea1Gr01/tarea1Gr01/Help4Traveling/src/help4travelling/ManejadorReserva.java</file>
-            <file>file:/C:/Users/bruno/Desktop/tarea1Gr01/tarea1Gr01/Help4Traveling/src/help4travelling/ManejadorCiudad.java</file>
-            <file>file:/C:/Users/bruno/Desktop/tarea1Gr01/tarea1Gr01/Help4Traveling/src/help4travelling/ControladorCategoria.java</file>
+            <file>file:/C:/Users/Agustin/Documents/Help4Traveling/src/help4travelling/ManejadorSQL.java</file>
+            <file>file:/C:/Users/Agustin/Documents/Help4Traveling/src/help4travelling/Articulo.java</file>
+            <file>file:/C:/Users/Agustin/Documents/Help4Traveling/src/help4travelling/Help4Travelling.java</file>
+            <file>file:/C:/Users/Agustin/Documents/Help4Traveling/src/help4travelling/ManejadorArticulo.java</file>
+            <file>file:/C:/Users/Agustin/Documents/Help4Traveling/src/help4travelling/DtInfoReserva.java</file>
+            <file>file:/C:/Users/Agustin/Documents/Help4Traveling/src/help4travelling/IControladorArticulo.java</file>
+            <file>file:/C:/Users/Agustin/Documents/Help4Traveling/src/help4travelling/ControladorArticulo.java</file>
         </group>
     </open-files>
 </project-private>
