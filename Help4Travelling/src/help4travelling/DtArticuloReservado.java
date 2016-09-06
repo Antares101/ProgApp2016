@@ -5,10 +5,6 @@
  */
 package help4travelling;
 
-/**
- *
- * @author Agustin
- */
 public class DtArticuloReservado {
     
 }

@@ -1,18 +1,16 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package help4travelling;
-
-<<<<<<< HEAD
 import java.util.HashMap;
 import java.util.ArrayList;
-=======
-import java.util.ArrayList;
-
->>>>>>> 73f5a92178f8b3fcfa205a495a509eb919a0f27b
 /**
  *
  * @author Nacho
  */
 public class Categoria {
-<<<<<<< HEAD
     String nombre;
     private HashMap<String, Servicio> servicios = new HashMap<String, Servicio>();
     private HashMap<String, Categoria> cathijas = new HashMap<String, Categoria>();
@@ -30,16 +28,12 @@ public class Categoria {
         cathijas.put(hija.getNombre(), hija);
     }
     
-    public ArrayList<String> listarServicios(){
-       ArrayList<String> ArrayServicios = new ArrayList<String>();
-       for (String name: servicios.keySet()) {
-           ArrayServicios.add(servicios.get(name).GetNombre());
-       }
-       return ArrayServicios;
+    public ArrayList<DtServicio> listarServicios(){
+       return ManejadorSQL.GetInstance().devolverSerPorCat(this.nombre);
     }
     
     public DtServicio listarServicios(String nombreServ){
-       return servicios.get(nombreServ).getDtServicio();
+       return servicios.get(nombreServ).GetDtServicio();
     }
    
     /*public DtCategoria getDtCategoria(String nombrePadre){
@@ -56,15 +50,6 @@ public class Categoria {
             }
             return ArrayHijos;
         }
-=======
-
-    String getNombre() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    ArrayList<String> listarServicios() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
->>>>>>> 73f5a92178f8b3fcfa205a495a509eb919a0f27b
     }
     
 }

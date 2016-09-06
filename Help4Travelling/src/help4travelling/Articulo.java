@@ -5,12 +5,14 @@ package help4travelling;
  */
 
 import java.sql.Blob;
+import java.util.Set;
+import java.util.HashSet;
 
 public abstract class Articulo {
     
-    protected String nombre;    
-    //private Ciudad[] city;  //Si el articulo necesita conocer la ciudad
-    //private Provedor prov;    // "
+    protected String nombre; 
+    protected Set infoReservas = new HashSet<infoReserva>();
+    protected String prov;    // "
     //private InfoReserva info; //Luego de crearse InfoReserva decomentar
     
     protected String GetNombre(){
@@ -19,7 +21,6 @@ public abstract class Articulo {
     
     protected void SetNombre(String name){
         this.nombre = name;
-<<<<<<< HEAD
     }
     
     protected abstract boolean isPromocion();
@@ -30,8 +31,28 @@ public abstract class Articulo {
     
     public abstract DtServicio GetDtServicio();
     
-    public abstract DtServicio getDatosServProm(String nombreServ);
-=======
+    public abstract DtServicio getDatosServProm(String nombreServ, String nomProv);
+
+    public void EnlazarReserva(infoReserva ar){
+        this.infoReservas.add(ar);
     }    
->>>>>>> 73f5a92178f8b3fcfa205a495a509eb919a0f27b
+
+    public Set getInfoReservas() {
+        return infoReservas;
+    }
+
+    public void setInfoReservas(Set infoReservas) {
+        this.infoReservas = infoReservas;
+    }
+
+    public String getProv() {
+        return prov;
+    }
+
+    public void setProv(String prov) {
+        this.prov = prov;
+    }
+    
+     public abstract Float getPrecio();
+    
 }

@@ -7,17 +7,18 @@ import java.util.ArrayList;
  */
 
 public class DtPromocion {
-<<<<<<< HEAD
     private String nombre;
+    private String nickProv;
     private float descuento;
-    private float precioTotal;
+    private float precio;
     private ArrayList<String> servicios;
         
     
-     public DtPromocion(String nombre, float descuento, float precioTotal, ArrayList<String> servicios){
+     public DtPromocion(String nombre, String nickProv, float descuento, float precio, ArrayList<String> servicios){
         this.nombre=nombre;
+        this.nickProv=nickProv;
         this.descuento=descuento;
-        this.precioTotal=precioTotal;
+        this.precio=precio;
         this.servicios=servicios;
      }
     
@@ -28,14 +29,16 @@ public class DtPromocion {
     public float GetDescuento() {
         return this.descuento;
     }     
-=======
-
-    String GetNombre() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
->>>>>>> 73f5a92178f8b3fcfa205a495a509eb919a0f27b
     
-     public float GetPrecioTotal() {
-        return this.precioTotal;
-    }    
+    public float GetPrecio() {
+        return this.precio;
+    }
+
+    public ArrayList<String> GetServicios() {
+        return this.servicios;
+    } 
+    
+      public String getNickProv() {
+        return nickProv;
+    }
 }

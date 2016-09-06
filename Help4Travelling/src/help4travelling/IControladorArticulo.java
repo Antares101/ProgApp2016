@@ -1,24 +1,25 @@
 package help4travelling;
 
-<<<<<<< HEAD
 import java.util.ArrayList;
 import java.util.Set;
 import java.util.HashSet;
+import java.util.List;
 
-=======
->>>>>>> 73f5a92178f8b3fcfa205a495a509eb919a0f27b
 /**
  * @author Antares
  */
-public interface IControladorArticulo {
-<<<<<<< HEAD
-      public abstract boolean CrearPromocion(DtPromocion DtProm);
-    public abstract ArrayList<String> listarPromociones();
-    public abstract Set<DtServicio> ListarServicios();
-    public abstract void PublicarServicio(String nameServ);
-    public abstract DtPromocion datosPromociones(String nombreProm);
-    public abstract DtServicio datosServicio(String nombreServ);
-=======
+public abstract interface IControladorArticulo {
     public abstract boolean CrearPromocion(DtPromocion DtProm);
->>>>>>> 73f5a92178f8b3fcfa205a495a509eb919a0f27b
+    public abstract ArrayList<DtPromocion> listarPromociones();
+    public abstract ArrayList<DtServicio> ListarServicios();
+    public abstract void PublicarServicio(String nameServ, String nameProv);
+    public abstract DtPromocion datosPromociones(String nombreProm, String nameProv);
+    public abstract DtServicio datosServicio(String nombreServ, String nameProv);
+    public abstract Servicio ModificarServicio(DtServicio modSer);
+    public abstract void AgregarCategoria(String catName);
+    public abstract void QuitarCategoria(String catName);
+    public abstract boolean insertarServicio(DtServicio DtServ);
+    public abstract List<String> listaDeCiudades();
+    public abstract ArrayList<DtPromocion> listarPromocionesProv(String nick);
+    public abstract ArrayList<DtServicio> ListarServiciosProv(String nick);
 }

@@ -6,17 +6,21 @@ import java.util.ArrayList;
 /**
  * @author Antares
  */
-<<<<<<< HEAD
 public class Promocion extends Articulo {
     private float descuento;
     private float precioTotal;
-    private HashMap<String, Servicio> servicios = new HashMap<String, Servicio>();
+    private ArrayList<Servicio> servicios = new ArrayList<Servicio>();
     
     public Promocion(DtPromocion DtProm){
         String name = DtProm.GetNombre();
         this.SetNombre(name);
         this.descuento = DtProm.GetDescuento();
-        this.precioTotal = DtProm.GetPrecioTotal();
+        this.precioTotal = DtProm.GetPrecio();
+    }
+    
+    public Promocion(String nick, String nombre){
+        this.nombre = nombre;
+        this.prov = nick;
     }
     
     public boolean isPromocion(){
@@ -28,17 +32,15 @@ public class Promocion extends Articulo {
     }
     
     public DtPromocion getDtPromocion(){
-        ArrayList<String> ArrayServicios = new ArrayList<String>();
-        float precioT = 0;
-        for (String name: servicios.keySet()) {
-            precioT = precioT + servicios.get(name).getPrecio();
-            ArrayServicios.add(servicios.get(name).GetNombre());
-        }
-        return new DtPromocion(nombre, descuento, precioT, ArrayServicios);
+        return ManejadorSQL.GetInstance().devolverPromocion(this.getProv(), this.GetNombre());
     }
     
-    public DtServicio getDatosServProm(String nombreServ){
-        return servicios.get(nombreServ).getDtServicio();
+    public DtServicio getDatosServProm(String nombreServ, String nombreProv){
+        for (int i = 0; i < servicios.size(); i++) {
+              if (servicios.get(i).GetNombre() == nombreServ && servicios.get(i).getProv() == nombreProv);
+                    return servicios.get(i).GetDtServicio();                    
+        }
+        return null;
     }
     
     public DtServicio GetDtServicio(){
@@ -46,17 +48,15 @@ public class Promocion extends Articulo {
     }
     
     public void AgregarServicio(Servicio ser){
-        servicios.put(ser.GetNombre(), ser);
-=======
-public class Promocion {
-
-    Promocion(DtPromocion DtProm) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        servicios.add(ser);
     }
-
-    String GetNombre() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
->>>>>>> 73f5a92178f8b3fcfa205a495a509eb919a0f27b
+    
+    public Float getPrecio(){
+        float precioT = 0;
+        for (int i = 0; i < servicios.size(); i++) {
+               precioT = precioT + servicios.get(i).getPrecio();
+        }
+        return (descuento*precioT)/100;
     }
     
 }

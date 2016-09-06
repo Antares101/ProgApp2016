@@ -18,15 +18,28 @@ public class Servicio extends Articulo{
     private Ciudad ciudadDestino;
     //private Promocion[] prom;
     
-    public void AddImage(Blob Image){}
-    
-    public DtServicio getDtServicio(){
-        ArrayList<String> ArrayCategorias = new ArrayList<String>();
-        for (String name: categorias.keySet()) {
-            ArrayCategorias.add(categorias.get(name).getNombre());
-        }
-        return new DtServicio(nombre, precio,image, descripcion, ArrayCategorias, ciudadOrigen.getNombre(), ciudadDestino.getNombre());
+    public Servicio(String nombre, String nickProv, String desc, Ciudad ciudadO, Ciudad ciudadD, float precio){
+        this.SetNombre(nombre);
+        this.setProv(nickProv);
+        this.descripcion = desc;
+        this.ciudadOrigen = ciudadO;
+        this.ciudadDestino = ciudadD;
+        this.precio = precio;
     }
+    
+    public Servicio(String nickProv, String nombre){
+        this.SetNombre(nombre);
+        this.setProv(nickProv);
+    }
+    
+    public Servicio(DtServicio dtSer){
+        this.nombre = dtSer.getNombre();
+        this.descripcion = dtSer.getDescripcion();
+        this.precio = dtSer.getPrecio();
+    }
+    
+    public void AddImage(Blob Image){}
+   
     
       public Blob[] GetImage(){
         return this.image;
@@ -34,10 +47,6 @@ public class Servicio extends Articulo{
     
     public String GetDescripcion(){
         return this.descripcion;
-    }
-    
-    public Float GetFloat(){
-        return this.precio;
     }
     
     public boolean isPromocion(){
@@ -57,11 +66,32 @@ public class Servicio extends Articulo{
     }
     
     public DtServicio GetDtServicio(){
-        return new DtServicio(this);        
+        return ManejadorSQL.GetInstance().devolverServicio(this.getProv(), this.GetNombre());        
     }
     
-    public DtServicio getDatosServProm(String nombreServ){
+    public DtServicio getDatosServProm(String nombreServ , String nomProv){
         return null;
     }    
     
+    public void ModificarDatosServicio(DtServicio modSer){
+        this.nombre = modSer.getNombre();
+        this.precio = modSer.getPrecio();
+        this.descripcion = modSer.getDescripcion();
+    }
+    
+    public void CambiarOrigen(Ciudad ori){
+        this.ciudadOrigen = ori;
+    }
+            
+    public void CambiarDestino(Ciudad dest){
+        this.ciudadDestino = dest;
+    }
+    
+    public void AgregarCategoria(Categoria cat){
+        this.categorias.put(cat.getNombre(),cat);
+    }
+    
+    public void QuitarCategoriai(Categoria cat){
+        this.categorias.remove(cat.getNombre());
+    }
 }

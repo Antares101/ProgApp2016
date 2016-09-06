@@ -4,26 +4,35 @@ import java.util.ArrayList;
 
 /**
  *
- * @author Bruno
+ * @author Nacho
  */
 public class ControladorCategoria implements IControladorCategoria{
     
-<<<<<<< HEAD
     public ArrayList<DtCategoria> listarCategorias(){
-=======
-    public ArrayList<String> listarCategorias(){
->>>>>>> 73f5a92178f8b3fcfa205a495a509eb919a0f27b
         return ManejadorCategoria.GetInstance().listarCategorias();
     }
     
-    public ArrayList<String> listarServicios(String nombre){
+    public ArrayList<DtServicio> listarServicios(String nombre){
         return ManejadorCategoria.GetInstance().listarServicios(nombre);
     }
-<<<<<<< HEAD
     
     public DtServicio datosServicio(String nombreServ){
         return ManejadorCategoria.GetInstance().datosServicio(nombreServ);
     }
-=======
->>>>>>> 73f5a92178f8b3fcfa205a495a509eb919a0f27b
+    
+    public void IngresarCategoria(String nombre){
+        ManejadorCategoria.GetInstance().IngresarCategoria(nombre);
+    }
+    
+    public void IngresarCategoria(String nombre, String padre){
+        ManejadorCategoria.GetInstance().IngresarCategoria(nombre, padre);
+    }
+    
+    public Categoria BuscarCategoria(String nombre){
+        ManejadorCategoria man = ManejadorCategoria.GetInstance();
+        Categoria c = man.BuscarCategoria(nombre);
+        return c;
+    }
+    
+    
 }

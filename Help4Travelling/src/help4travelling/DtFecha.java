@@ -1,56 +1,50 @@
-
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package help4travelling;
 
+/**
+ *
+ * @author Agustin
+ */
 public class DtFecha {
-    private int dia, mes, anio;
+    private int anio;
+    private int mes;
+    private int dia;
     
-    public DtFecha() {
-        this.dia = 1;
-        this.mes = 1;
-        this.anio = 1950;
-    }
-
-    public DtFecha(int dia, int mes, int anio) {
-        this.dia = dia;
-        this.mes = mes;
+    DtFecha(int anio, int mes, int dia){
         this.anio = anio;
+        this.mes = mes;
+        this.dia =  dia;
     }
     
-    public DtFecha(DtFecha f) {
-        this.dia = f.getDia();
-        this.mes = f.getMes();
-        this.anio = f.getAnio();
-    }
+    //Contruye la fecha con un string de esta forma "yyyy/mm/dd"
+    DtFecha(String bdformato){
+        try{        
+            String[] parts = bdformato.split("/");
+            this.anio = Integer.parseInt(parts[0]);
+            this.mes = Integer.parseInt(parts[1]);
+            this.dia = Integer.parseInt(parts[2]);  
+        } catch (Exception ex) {
+            String[] parts = bdformato.split("-");
+            this.anio = Integer.parseInt(parts[0]);
+            this.mes = Integer.parseInt(parts[1]);
+            this.dia = Integer.parseInt(parts[2]); 
+        }
 
-    public int getDia() {
-        return dia;
-    }
-
-    public int getMes() {
-        return mes;
     }
 
     public int getAnio() {
-        return anio;
+        return this.anio;
     }
 
-    public void setDia(int dia) {
-        this.dia = dia;
+    public int getMes() {
+        return this.mes;
     }
 
-    public void setMes(int mes) {
-        this.mes = mes;
-    }
-
-    public void setAnio(int anio) {
-        this.anio = anio;
-    }
-
-    @Override
-    public String toString() {
-        return "DtFecha{" + "dia=" + dia + ", mes=" + mes + ", anio=" + anio + '}';
-    }
-    
-    
-    
+    public int getDia() {
+        return this.dia;
+    }    
 }
