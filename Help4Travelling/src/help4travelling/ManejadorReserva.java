@@ -5,7 +5,6 @@ import java.util.Map;
 import java.util.ArrayList;
 import java.util.Set;
 import java.util.HashSet;
-import javafx.util.Pair;
 
 /**
  * @author Antares
