@@ -5563,6 +5563,31 @@ public class Help4Travelling extends javax.swing.JFrame {
         ManejadorSQL.GetInstance().agregarPromocion(dataProm, cmb_ing_prom.getModel().getSelectedItem().toString(), retser);
         //this.ICArticulo.CrearPromocion(dataProm);
     }//GEN-LAST:event_jLabel75MouseClicked
+    private void jLabel46MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel46MouseClicked
+        if(lis_categoriaS.getSelectedValue() != null){
+            int index = lis_categoriaS.getSelectedIndex();
+            list2.remove(index);
+        }
+    }//GEN-LAST:event_jLabel46MouseClicked
+
+    private void jLabel47MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel47MouseClicked
+                //DefaultMutableTreeNode Arbol = (DefaultMutableTreeNode)tree_servicios2.getLastSelectedPathComponent();
+        //String sel = (String) Arbol.getUserObject();
+        //list2.addElement(lis_categoria.getSelectedValue());
+
+        if(!list2.contains(lis_categoria.getSelectedValue())){
+            list2.addElement(lis_categoria.getSelectedValue());
+            lis_categoriaS.setModel(list2);
+        }
+        /*
+        String [] element = new String[5];
+        element[0]=sel;
+        lis_categoria.setListData(element);*/
+    }//GEN-LAST:event_jLabel47MouseClicked
+
+    private void AnioCliActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AnioCliActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_AnioCliActionPerformed
 
     /**
      *
