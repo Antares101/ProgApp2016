@@ -2448,6 +2448,16 @@ public class Help4Travelling extends javax.swing.JFrame {
             public int getSize() { return strings.length; }
             public String getElementAt(int i) { return strings[i]; }
         });
+        list_servs.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                list_servsMouseClicked(evt);
+            }
+        });
+        list_servs.addListSelectionListener(new javax.swing.event.ListSelectionListener() {
+            public void valueChanged(javax.swing.event.ListSelectionEvent evt) {
+                list_servsValueChanged(evt);
+            }
+        });
         jScrollPane8.setViewportView(list_servs);
 
         panel_consultas_promociones.add(jScrollPane8);
@@ -2486,14 +2496,14 @@ public class Help4Travelling extends javax.swing.JFrame {
         jLabel170.setForeground(java.awt.Color.darkGray);
         jLabel170.setText("- Destino");
         panel_consultas_promociones.add(jLabel170);
-        jLabel170.setBounds(400, 340, 60, 19);
+        jLabel170.setBounds(460, 360, 60, 19);
 
         jLabel171.setBackground(java.awt.Color.darkGray);
         jLabel171.setFont(new java.awt.Font("FreeSans", 0, 14)); // NOI18N
         jLabel171.setForeground(java.awt.Color.darkGray);
         jLabel171.setText("Descripcion");
         panel_consultas_promociones.add(jLabel171);
-        jLabel171.setBounds(380, 370, 90, 20);
+        jLabel171.setBounds(380, 400, 90, 20);
 
         jLabel172.setBackground(java.awt.Color.darkGray);
         jLabel172.setFont(new java.awt.Font("FreeSans", 0, 14)); // NOI18N
@@ -2507,14 +2517,14 @@ public class Help4Travelling extends javax.swing.JFrame {
         jLabel173.setForeground(java.awt.Color.darkGray);
         jLabel173.setText("Nombre");
         panel_consultas_promociones.add(jLabel173);
-        jLabel173.setBounds(380, 260, 70, 19);
+        jLabel173.setBounds(440, 250, 70, 19);
 
         jLabel174.setBackground(java.awt.Color.darkGray);
         jLabel174.setFont(new java.awt.Font("FreeSans", 0, 14)); // NOI18N
         jLabel174.setForeground(java.awt.Color.darkGray);
         jLabel174.setText("- Origen");
         panel_consultas_promociones.add(jLabel174);
-        jLabel174.setBounds(400, 310, 60, 20);
+        jLabel174.setBounds(460, 320, 60, 20);
 
         jLabel176.setBackground(java.awt.Color.gray);
         jLabel176.setText("Aqui se mostrara imagen");
@@ -2527,7 +2537,7 @@ public class Help4Travelling extends javax.swing.JFrame {
         jLabel178.setForeground(java.awt.Color.darkGray);
         jLabel178.setText("Ciudad");
         panel_consultas_promociones.add(jLabel178);
-        jLabel178.setBounds(380, 290, 60, 20);
+        jLabel178.setBounds(440, 300, 60, 20);
 
         jLabel207.setBackground(java.awt.Color.gray);
         jLabel207.setText("Aqui se mostrara imagen");
@@ -2549,15 +2559,15 @@ public class Help4Travelling extends javax.swing.JFrame {
         panel_consultas_promociones.add(lbl_precioP);
         lbl_precioP.setBounds(90, 200, 110, 20);
         panel_consultas_promociones.add(jLabel51);
-        jLabel51.setBounds(380, 400, 560, 130);
+        jLabel51.setBounds(380, 440, 560, 90);
         panel_consultas_promociones.add(lbl_nom);
         lbl_nom.setBounds(70, 140, 290, 20);
         panel_consultas_promociones.add(jLabel78);
-        jLabel78.setBounds(440, 260, 290, 20);
+        jLabel78.setBounds(550, 240, 320, 30);
         panel_consultas_promociones.add(jLabel80);
-        jLabel80.setBounds(460, 310, 290, 20);
+        jLabel80.setBounds(550, 310, 290, 30);
         panel_consultas_promociones.add(jLabel97);
-        jLabel97.setBounds(470, 340, 290, 20);
+        jLabel97.setBounds(550, 350, 290, 30);
 
         getContentPane().add(panel_consultas_promociones, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 420, 160, 120));
         getContentPane().remove(panel_consultas_promociones);
@@ -5464,6 +5474,25 @@ public class Help4Travelling extends javax.swing.JFrame {
     private void btn_addP1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_addP1MouseEntered
         // TODO add your handling code here:
     }//GEN-LAST:event_btn_addP1MouseEntered
+
+    private void list_servsValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_list_servsValueChanged
+        // TODO add your handling code here:
+    }//GEN-LAST:event_list_servsValueChanged
+
+    private void list_servsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_list_servsMouseClicked
+        
+        String prov = lbl_prov.getText();
+
+        String NomSer = list_servs.getSelectedValue().toString();
+        
+        DtServicio ret = ICArticulo.datosServicio(NomSer, prov);
+        jLabel78.setText(ret.getNombre());
+        jLabel80.setText(ret.getCiudadOrigen());
+        jLabel97.setText(ret.getCiudadDestino());
+        jLabel51.setText(ret.getDescripcion());
+        
+        
+    }//GEN-LAST:event_list_servsMouseClicked
 
     /**
      *
