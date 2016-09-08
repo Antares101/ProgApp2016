@@ -5485,13 +5485,11 @@ public class Help4Travelling extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton15MouseClicked
 
     private void btn_addP1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_addP1MouseClicked
-        System.out.println("ACA NO EXPLOTA!");
         if((DefaultMutableTreeNode)tree_actualizar_servicios.getLastSelectedPathComponent() != null){
             DefaultMutableTreeNode node = (DefaultMutableTreeNode)tree_actualizar_servicios.getLastSelectedPathComponent();
-            String nameCat = node.getUserObject().toString().trim();
-            list3.clear();
+            String nameCat = node.getUserObject().toString().trim();            
             list3.addElement(nameCat);
-            
+            list_catServicio.setModel(list3);            
         } 
     }//GEN-LAST:event_btn_addP1MouseClicked
 
