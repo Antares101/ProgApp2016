@@ -5306,7 +5306,8 @@ public class Help4Travelling extends javax.swing.JFrame {
         String nickP, nombreA;
         if(!cmb_consultar_promociones.getSelectedItem().toString().trim().isEmpty()){
             nickP = cmb_consultar_promociones.getSelectedItem().toString().substring(0, cmb_consultar_promociones.getSelectedItem().toString().lastIndexOf(","));
-            nombreA = cmb_consultar_promociones.getSelectedItem().toString().substring(cmb_consultar_promociones.getSelectedItem().toString().lastIndexOf(",")+1);
+            nombreA = cmb_consultar_promociones.getSelectedItem().toString().substring(cmb_consultar_promociones.getSelectedItem().toString().lastIndexOf(",")+2);
+            System.out.println("BanderaLoca5310" + nombreA + " asd " + nickP);
             DtPromocion prom = ManejadorSQL.GetInstance().devolverPromocion(nickP, nombreA);
             lbl_prov.setText(nickP);
             lbl_nom.setText(nombreA);
@@ -5317,6 +5318,8 @@ public class Help4Travelling extends javax.swing.JFrame {
                 lm.addElement(prom.GetServicios().get(x));
             }
             list_servs.setModel(lm);
+            
+            
         }
     }//GEN-LAST:event_cmb_consultar_promocionesItemStateChanged
 
