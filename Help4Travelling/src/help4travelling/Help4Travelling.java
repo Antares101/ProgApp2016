@@ -5486,8 +5486,8 @@ public class Help4Travelling extends javax.swing.JFrame {
             ArrayList<String> categorias = new ArrayList();
             
             ListModel lm = list_catServicio.getModel();            
-            for(int e = 0; e <= list_catServicio.getModel().getSize(); e++){
-                System.out.println(categorias.add(list_catServicio.getModel().getElementAt(e).trim()));
+            for(int e = 0; e < list_catServicio.getModel().getSize(); e++){
+                System.out.println(list_catServicio.getModel().getElementAt(e));
                 categorias.add(list_catServicio.getModel().getElementAt(e));
             }
             
