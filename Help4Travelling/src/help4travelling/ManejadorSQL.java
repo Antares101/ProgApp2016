@@ -502,6 +502,32 @@ public class ManejadorSQL {
         }
         return ret;
     }
+    
+    public void atualizarServicio(DtServicio s){
+        String sql1 = "UPDATE SERVICIOS SET descripcion='" + s.getDescripcion() + "', precio='" + s.getPrecio() + "', ciudadO='" + s.getCiudadOrigen() + "', ciudadD='" + s.getCiudadDestino() + "' WHERE nicknameProveedor = '" + s.getNickProveedor() + "' AND nombreArticulo = '"+ s.getNombre() + "';";
+        String sql2, sql3;
+        try{
+            Connection conex = getConex();
+            Statement usuario = conex.createStatement();
+            usuario.executeUpdate(sql1);
+            if(s.getCategorias().size() > 0){
+                for(int x = 0; x < s.getCategorias().size(); x++){
+                    sql2 = "SELECT COUNT(*) FROM POSEEN WHERE nicknameProveedor='" + s.getNickProveedor().trim() + "' AND nombreArticulo='" + s.getNombre() + "' AND nombreCategoria='"+ s.getCategorias().get(x).trim() +"';";
+                    ResultSet rs = usuario.executeQuery(sql2);
+                    if(rs.getFetchSize() != 0){
+                        sql3 = "UPDATE POSEEN SET nombreCategoria='" + s.getCategorias().get(x).trim() + "' WHERE nicknameProveedor='" + s.getNickProveedor().trim() + "' AND nombreArticulo='" + s.getNombre() + "';";
+                    }
+                    else{
+                        sql3 = "INSERT INTO POSEEN(nicknameProveedor, nombreArticulo, nombreCategoria) VALUES ('" + s.getNickProveedor() + "','" + s.getNombre().trim() + "','" + s.getCategorias().get(x).trim() + "');";
+                    }
+                    usuario.executeUpdate(sql3);
+                }
+            }
+            conex.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(ManejadorSQL.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
 
     // DEVOLVER SERVICIOS POR CATEGORIA
     public ArrayList<DtServicio> devolverSerPorCat(String nombreCat){
