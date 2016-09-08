@@ -5458,11 +5458,16 @@ public class Help4Travelling extends javax.swing.JFrame {
         if((!txt_desc.getText().isEmpty()) && (!txt_desc.getText().isEmpty()) && (list_catServicio.getModel().getSize() != 0) ){
             String nickP, nombreA;
             nickP = cmb_actualizar_servicio.getSelectedItem().toString().substring(0, cmb_actualizar_servicio.getSelectedItem().toString().lastIndexOf(","));
-            nombreA = cmb_actualizar_servicio.getSelectedItem().toString().substring(cmb_actualizar_servicio.getSelectedItem().toString().lastIndexOf(",")+1);
+            nombreA = cmb_actualizar_servicio.getSelectedItem().toString().substring(cmb_actualizar_servicio.getSelectedItem().toString().lastIndexOf(",")+2);
+            
             ArrayList<String> categorias = new ArrayList();
-            for(int e = 0; e < list_catServicio.getModel().getSize(); e++){
-                categorias.add(list_catServicio.getModel().getElementAt(e).trim());
+            
+            ListModel lm = list_catServicio.getModel();            
+            for(int e = 0; e <= list_catServicio.getModel().getSize(); e++){
+                System.out.println(categorias.add(list_catServicio.getModel().getElementAt(e).trim()));
+                categorias.add(list_catServicio.getModel().getElementAt(e));
             }
+            
             DtServicio mod = new DtServicio(nombreA.trim(), nickP.trim(), Float.valueOf(txt_p.getText().trim()), txt_desc.getText(), categorias, cmb_origen.getSelectedItem().toString().trim(), cmb_destino.getSelectedItem().toString().trim());
             ICArticulo.ModificarServicio(mod);
             JOptionPane.showMessageDialog(null, "Servicio actualizado correctamente!");
