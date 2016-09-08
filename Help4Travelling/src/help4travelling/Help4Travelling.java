@@ -1671,6 +1671,11 @@ public class Help4Travelling extends javax.swing.JFrame {
         jLabel75.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jLabel75.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         jLabel75.setVerticalTextPosition(javax.swing.SwingConstants.TOP);
+        jLabel75.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel75MouseClicked(evt);
+            }
+        });
         panel_ingreso_promociones.add(jLabel75);
         jLabel75.setBounds(950, 535, 45, 46);
 
@@ -4432,6 +4437,7 @@ public class Help4Travelling extends javax.swing.JFrame {
         }
         cmb_consultar_promociones.setModel(listModel);
         
+        list2.clear();
     }//GEN-LAST:event_consultar_promocionesMouseClicked
 
     private void jLabel163MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel163MouseClicked
@@ -5345,11 +5351,58 @@ public class Help4Travelling extends javax.swing.JFrame {
     }//GEN-LAST:event_cmb_ing_promItemStateChanged
 
     private void btn_addPMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_addPMouseClicked
+        ListModel<String> lista1 = list_serviciosProv.getModel();
+        //DefaultListModel<String> lista2 = new DefaultListModel<String>();
+        
         if(list_serviciosProv.getModel().getSize() != 0){
-            if(!list_serviciosProv.getSelectedValue().isEmpty()){
-                if(((DefaultListModel)list_serviciosInc.getModel()).contains(list_serviciosProv.getSelectedValue())){
-                    ((DefaultListModel)list_serviciosInc.getModel()).addElement(list_serviciosProv.getSelectedValue());
+            if(!list_serviciosProv.getSelectedValue().isEmpty()){                     
+                if(!list2.contains(list_serviciosProv.getSelectedValue())){
+                    list2.addElement(list_serviciosProv.getSelectedValue());      
+                    list_serviciosInc.setModel(list2);
+                }
+                else{
+                    System.out.println("banderarequeteloca3 ");
+                }
+                
+           
+                
+                //list_serviciosInc.setModel(lista1);
+                
+                /*if(!l1.contains(list_serviciosProv.getSelectedValue())){
+                    list_serviciosInc.getModel().addElement(list_serviciosProv.getSelectedValue());
+                    lis_categoriaS.setModel(list2);
+                }
+                
+                if(!list2.contains(lis_categoria.getSelectedValue())){
+            list2.addElement(lis_categoria.getSelectedValue());
+            lis_categoriaS.setModel(list2);
+        }
+                
+                if((l1.contains(list_serviciosProv.getSelectedValue().toString())){
+                    System.out.println("banderarequeteloca1");
+                    //((DefaultListModel)list_serviciosInc.getModel()).addElement(list_serviciosProv.getSelectedValue());
                 }   
+                
+                
+                
+                
+                ArrayList<DtCategoria> categorias = ICCategoria.listarCategorias();
+        DefaultListModel<String> list = new DefaultListModel<>();
+        
+        
+        int max =0;
+        for (int i = 0; i < categorias.size(); i++){
+            list.addElement(categorias.get(i).getNombre());
+            if (max < categorias.get(i).getNivel()){
+                max =categorias.get(i).getNivel();
+            }
+        }
+                
+                
+                
+                
+                
+                */
             }
         }  
     }//GEN-LAST:event_btn_addPMouseClicked
@@ -5490,9 +5543,32 @@ public class Help4Travelling extends javax.swing.JFrame {
         jLabel80.setText(ret.getCiudadOrigen());
         jLabel97.setText(ret.getCiudadDestino());
         jLabel51.setText(ret.getDescripcion());
-        
-        
+
+        //Agregar Imagenes
+        //imagenes del servicio -> ret.getImagen()
+        //imagen en interfaz -> jLabel207
+        //imagen en interfaz -> jLabel208
+        //imagen en interfaz -> jLabel209
     }//GEN-LAST:event_list_servsMouseClicked
+
+    private void jLabel75MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel75MouseClicked
+        
+        List<String> lservi = list_serviciosInc.getSelectedValuesList();
+        float preciototal = 0;
+        
+        for(String x: lservi){
+            DtServicio dataser = ManejadorSQL.GetInstance().devolverServicio(cmb_ing_prom.getModel().getSelectedItem().toString(), jTextField16.getText());
+            preciototal += dataser.getPrecio();
+        }
+        
+        ArrayList<String> retser = new ArrayList<String>(lservi);
+        
+        DtPromocion dataProm = new DtPromocion(jTextField16.getText(), cmb_ing_prom.getModel().getSelectedItem().toString(), Float.valueOf(jTextField15.getText()), preciototal, retser);
+        
+        //Esta el manejador aca con fines de testeo, luego que funcione bien se borra y se mete en ControladorArticulo
+        ManejadorSQL.GetInstance().agregarPromocion(dataProm, cmb_ing_prom.getModel().getSelectedItem().toString(), retser);
+        //this.ICArticulo.CrearPromocion(dataProm);
+    }//GEN-LAST:event_jLabel75MouseClicked
 
     /**
      *
