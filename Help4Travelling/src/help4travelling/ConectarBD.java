@@ -105,7 +105,8 @@ public class ConectarBD extends javax.swing.JFrame {
         txt_conectarBD.setBackground(javax.swing.UIManager.getDefaults().getColor("Button.background"));
         txt_conectarBD.setFont(new java.awt.Font("DejaVu Sans", 0, 18)); // NOI18N
         txt_conectarBD.setForeground(new java.awt.Color(0, 51, 153));
-        txt_conectarBD.setText("localhost");
+        txt_conectarBD.setText("192.168.196.131");
+        txt_conectarBD.setToolTipText("");
         txt_conectarBD.setBorder(null);
         txt_conectarBD.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {

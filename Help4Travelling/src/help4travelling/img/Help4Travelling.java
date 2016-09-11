@@ -1,4 +1,4 @@
-package help4travelling;
+package help4travelling.img;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.File;
