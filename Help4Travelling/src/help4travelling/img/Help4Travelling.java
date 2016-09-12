@@ -272,7 +272,6 @@ public class Help4Travelling extends javax.swing.JFrame {
         lbl_desc1 = new javax.swing.JLabel();
         lbl_origen1 = new javax.swing.JLabel();
         lbl_destino1 = new javax.swing.JLabel();
-        jLabel213 = new javax.swing.JLabel();
         lbl_proveedor1 = new javax.swing.JLabel();
         panel_consultas_promociones = new javax.swing.JPanel();
         jLabel148 = new javax.swing.JLabel();
@@ -2202,7 +2201,7 @@ public class Help4Travelling extends javax.swing.JFrame {
         getContentPane().add(panel_eliminar_reserva, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 90, 1030, 590));
         panel_eliminar_reserva.setVisible(false);
 
-        panel_consultas_servicios.setBackground(java.awt.Color.white);
+        panel_consultas_servicios.setBackground(java.awt.Color.lightGray);
         panel_consultas_servicios.setLayout(null);
 
         jLabel144.setIcon(new javax.swing.ImageIcon(getClass().getResource("/help4travelling/img/salir.png"))); // NOI18N
@@ -2277,7 +2276,7 @@ public class Help4Travelling extends javax.swing.JFrame {
         jLabel154.setForeground(java.awt.Color.darkGray);
         jLabel154.setText("- Destino");
         panel_consultas_servicios.add(jLabel154);
-        jLabel154.setBounds(320, 240, 60, 20);
+        jLabel154.setBounds(290, 240, 60, 20);
 
         jLabel155.setBackground(java.awt.Color.darkGray);
         jLabel155.setFont(new java.awt.Font("FreeSans", 0, 14)); // NOI18N
@@ -2305,7 +2304,7 @@ public class Help4Travelling extends javax.swing.JFrame {
         jLabel158.setForeground(java.awt.Color.darkGray);
         jLabel158.setText("- Origen");
         panel_consultas_servicios.add(jLabel158);
-        jLabel158.setBounds(320, 200, 60, 20);
+        jLabel158.setBounds(290, 210, 60, 20);
 
         lbl_img2.setBackground(java.awt.Color.white);
         lbl_img2.setOpaque(true);
@@ -2356,19 +2355,12 @@ public class Help4Travelling extends javax.swing.JFrame {
         lbl_origen1.setBackground(java.awt.Color.lightGray);
         lbl_origen1.setFont(new java.awt.Font("DejaVu Sans", 0, 14)); // NOI18N
         panel_consultas_servicios.add(lbl_origen1);
-        lbl_origen1.setBounds(380, 200, 360, 30);
+        lbl_origen1.setBounds(350, 210, 360, 20);
 
         lbl_destino1.setBackground(java.awt.Color.lightGray);
         lbl_destino1.setFont(new java.awt.Font("DejaVu Sans", 0, 14)); // NOI18N
         panel_consultas_servicios.add(lbl_destino1);
-        lbl_destino1.setBounds(390, 240, 360, 30);
-
-        jLabel213.setBackground(java.awt.Color.darkGray);
-        jLabel213.setFont(new java.awt.Font("FreeSans", 0, 14)); // NOI18N
-        jLabel213.setForeground(java.awt.Color.darkGray);
-        jLabel213.setText("Proveedor");
-        panel_consultas_servicios.add(jLabel213);
-        jLabel213.setBounds(290, 100, 90, 20);
+        lbl_destino1.setBounds(350, 240, 360, 20);
 
         lbl_proveedor1.setBackground(java.awt.Color.lightGray);
         lbl_proveedor1.setFont(new java.awt.Font("DejaVu Sans", 0, 14)); // NOI18N
@@ -2940,7 +2932,7 @@ public class Help4Travelling extends javax.swing.JFrame {
         tex_precioU1.setBackground(java.awt.Color.white);
         tex_precioU1.setFont(new java.awt.Font("DejaVu Sans", 0, 14)); // NOI18N
         panel_ingreso_reservas.add(tex_precioU1);
-        tex_precioU1.setBounds(200, 310, 69, 20);
+        tex_precioU1.setBounds(200, 310, 70, 23);
 
         getContentPane().add(panel_ingreso_reservas, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 220, 150, 100));
         getContentPane().remove(panel_ingreso_reservas);
@@ -3018,7 +3010,7 @@ public class Help4Travelling extends javax.swing.JFrame {
             }
         });
         panel_ingreso_servicios.add(jButton2);
-        jButton2.setBounds(720, 370, 140, 30);
+        jButton2.setBounds(510, 360, 140, 30);
         panel_ingreso_servicios.add(lbl_imagen3);
         lbl_imagen3.setBounds(720, 400, 220, 130);
 
@@ -3160,7 +3152,7 @@ public class Help4Travelling extends javax.swing.JFrame {
             }
         });
         panel_ingreso_servicios.add(jButton3);
-        jButton3.setBounds(480, 370, 140, 30);
+        jButton3.setBounds(760, 360, 140, 30);
         panel_ingreso_servicios.add(lbl_imagen1);
         lbl_imagen1.setBounds(230, 400, 220, 130);
 
@@ -3177,7 +3169,7 @@ public class Help4Travelling extends javax.swing.JFrame {
             }
         });
         panel_ingreso_servicios.add(jButton6);
-        jButton6.setBounds(230, 370, 140, 30);
+        jButton6.setBounds(260, 360, 140, 30);
 
         getContentPane().add(panel_ingreso_servicios, new org.netbeans.lib.awtextra.AbsoluteConstraints(1020, 100, 160, 110));
         getContentPane().remove(panel_ingreso_servicios);
@@ -4344,7 +4336,7 @@ public class Help4Travelling extends javax.swing.JFrame {
         jLabel12.setVisible(false);
         jLabel13.setVisible(false);
         lbl_acercaDe.setVisible(false);
-
+        lbl_avatarCliente.setIcon(null);
         DefaultMutableTreeNode tree = new DefaultMutableTreeNode("todas");
         ArrayList<DtCategoria> categorias = ICCategoria.listarCategorias();
 
@@ -4667,13 +4659,16 @@ public class Help4Travelling extends javax.swing.JFrame {
     }//GEN-LAST:event_chek_padreItemStateChanged
 
     private void tree_serviciosValueChanged(javax.swing.event.TreeSelectionEvent evt) {//GEN-FIRST:event_tree_serviciosValueChanged
+        lbl_img1.setIcon(null);
+        lbl_img2.setIcon(null);
+        lbl_img3.setIcon(null);
+        lbl_proveedor1.setText("");
+        lbl_nombre1.setText("");
+        lbl_origen1.setText("");
+        lbl_destino1.setText("");
+        lbl_desc1.setText("");
+        cmb_serviciosXcat.removeAllItems();
         try{
-            lbl_proveedor1.setText("");
-            lbl_nombre1.setText("");
-            lbl_origen1.setText("");
-            lbl_destino1.setText("");
-            lbl_desc1.setText("");
-            cmb_serviciosXcat.removeAllItems();
             DefaultMutableTreeNode node = (DefaultMutableTreeNode)tree_servicios.getLastSelectedPathComponent();
             if(!node.equals(null)){
                 String nameCat = (String)node.getUserObject();
@@ -4700,6 +4695,9 @@ public class Help4Travelling extends javax.swing.JFrame {
         lbl_origen1.setText("");
         lbl_destino1.setText("");
         lbl_desc1.setText("");
+        lbl_img1.setIcon(null);
+        lbl_img2.setIcon(null);
+        lbl_img3.setIcon(null);
     }//GEN-LAST:event_tree_serviciosTreeExpanded
 
     private void cmb_serviciosXcatItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cmb_serviciosXcatItemStateChanged
@@ -4712,21 +4710,22 @@ public class Help4Travelling extends javax.swing.JFrame {
             lbl_img1.setIcon(null);
             if(ManejadorSQL.GetInstance().selectImgServicio("imagen1", nickP, nombreA) != null){
                 Image a =  new ImageIcon(ManejadorSQL.GetInstance().selectImgServicio("imagen1", nickP, nombreA)).getImage();
-                ImageIcon icon = new ImageIcon(a);
+                //aca!!
+                ImageIcon icon = new ImageIcon(ScaledImage(a,lbl_img1.getWidth(),lbl_img1.getHeight()));
                 lbl_img1.setIcon(icon);
             }
             
             lbl_img2.setIcon(null);
             if(ManejadorSQL.GetInstance().selectImgServicio("imagen2", nickP, nombreA) != null){
                 Image a =  new ImageIcon(ManejadorSQL.GetInstance().selectImgServicio("imagen2", nickP, nombreA)).getImage();
-                ImageIcon icon = new ImageIcon(a);
+                ImageIcon icon = new ImageIcon(ScaledImage(a,lbl_img2.getWidth(),lbl_img2.getHeight()));
                 lbl_img2.setIcon(icon);
             }
             
             lbl_img3.setIcon(null);
             if(ManejadorSQL.GetInstance().selectImgServicio("imagen3", nickP, nombreA) != null){
                 Image a =  new ImageIcon(ManejadorSQL.GetInstance().selectImgServicio("imagen3", nickP, nombreA)).getImage();
-                ImageIcon icon = new ImageIcon(a);
+                ImageIcon icon = new ImageIcon(ScaledImage(a,lbl_img3.getWidth(),lbl_img3.getHeight()));
                 lbl_img3.setIcon(icon);
             }
             
@@ -5701,27 +5700,66 @@ public class Help4Travelling extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton6ActionPerformed
 
     private void jButton6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton6MouseClicked
+ 
+        BufferedImage img = null;
+        try {
         JFileChooser fc = new JFileChooser();
         fc.showOpenDialog(this);
-        fileServicio1 = fc.getSelectedFile();
-        String ruta = fileServicio1.getAbsolutePath();
-        lbl_imagen1.setIcon(new ImageIcon(ruta));
+        fileUsuario = fc.getSelectedFile();
+        String ruta = fileUsuario.getAbsolutePath();
+        //Image img = Toolkit.getDefaultToolkit().getImage(ruta);
+        
+            img = ImageIO.read(new File(ruta));
+        } catch (IOException ex) {
+            Logger.getLogger(Help4Travelling.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        ImageIcon Imagen = new ImageIcon(ScaledImage(img,lbl_imagen1.getWidth(),lbl_imagen1.getHeight()));
+        lbl_imagen1.setIcon(Imagen);
+        
     }//GEN-LAST:event_jButton6MouseClicked
 
     private void jButton3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton3MouseClicked
-        JFileChooser fc = new JFileChooser();
+        /*JFileChooser fc = new JFileChooser();
         fc.showOpenDialog(this);
         fileServicio2 = fc.getSelectedFile();
         String ruta = fileServicio2.getAbsolutePath();
-        lbl_imagen2.setIcon(new ImageIcon(ruta));
+        lbl_imagen2.setIcon(new ImageIcon(ruta));*/
+        BufferedImage img2 = null;
+        try {
+        JFileChooser fc = new JFileChooser();
+        fc.showOpenDialog(this);
+        fileUsuario = fc.getSelectedFile();
+        String ruta = fileUsuario.getAbsolutePath();
+        //Image img = Toolkit.getDefaultToolkit().getImage(ruta);
+        
+            img2 = ImageIO.read(new File(ruta));
+        } catch (IOException ex) {
+            Logger.getLogger(Help4Travelling.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        ImageIcon Imagen = new ImageIcon(ScaledImage(img2,lbl_imagen3.getWidth(),lbl_imagen3.getHeight()));
+        lbl_imagen3.setIcon(Imagen);
     }//GEN-LAST:event_jButton3MouseClicked
 
     private void jButton2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton2MouseClicked
-        JFileChooser fc = new JFileChooser();
+        /*JFileChooser fc = new JFileChooser();
         fc.showOpenDialog(this);
         fileServicio3 = fc.getSelectedFile();
         String ruta = fileServicio3.getAbsolutePath();
-        lbl_imagen3.setIcon(new ImageIcon(ruta));
+        lbl_imagen3.setIcon(new ImageIcon(ruta));*/
+        BufferedImage img = null;
+        try {
+        JFileChooser fc = new JFileChooser();
+        fc.showOpenDialog(this);
+        fileUsuario = fc.getSelectedFile();
+        String ruta = fileUsuario.getAbsolutePath();
+        //Image img = Toolkit.getDefaultToolkit().getImage(ruta);
+        
+            img = ImageIO.read(new File(ruta));
+        } catch (IOException ex) {
+            Logger.getLogger(Help4Travelling.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        ImageIcon Imagen = new ImageIcon(ScaledImage(img,lbl_imagen2.getWidth()lbl_imagen2.getHeight()));
+        lbl_imagen2.setIcon(Imagen);
     }//GEN-LAST:event_jButton2MouseClicked
 
     private void txt_precioSActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_precioSActionPerformed
@@ -5947,7 +5985,6 @@ public class Help4Travelling extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel210;
     private javax.swing.JLabel jLabel211;
     private javax.swing.JLabel jLabel212;
-    private javax.swing.JLabel jLabel213;
     private javax.swing.JLabel jLabel214;
     private javax.swing.JLabel jLabel215;
     private javax.swing.JLabel jLabel216;
