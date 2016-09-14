@@ -17,12 +17,8 @@
     </editor-bookmarks>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/bruno/Documents/NetBeansProjects/ProgApp2016/Help4Travelling/src/help4travelling/DtServicio.java</file>
-            <file>file:/C:/Users/bruno/Documents/NetBeansProjects/ProgApp2016/Help4Travelling/src/help4travelling/ConsultarPromocion.java</file>
-            <file>file:/C:/Users/bruno/Documents/NetBeansProjects/ProgApp2016/Help4Travelling/src/help4travelling/ConsultarServicio.java</file>
-            <file>file:/C:/Users/bruno/Documents/NetBeansProjects/ProgApp2016/Help4Travelling/src/help4travelling/Articulo.java</file>
-            <file>file:/C:/Users/bruno/Documents/NetBeansProjects/ProgApp2016/Help4Travelling/src/help4travelling/ManejadorArticulo.java</file>
-            <file>file:/C:/Users/bruno/Documents/NetBeansProjects/ProgApp2016/Help4Travelling/src/help4travelling/ActualizarServicio.java</file>
+            <file>file:/C:/Users/bruno/Documents/NetBeansProjects/Help4Traveling/src/help4travelling/IngresarUsuario.java</file>
+            <file>file:/C:/Users/bruno/Documents/NetBeansProjects/Help4Traveling/src/help4travelling/ManejadorSQL.java</file>
         </group>
     </open-files>
 </project-private>

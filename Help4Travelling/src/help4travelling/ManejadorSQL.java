@@ -247,7 +247,7 @@ public class ManejadorSQL {
     
     // ALTA DE CLIENTE
     public boolean agregarUsuario(DtCliente c){
-        String sql1 = "INSERT INTO USUARIOS(nickname, nombre, apellido, email, fechaNac) VALUES ('" + c.getNick() + "','" + c.getNombre() + "','" + c.getApellido() + "','" + c.getEmail()+ "','" + c.getFechaN().getAnio() + "/" + c.getFechaN().getMes() + "/" + c.getFechaN().getDia() + "');";
+        String sql1 = "INSERT INTO USUARIOS(nickname, nombre, apellido, email, fechaNac, clave) VALUES ('" + c.getNick() + "','" + c.getNombre() + "','" + c.getApellido() + "','" + c.getEmail()+ "','" + c.getFechaN().getAnio() + "/" + c.getFechaN().getMes() + "/" + c.getFechaN().getDia() + "','" + c.getClave() + "');";
         String sql2 = "INSERT INTO CLIENTES(nicknameCliente) VALUES ('" + c.getNick() + "' );";
         Statement usuario;
         boolean ret = false;
@@ -266,7 +266,7 @@ public class ManejadorSQL {
     
     // ALTA DE PROVEEDOR.
     public boolean agregarUsuario(DtProveedor p){
-        String sql1 = "INSERT INTO USUARIOS(nickname, nombre, apellido, email, fechaNac) VALUES ('" + p.getNick() + "','" + p.getNombre() + "','" + p.getApellido() + "','" + p.getEmail()+ "','" + p.getFechaN().getAnio() + "/" + p.getFechaN().getMes() + "/" + p.getFechaN().getDia() + "');";
+        String sql1 = "INSERT INTO USUARIOS(nickname, nombre, apellido, email, fechaNac, clave) VALUES ('" + p.getNick() + "','" + p.getNombre() + "','" + p.getApellido() + "','" + p.getEmail()+ "','" + p.getFechaN().getAnio() + "/" + p.getFechaN().getMes() + "/" + p.getFechaN().getDia() + "','" + p.getClave() + "');";
         String sql2 = "INSERT INTO PROVEEDORES(nicknameProveedor, nombreEmp, linkEmp) VALUES ('" + p.getNick() + "','" + p.getNombreEmpresa() + "','" + p.getUrl() + "');";
         Statement usuario;
         boolean ret = false;
@@ -335,8 +335,8 @@ public class ManejadorSQL {
     
         // ALTA DE PROMOCION.
     public boolean agregarPromocion(DtPromocion p, String nickProveedor, ArrayList<String> servicios){
-        String sql1 = "INSERT INTO ARTICULOS(nicknameProveedor, nombre) VALUES (" + nickProveedor + "," + p.GetNombre()+ " );";
-        String sql2 = "INSERT INTO PROMOCIONES(nicknameProveedor, nombreArticulo, descuento, precio) VALUES (" + nickProveedor + ", " + p.GetNombre() + ", " + p.GetDescuento() + ", " + p.GetPrecio() + " );";
+        String sql1 = "INSERT INTO ARTICULOS(nicknameProveedor, nombre) VALUES ('" + p.getNickProv() + "','" + p.GetNombre()+ "');";
+        String sql2 = "INSERT INTO PROMOCIONES(nicknameProveedor, nombreArticulo, descuento, precio) VALUES ('" + p.getNickProv() + "', '" + p.GetNombre() + "', '" + p.GetDescuento() + "', '" + p.GetPrecio() + "');";
         String sql3;
         Statement usuario;
         boolean ret = false;
@@ -347,7 +347,7 @@ public class ManejadorSQL {
             usuario.executeUpdate(sql1);
             usuario.executeUpdate(sql2);
             for(int x = 0; x < servicios.size(); x++){
-                sql3 = "INSERT INTO COMPUESTOS(nicknameProvServ, nombreArticuloServ, nicknameProvProm, nombreArticuloProm) VALUES (" + nickProveedor + ", " + servicios.get(x) + ", " + nickProveedor + ", " + p.GetNombre() + " );";
+                sql3 = "INSERT INTO COMPUESTOS(nicknameProvServ, nombreArticuloServ, nicknameProvProm, nombreArticuloProm) VALUES ('" + p.getNickProv() + "', '" + servicios.get(x) + "', '" + p.getNickProv() + "', '" + p.GetNombre() + "');";
                 usuario.executeUpdate(sql3); // ingreso las categorias, asumo que estas ya existen debido a que fueron seleccionadas.
             }
             ret = true;
@@ -652,6 +652,26 @@ public class ManejadorSQL {
             }           
             usuario.close();
         } catch (SQLException ex) {
+            Logger.getLogger(ManejadorSQL.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return ret;
+    }
+
+    
+    //Eliminar Reserva
+    public boolean eliminarReserva(String id){
+        boolean ret = false;
+        Statement usuario;
+        String sql1 = "DELETE FROM INFO_RESERVA WHERE id=" + id.trim() + ";";
+        String sql2 = "DELETE FROM RESERVAS WHERE id=" + id.trim() + ";";
+        try {
+            Connection conex = getConex();
+            usuario = conex.createStatement();
+            usuario.executeUpdate(sql1);
+            usuario.executeUpdate(sql2);
+            conex.close();
+            ret = true;
+        } catch(SQLException ex){
             Logger.getLogger(ManejadorSQL.class.getName()).log(Level.SEVERE, null, ex);
         }
         return ret;
