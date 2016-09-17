@@ -9,7 +9,7 @@ import java.util.Iterator;
 public class ManejadorUsuario {
     private static ManejadorUsuario instancia=null;
     private static HashMap<String, Usuario> usuarios;
-    private static ArrayList<String> emails;
+    private static ArrayList<String> emails = new ArrayList<>();
     
      private ManejadorUsuario(){
        usuarios=new HashMap<String, Usuario>();
@@ -22,17 +22,18 @@ public class ManejadorUsuario {
         }
         usuarios.clear();
         ArrayList<String> arrayCli = ManejadorSQL.GetInstance().cargarClientes();
-        for (int i = 0; i < arrayCli .size(); i++) {
+        for (int i = 0; i < arrayCli.size(); i++) {
             Usuario u = new Cliente(arrayCli.get(i));
             usuarios.put(u.getNickCliente(),u);
         }
         ArrayList<String> arrayProv = ManejadorSQL.GetInstance().cargarProveedores();
-        for (int i = 0; i < arrayProv .size(); i++) {
+        for (int i = 0; i < arrayProv.size(); i++) {
             Usuario p = new Proveedor(arrayProv.get(i));
             usuarios.put(p.getNickProveedor(),p);
         }
+        emails.clear();
         ArrayList<String> arrayEmails = ManejadorSQL.GetInstance().cargarEmail();
-        for (int i = 0; i < arrayEmails .size(); i++) {
+        for (int i = 0; i < arrayEmails.size(); i++) {
             emails.add(arrayEmails.get(i));
         }
         return instancia;
