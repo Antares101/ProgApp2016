@@ -15,15 +15,15 @@ public abstract class Articulo {
     protected String prov;    // "
     //private InfoReserva info; //Luego de crearse InfoReserva decomentar
     
-    public String GetNombre(){
+    protected String GetNombre(){
         return this.nombre;
     }
     
-    public void SetNombre(String name){
+    protected void SetNombre(String name){
         this.nombre = name;
     }
     
-    public abstract boolean isPromocion();
+    protected abstract boolean isPromocion();
     
     public abstract boolean IsServicio();
     
