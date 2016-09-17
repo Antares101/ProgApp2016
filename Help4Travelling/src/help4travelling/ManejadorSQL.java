@@ -81,7 +81,6 @@ public class ManejadorSQL {
             Connection conex = getConex();
             usuarios = conex.createStatement();
             ResultSet rs = usuarios.executeQuery(sql);
-            rs.next();
             while(rs.next()){
                 ret.add(rs.getString("email"));
             }
