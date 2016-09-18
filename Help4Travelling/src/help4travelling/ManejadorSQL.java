@@ -772,6 +772,11 @@ public class ManejadorSQL {
     
     public Connection getConex() {
         try {
+            try {
+                Class.forName("com.mysql.jdbc.Driver");
+            } catch (ClassNotFoundException ex) {
+                Logger.getLogger(ManejadorSQL.class.getName()).log(Level.SEVERE, null, ex);
+            }
             Connection c = DriverManager.getConnection("jdbc:mysql://"+ this.ip +":3306/bd_help4traveling?useSSL=false", "root", "tecnoDBweb2016");
             return c;
         } catch (SQLException ex) {
