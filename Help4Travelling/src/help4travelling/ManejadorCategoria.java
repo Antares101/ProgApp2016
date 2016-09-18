@@ -28,7 +28,9 @@ public class ManejadorCategoria {
         return instance;
     }
     
-    public void IngresarCategoria (String nombre){
+    public boolean IngresarCategoria (String nombre){
+        if (BuscarCategoria(nombre) != null)
+            return false;
         Categoria catpad = this.BuscarCategoria("todas");
         if(catpad!=null){
             Categoria cat = new Categoria(nombre);
@@ -38,9 +40,12 @@ public class ManejadorCategoria {
         }
         Categoria cat = new Categoria(nombre);
         categorias.put(cat.getNombre(), cat);
+        return true;
     }
     
-    public void IngresarCategoria (String nombre, String padre){
+    public boolean IngresarCategoria (String nombre, String padre){
+        if (BuscarCategoria(nombre) != null)
+            return false;
         Categoria catpad = this.BuscarCategoria(padre);
         if(catpad!=null){
             Categoria cat = new Categoria(nombre);
@@ -48,6 +53,7 @@ public class ManejadorCategoria {
             catpad.AgregarCatHija(cat);
             ManejadorSQL.GetInstance().agregarCategoria(nombre, padre);
         }
+        return true;
     }
 
     public void IngresarCategoriaBD (String nombre, String padre){

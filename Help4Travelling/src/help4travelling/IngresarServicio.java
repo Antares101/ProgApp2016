@@ -372,7 +372,7 @@ public class IngresarServicio extends javax.swing.JFrame {
 
     private void jLabel72MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel72MouseClicked
         // TODO add your handling code here:
-        if(txt_nombreS.getText().isEmpty() || txt_descripcionS.getText().isEmpty() || list2.size()==0 ){
+        if(txt_nombreS.getText().isEmpty() || txt_descripcionS.getText().isEmpty() || txt_precioS.getText().isEmpty() || lis_categoriaS.getModel().getSize() <= 0 ){
             JOptionPane.showMessageDialog(null, "Ingrese campos, verifique y vuelva a intentar.","Campos sin completar",JOptionPane.WARNING_MESSAGE);
         }
         else{
@@ -384,7 +384,7 @@ public class IngresarServicio extends javax.swing.JFrame {
                 }
                 DtServicio Serv = new DtServicio(txt_nombreS.getText().trim(),cmb_proveedorS.getSelectedItem().toString().trim(),Float.valueOf(txt_precioS.getText().trim()),txt_descripcionS.getText().trim(),cats,cmb_origenS.getSelectedItem().toString().trim(),cmb_destinoS.getSelectedItem().toString().trim());
                 if(!ICArticulo.insertarServicio(Serv))
-                JOptionPane.showMessageDialog(null, "No se pudo ingresar el servicio.","Error",JOptionPane.WARNING_MESSAGE);
+                JOptionPane.showMessageDialog(null, "No se pudo ingresar el servicio datos repetidos.","Error",JOptionPane.WARNING_MESSAGE);
                 else{
                     JOptionPane.showMessageDialog(null, "Servicio Ingresado");
                     if(lbl_imagen1.getIcon() != null){
@@ -422,7 +422,7 @@ public class IngresarServicio extends javax.swing.JFrame {
                 }
                 DtServicio Serv = new DtServicio(txt_nombreS.getText().trim(),cmb_proveedorS.getSelectedItem().toString().trim(),Float.valueOf(txt_precioS.getText().trim()),txt_descripcionS.getText().trim(),cats,cmb_origenS.getSelectedItem().toString().trim(),null);;
                 if(!ICArticulo.insertarServicio(Serv))
-                JOptionPane.showMessageDialog(null, "No se pudo ingresar el servicio.","Error",JOptionPane.WARNING_MESSAGE);
+                JOptionPane.showMessageDialog(null, "No se pudo ingresar el servicio datos repetidos.","Error",JOptionPane.WARNING_MESSAGE);
                 else{
                     JOptionPane.showMessageDialog(null, "Servicio Ingresado");
                     if(lbl_imagen1.getIcon() != null){

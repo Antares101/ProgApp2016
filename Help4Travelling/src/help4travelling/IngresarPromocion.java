@@ -279,7 +279,7 @@ public class IngresarPromocion extends javax.swing.JFrame {
                         jTextField15.setText("");
                         jTextField16.setText("");
                     }else{
-                        JOptionPane.showMessageDialog(null, "No se pudo ingresar la promocion.");
+                        JOptionPane.showMessageDialog(null, "No se pudo ingresar la promocion datos repetidos.");
                     }
                 }else{
                     JOptionPane.showMessageDialog(null, "La promoción debe tener al menos un servicio asociado.");

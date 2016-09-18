@@ -147,20 +147,26 @@ public class IngresarCategoria extends javax.swing.JFrame {
         if(txt_categoria.getText().isEmpty()){
             JOptionPane.showMessageDialog(null, "Ingrese un nombre para la categoria, verifique y vuelva a intentar.","Compos sin completar",JOptionPane.WARNING_MESSAGE);
         }else if(chek_padre.getState()){
-            ICCategoria.IngresarCategoria(txt_categoria.getText(), cmb_categoria.getSelectedItem().toString());
-            txt_categoria.setText("");
-            JOptionPane.showMessageDialog(null, "Categoria ingresado");
-            chek_padre.setState(false);
-            lab_categoria.setVisible(false);
-            cmb_categoria.setVisible(false);
+            if(!ICCategoria.IngresarCategoria(txt_categoria.getText(), cmb_categoria.getSelectedItem().toString()))
+                JOptionPane.showMessageDialog(null, "Ya existe una categoria con ese nombre.","Error",JOptionPane.WARNING_MESSAGE);
+            else{
+                txt_categoria.setText("");
+                JOptionPane.showMessageDialog(null, "Categoria ingresado");
+                chek_padre.setState(false);
+                lab_categoria.setVisible(false);
+                cmb_categoria.setVisible(false);
+            }
         }
         else{
-            ICCategoria.IngresarCategoria(txt_categoria.getText());
-            txt_categoria.setText("");
-            JOptionPane.showMessageDialog(null, "Categoria ingresado");
-            chek_padre.setState(false);
-            lab_categoria.setVisible(false);
-            cmb_categoria.setVisible(false);
+            if (!ICCategoria.IngresarCategoria(txt_categoria.getText()))
+                JOptionPane.showMessageDialog(null, "Ya existe una categoria con ese nombre.","Error",JOptionPane.WARNING_MESSAGE);
+            else{
+                txt_categoria.setText("");
+                JOptionPane.showMessageDialog(null, "Categoria ingresado");
+                chek_padre.setState(false);
+                lab_categoria.setVisible(false);
+                cmb_categoria.setVisible(false);
+            }            
         }
     }//GEN-LAST:event_jLabel74MouseClicked
 

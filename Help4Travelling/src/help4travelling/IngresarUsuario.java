@@ -356,7 +356,7 @@ public class IngresarUsuario extends javax.swing.JFrame {
         else
         chk_proveedor.setSelected(true);
         
-        if (chk_cliente.isSelected() && !txt_nickname.getText().isEmpty() && !txt_nombre.getText().isEmpty() && !txt_apellido.getText().isEmpty()  && !txt_email.getText().isEmpty() && txt_pass.getPassword().length != 0){
+        if (chk_cliente.isSelected() && !txt_nickname.getText().isEmpty() && !txt_nombre.getText().isEmpty() && !txt_apellido.getText().isEmpty()  && !txt_email.getText().isEmpty() && txt_pass.getPassword().length != 0 && jLabel4.getIcon() != null){
             //Es un cliente
             
             String hashtext ="";
@@ -377,21 +377,25 @@ public class IngresarUsuario extends javax.swing.JFrame {
             }
             
             DtFecha nacimiento = new DtFecha(Integer.valueOf(cmb_anio_u.getSelectedItem().toString().trim()),Integer.valueOf(cmb_mes.getSelectedItem().toString().trim()),Integer.valueOf(cmb_dia.getSelectedItem().toString().trim()));
-            ICUsuario.AltaCliente(new DtCliente (txt_nickname.getText(), txt_nombre.getText(), txt_apellido.getText(), txt_email.getText(), nacimiento,null,null,hashtext));
-            try {
-                ManejadorSQL.GetInstance().insertImgUsuario(fileUsuario, txt_nickname.getText().trim());
-            } catch (FileNotFoundException ex) {
-                Logger.getLogger(IngresarServicio.class.getName()).log(Level.SEVERE, null, ex);
+            if (!ICUsuario.AltaCliente(new DtCliente (txt_nickname.getText(), txt_nombre.getText(), txt_apellido.getText(), txt_email.getText(), nacimiento,null,null,hashtext)))
+                JOptionPane.showMessageDialog(null, "Nickname o email repetidos","Error",JOptionPane.WARNING_MESSAGE);
+            else{
+                try {
+                  ManejadorSQL.GetInstance().insertImgUsuario(fileUsuario, txt_nickname.getText().trim());
+                } catch (FileNotFoundException ex) {
+                    Logger.getLogger(IngresarServicio.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                //procedimiento
+                txt_nickname.setText("");
+                txt_nombre.setText("");
+                txt_apellido.setText("");
+                txt_email.setText("");
+                txt_pass.setText("");
+                JOptionPane.showMessageDialog(null, "Usuario ingresado");
             }
-            //procedimiento
-            txt_nickname.setText("");
-            txt_nombre.setText("");
-            txt_apellido.setText("");
-            txt_email.setText("");
-            txt_pass.setText("");
-            JOptionPane.showMessageDialog(null, "Usuario ingresado");
+
         }
-        else if(chk_proveedor.isSelected() && !txt_nickname.getText().isEmpty() && !txt_nombre.getText().isEmpty() && !txt_apellido.getText().isEmpty() && !txt_email.getText().isEmpty() && !txt_linkEmpresa.getText().isEmpty() && !txt_nombreEmpresa.getText().isEmpty() && txt_pass.getPassword().length != 0){
+        else if(chk_proveedor.isSelected() && !txt_nickname.getText().isEmpty() && !txt_nombre.getText().isEmpty() && !txt_apellido.getText().isEmpty() && !txt_email.getText().isEmpty() && !txt_linkEmpresa.getText().isEmpty() && !txt_nombreEmpresa.getText().isEmpty() && txt_pass.getPassword().length != 0 && jLabel4.getIcon() != null){
             
             String hashtext ="";
             try {
@@ -410,20 +414,23 @@ public class IngresarUsuario extends javax.swing.JFrame {
             }
             
             DtFecha nacimiento = new DtFecha(Integer.valueOf(cmb_anio_u.getSelectedItem().toString().trim()),Integer.valueOf(cmb_mes.getSelectedItem().toString().trim()),Integer.valueOf(cmb_dia.getSelectedItem().toString().trim()));
-            ICUsuario.AltaProveedor(new DtProveedor (txt_nickname.getText(), txt_nombre.getText(), txt_apellido.getText(), txt_email.getText(),nacimiento,null,txt_nombreEmpresa.getText(),txt_linkEmpresa.getText(), null, hashtext));
-            try {
-                ManejadorSQL.GetInstance().insertImgUsuario(fileUsuario, txt_nickname.getText().trim());
-            } catch (FileNotFoundException ex) {
-                Logger.getLogger(IngresarServicio.class.getName()).log(Level.SEVERE, null, ex);
-            }
-            txt_nickname.setText("");
-            txt_nombre.setText("");
-            txt_apellido.setText("");
-            txt_nombreEmpresa.setText("");
-            txt_email.setText("");
-            txt_linkEmpresa.setText("");
-            jLabel4.setIcon(null);
-            JOptionPane.showMessageDialog(null, "Usuario ingresado");
+            if (!ICUsuario.AltaProveedor(new DtProveedor (txt_nickname.getText(), txt_nombre.getText(), txt_apellido.getText(), txt_email.getText(),nacimiento,null,txt_nombreEmpresa.getText(),txt_linkEmpresa.getText(), null, hashtext)))
+                JOptionPane.showMessageDialog(null, "Nickname o email repetidos","Error",JOptionPane.WARNING_MESSAGE);
+            else{
+                try {
+                    ManejadorSQL.GetInstance().insertImgUsuario(fileUsuario, txt_nickname.getText().trim());
+                } catch (FileNotFoundException ex) {
+                    Logger.getLogger(IngresarServicio.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                txt_nickname.setText("");
+                txt_nombre.setText("");
+                txt_apellido.setText("");
+                txt_nombreEmpresa.setText("");
+                txt_email.setText("");
+                txt_linkEmpresa.setText("");
+                jLabel4.setIcon(null);
+                JOptionPane.showMessageDialog(null, "Usuario ingresado");
+            }            
         }
         else{
             JOptionPane.showMessageDialog(null, "Faltan atributos sin completar, verifique y vuelva a intentar.","Compos sin completar",JOptionPane.WARNING_MESSAGE);

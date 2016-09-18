@@ -46,13 +46,13 @@ public class ControladorUsuario implements IControladorUsuario{
     }
     
     @Override
-    public void AltaCliente(DtCliente dataCli){
-        ManejadorUsuario.getinstance().InstertarCliente(dataCli);
+    public boolean AltaCliente(DtCliente dataCli){
+        return ManejadorUsuario.getinstance().InstertarCliente(dataCli);
     }
     
     @Override
-    public void AltaProveedor(DtProveedor dataProv){
-        ManejadorUsuario.getinstance().InstertarProveedor(dataProv);
+    public boolean AltaProveedor(DtProveedor dataProv){
+        return ManejadorUsuario.getinstance().InstertarProveedor(dataProv);
     }
 
     @Override
