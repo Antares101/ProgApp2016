@@ -358,26 +358,10 @@ public class IngresarUsuario extends javax.swing.JFrame {
         
         if (chk_cliente.isSelected() && !txt_nickname.getText().isEmpty() && !txt_nombre.getText().isEmpty() && !txt_apellido.getText().isEmpty()  && !txt_email.getText().isEmpty() && txt_pass.getPassword().length != 0 && jLabel4.getIcon() != null){
             //Es un cliente
-            
-            String hashtext ="";
-            try {
-               
-                try {
-                    String pass = new String(txt_pass.getPassword());
-                    MessageDigest md = MessageDigest.getInstance("MD5");
-                    byte[] clave = md.digest(pass.getBytes("UTF-8"));
-                    BigInteger bigInt = new BigInteger(1,clave);
-                    hashtext = bigInt.toString(16);
-                    //System.out.println(hashtext);
-                } catch (UnsupportedEncodingException ex) {
-                    Logger.getLogger(IngresarUsuario.class.getName()).log(Level.SEVERE, null, ex);
-                }   
-            } catch (NoSuchAlgorithmException ex) {
-                Logger.getLogger(IngresarUsuario.class.getName()).log(Level.SEVERE, null, ex);
-            }
+            String pass = new String(txt_pass.getPassword());
             
             DtFecha nacimiento = new DtFecha(Integer.valueOf(cmb_anio_u.getSelectedItem().toString().trim()),Integer.valueOf(cmb_mes.getSelectedItem().toString().trim()),Integer.valueOf(cmb_dia.getSelectedItem().toString().trim()));
-            if (!ICUsuario.AltaCliente(new DtCliente (txt_nickname.getText(), txt_nombre.getText(), txt_apellido.getText(), txt_email.getText(), nacimiento,null,null,hashtext)))
+            if (!ICUsuario.AltaCliente(new DtCliente (txt_nickname.getText(), txt_nombre.getText(), txt_apellido.getText(), txt_email.getText(), nacimiento,null,null,pass)))
                 JOptionPane.showMessageDialog(null, "Nickname o email repetidos","Error",JOptionPane.WARNING_MESSAGE);
             else{
                 try {
@@ -391,30 +375,17 @@ public class IngresarUsuario extends javax.swing.JFrame {
                 txt_apellido.setText("");
                 txt_email.setText("");
                 txt_pass.setText("");
+                jLabel4.setIcon(null);
                 JOptionPane.showMessageDialog(null, "Usuario ingresado");
             }
 
         }
         else if(chk_proveedor.isSelected() && !txt_nickname.getText().isEmpty() && !txt_nombre.getText().isEmpty() && !txt_apellido.getText().isEmpty() && !txt_email.getText().isEmpty() && !txt_linkEmpresa.getText().isEmpty() && !txt_nombreEmpresa.getText().isEmpty() && txt_pass.getPassword().length != 0 && jLabel4.getIcon() != null){
-            
-            String hashtext ="";
-            try {
-                try {
-                    String pass = new String(txt_pass.getPassword());
-                    MessageDigest md = MessageDigest.getInstance("MD5");
-                    byte[] clave = md.digest(pass.getBytes("UTF-8"));
-                    BigInteger bigInt = new BigInteger(1,clave);
-                    hashtext = bigInt.toString(16);
-                    //System.out.println(hashtext);
-                } catch (UnsupportedEncodingException ex) {
-                    Logger.getLogger(IngresarUsuario.class.getName()).log(Level.SEVERE, null, ex);
-                }   
-            } catch (NoSuchAlgorithmException ex) {
-                Logger.getLogger(IngresarUsuario.class.getName()).log(Level.SEVERE, null, ex);
-            }
-            
+
+            String pass = new String(txt_pass.getPassword());
+                    
             DtFecha nacimiento = new DtFecha(Integer.valueOf(cmb_anio_u.getSelectedItem().toString().trim()),Integer.valueOf(cmb_mes.getSelectedItem().toString().trim()),Integer.valueOf(cmb_dia.getSelectedItem().toString().trim()));
-            if (!ICUsuario.AltaProveedor(new DtProveedor (txt_nickname.getText(), txt_nombre.getText(), txt_apellido.getText(), txt_email.getText(),nacimiento,null,txt_nombreEmpresa.getText(),txt_linkEmpresa.getText(), null, hashtext)))
+            if (!ICUsuario.AltaProveedor(new DtProveedor (txt_nickname.getText(), txt_nombre.getText(), txt_apellido.getText(), txt_email.getText(),nacimiento,null,txt_nombreEmpresa.getText(),txt_linkEmpresa.getText(), null, pass)))
                 JOptionPane.showMessageDialog(null, "Nickname o email repetidos","Error",JOptionPane.WARNING_MESSAGE);
             else{
                 try {
