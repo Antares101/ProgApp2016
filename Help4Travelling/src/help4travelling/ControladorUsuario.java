@@ -63,10 +63,10 @@ public class ControladorUsuario implements IControladorUsuario{
                 BigInteger bigInt = new BigInteger(1,clave);
                 hashtext = bigInt.toString(16);
             } catch (UnsupportedEncodingException ex) {
-                Logger.getLogger(IngresarUsuario.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(ControladorUsuario.class.getName()).log(Level.SEVERE, null, ex);
             }   
         } catch (NoSuchAlgorithmException ex) {
-            Logger.getLogger(IngresarUsuario.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ControladorUsuario.class.getName()).log(Level.SEVERE, null, ex);
         }
         dataCli.setClave(hashtext); 
         return ManejadorUsuario.getinstance().InstertarCliente(dataCli);
@@ -84,10 +84,10 @@ public class ControladorUsuario implements IControladorUsuario{
                 BigInteger bigInt = new BigInteger(1,clave);
                 hashtext = bigInt.toString(16);
             } catch (UnsupportedEncodingException ex) {
-                Logger.getLogger(IngresarUsuario.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(ControladorUsuario.class.getName()).log(Level.SEVERE, null, ex);
             }   
         } catch (NoSuchAlgorithmException ex) {
-            Logger.getLogger(IngresarUsuario.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ControladorUsuario.class.getName()).log(Level.SEVERE, null, ex);
         }
         dataProv.setClave(hashtext);            
         return ManejadorUsuario.getinstance().InstertarProveedor(dataProv);
