@@ -51,6 +51,10 @@ public class ControladorUsuario implements IControladorUsuario{
         return ManejadorUsuario.getinstance().ExisteUsuario(nickUsaurio, email);
     }
     
+    public boolean AutenticarCliente(String nickUsaurio, String pass){
+        return ManejadorUsuario.getinstance().AutenticarCliente(nickUsaurio, pass);
+    }
+    
     @Override
     public boolean AltaCliente(DtCliente dataCli){
         String hashtext ="";
@@ -63,10 +67,10 @@ public class ControladorUsuario implements IControladorUsuario{
                 BigInteger bigInt = new BigInteger(1,clave);
                 hashtext = bigInt.toString(16);
             } catch (UnsupportedEncodingException ex) {
-                Logger.getLogger(ControladorUsuario.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(IngresarUsuario.class.getName()).log(Level.SEVERE, null, ex);
             }   
         } catch (NoSuchAlgorithmException ex) {
-            Logger.getLogger(ControladorUsuario.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(IngresarUsuario.class.getName()).log(Level.SEVERE, null, ex);
         }
         dataCli.setClave(hashtext); 
         return ManejadorUsuario.getinstance().InstertarCliente(dataCli);
@@ -84,10 +88,10 @@ public class ControladorUsuario implements IControladorUsuario{
                 BigInteger bigInt = new BigInteger(1,clave);
                 hashtext = bigInt.toString(16);
             } catch (UnsupportedEncodingException ex) {
-                Logger.getLogger(ControladorUsuario.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(IngresarUsuario.class.getName()).log(Level.SEVERE, null, ex);
             }   
         } catch (NoSuchAlgorithmException ex) {
-            Logger.getLogger(ControladorUsuario.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(IngresarUsuario.class.getName()).log(Level.SEVERE, null, ex);
         }
         dataProv.setClave(hashtext);            
         return ManejadorUsuario.getinstance().InstertarProveedor(dataProv);

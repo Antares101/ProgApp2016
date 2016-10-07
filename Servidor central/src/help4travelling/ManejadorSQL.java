@@ -81,6 +81,7 @@ public class ManejadorSQL {
             Connection conex = getConex();
             usuarios = conex.createStatement();
             ResultSet rs = usuarios.executeQuery(sql);
+            rs.next();
             while(rs.next()){
                 ret.add(rs.getString("email"));
             }
@@ -117,7 +118,7 @@ public class ManejadorSQL {
             Connection conex = getConex();
             usuarios = conex.createStatement();
             ResultSet rs = usuarios.executeQuery(sql);
-            if(rs.getFetchSize() != 0){
+            if(rs.isAfterLast()){
                 ret = true;
             }
         } catch (SQLException ex) {
@@ -670,8 +671,6 @@ public class ManejadorSQL {
         return ret;
     }
     
-    
-    
         // DEVOLVER RESERVA
     public DtReserva devolverReserva(int idReserva){
         DtReserva ret = null;
@@ -774,11 +773,6 @@ public class ManejadorSQL {
     
     public Connection getConex() {
         try {
-            try {
-                Class.forName("com.mysql.jdbc.Driver");
-            } catch (ClassNotFoundException ex) {
-                Logger.getLogger(ManejadorSQL.class.getName()).log(Level.SEVERE, null, ex);
-            }
             Connection c = DriverManager.getConnection("jdbc:mysql://"+ this.ip +":3306/bd_help4traveling?useSSL=false", "root", "tecnoDBweb2016");
             return c;
         } catch (SQLException ex) {

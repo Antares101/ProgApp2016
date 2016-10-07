@@ -9,7 +9,7 @@ import java.util.Iterator;
 public class ManejadorUsuario {
     private static ManejadorUsuario instancia=null;
     private static HashMap<String, Usuario> usuarios;
-    private static ArrayList<String> emails = new ArrayList<>();
+    private static ArrayList<String> emails;
     
      private ManejadorUsuario(){
        usuarios=new HashMap<String, Usuario>();
@@ -22,18 +22,17 @@ public class ManejadorUsuario {
         }
         usuarios.clear();
         ArrayList<String> arrayCli = ManejadorSQL.GetInstance().cargarClientes();
-        for (int i = 0; i < arrayCli.size(); i++) {
+        for (int i = 0; i < arrayCli .size(); i++) {
             Usuario u = new Cliente(arrayCli.get(i));
             usuarios.put(u.getNickCliente(),u);
         }
         ArrayList<String> arrayProv = ManejadorSQL.GetInstance().cargarProveedores();
-        for (int i = 0; i < arrayProv.size(); i++) {
+        for (int i = 0; i < arrayProv .size(); i++) {
             Usuario p = new Proveedor(arrayProv.get(i));
             usuarios.put(p.getNickProveedor(),p);
         }
-        emails.clear();
         ArrayList<String> arrayEmails = ManejadorSQL.GetInstance().cargarEmail();
-        for (int i = 0; i < arrayEmails.size(); i++) {
+        for (int i = 0; i < arrayEmails .size(); i++) {
             emails.add(arrayEmails.get(i));
         }
         return instancia;
@@ -76,12 +75,10 @@ public class ManejadorUsuario {
         ManejadorSQL.GetInstance().agregarUsuario(p);
     }*/
     
-    public boolean InstertarProveedor(DtProveedor p){
-        if (this.chequearNick(p.getNick()) || this.chequearEmail(p.getEmail()))
-            return false;
+    public void InstertarProveedor(DtProveedor p){
         Proveedor newprov = new Proveedor(p.getNick());
         this.usuarios.put(p.getNick(), newprov);
-        return ManejadorSQL.GetInstance().agregarUsuario(p);
+        ManejadorSQL.GetInstance().agregarUsuario(p);
     }
      
     public boolean chequearNick(String nick){
@@ -100,16 +97,10 @@ public class ManejadorUsuario {
         return false;
     }
     
-    public boolean AutenticarCliente(String nickUsaurio, String pass){
-        return ManejadorSQL.GetInstance().autenticarCliente(nickUsaurio, pass);
-    }
-    
-    public boolean InstertarCliente(DtCliente c){
-        if (this.chequearNick(c.getNick()) || this.chequearEmail(c.getEmail()))
-            return false;
+    public void InstertarCliente(DtCliente c){
         Cliente newcli = new Cliente(c.getNick());
         this.usuarios.put(c.getNick(), newcli);
-        return ManejadorSQL.GetInstance().agregarUsuario(c);
+        ManejadorSQL.GetInstance().agregarUsuario(c);
     }
     
      public boolean ExisteUsuario(String nickUsu, String email){
