@@ -1,12 +1,6 @@
 package help4travelling;
 
-import java.io.UnsupportedEncodingException;
-import java.math.BigInteger;
-import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 public class ControladorUsuario implements IControladorUsuario{
     
@@ -51,50 +45,14 @@ public class ControladorUsuario implements IControladorUsuario{
         return ManejadorUsuario.getinstance().ExisteUsuario(nickUsaurio, email);
     }
     
-    public boolean AutenticarCliente(String nickUsaurio, String pass){
-        return ManejadorUsuario.getinstance().AutenticarCliente(nickUsaurio, pass);
+    @Override
+    public void AltaCliente(DtCliente dataCli){
+        ManejadorUsuario.getinstance().InstertarCliente(dataCli);
     }
     
     @Override
-    public boolean AltaCliente(DtCliente dataCli){
-        String hashtext ="";
-        try {
-
-            try {
-                String pass = new String(dataCli.getClave());
-                MessageDigest md = MessageDigest.getInstance("MD5");
-                byte[] clave = md.digest(pass.getBytes("UTF-8"));
-                BigInteger bigInt = new BigInteger(1,clave);
-                hashtext = bigInt.toString(16);
-            } catch (UnsupportedEncodingException ex) {
-                Logger.getLogger(IngresarUsuario.class.getName()).log(Level.SEVERE, null, ex);
-            }   
-        } catch (NoSuchAlgorithmException ex) {
-            Logger.getLogger(IngresarUsuario.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        dataCli.setClave(hashtext); 
-        return ManejadorUsuario.getinstance().InstertarCliente(dataCli);
-    }
-    
-    @Override
-    public boolean AltaProveedor(DtProveedor dataProv){
-        String hashtext ="";
-        try {
-
-            try {
-                String pass = new String(dataProv.getClave());
-                MessageDigest md = MessageDigest.getInstance("MD5");
-                byte[] clave = md.digest(pass.getBytes("UTF-8"));
-                BigInteger bigInt = new BigInteger(1,clave);
-                hashtext = bigInt.toString(16);
-            } catch (UnsupportedEncodingException ex) {
-                Logger.getLogger(IngresarUsuario.class.getName()).log(Level.SEVERE, null, ex);
-            }   
-        } catch (NoSuchAlgorithmException ex) {
-            Logger.getLogger(IngresarUsuario.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        dataProv.setClave(hashtext);            
-        return ManejadorUsuario.getinstance().InstertarProveedor(dataProv);
+    public void AltaProveedor(DtProveedor dataProv){
+        ManejadorUsuario.getinstance().InstertarProveedor(dataProv);
     }
 
     @Override

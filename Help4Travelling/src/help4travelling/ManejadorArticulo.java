@@ -123,7 +123,7 @@ public class ManejadorArticulo {
     
     public boolean insertarServicio(DtServicio DtServ, Ciudad ciudadO, Ciudad ciudadD){
        for (int i = 0; i < articulos.size(); i++) {
-            if (articulos.get(i).GetNombre().equals(DtServ.getNombre()) && articulos.get(i).getProv().equals(DtServ.getNickProveedor()) && articulos.get(i).IsServicio())
+            if (articulos.get(i).GetNombre().equals(DtServ.getNombre()) && articulos.get(i).getProv().equals(DtServ.getNickProveedor()) )
                 return false;
        }
        Servicio serv = new Servicio(DtServ.getNombre(), DtServ.getNickProveedor());
@@ -135,7 +135,7 @@ public class ManejadorArticulo {
     
     public boolean insertarPromocion(DtPromocion promo){
        for (int i = 0; i < articulos.size(); i++) {
-            if (articulos.get(i).GetNombre().equals(promo.GetNombre()) && articulos.get(i).getProv().equals(promo.getNickProv()) && articulos.get(i).isPromocion())
+            if (articulos.get(i).GetNombre().equals(promo.GetNombre()) && articulos.get(i).getProv().equals(promo.getNickProv()) )
                 return false;
        }
        Promocion p = new Promocion(promo.GetNombre(), promo.getNickProv());
