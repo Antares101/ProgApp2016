@@ -13,6 +13,7 @@ public class ManejadorUsuario {
     
      private ManejadorUsuario(){
        usuarios=new HashMap<String, Usuario>();
+       emails=new ArrayList<String>();
     }
      
      public static ManejadorUsuario getinstance(){
@@ -21,6 +22,7 @@ public class ManejadorUsuario {
             //cargar HashMap usuarios de la base de datos
         }
         usuarios.clear();
+        emails.clear();
         ArrayList<String> arrayCli = ManejadorSQL.GetInstance().cargarClientes();
         for (int i = 0; i < arrayCli .size(); i++) {
             Usuario u = new Cliente(arrayCli.get(i));

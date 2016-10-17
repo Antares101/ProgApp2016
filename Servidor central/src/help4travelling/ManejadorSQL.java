@@ -3,6 +3,8 @@ package help4travelling;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.InputStream;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -773,11 +775,15 @@ public class ManejadorSQL {
     
     public Connection getConex() {
         try {
-            Connection c = DriverManager.getConnection("jdbc:mysql://"+ this.ip +":3306/bd_help4traveling?useSSL=false", "root", "tecnoDBweb2016");
+            Class.forName("com.mysql.jdbc.Driver");
+            Connection c = DriverManager.getConnection("jdbc:mysql://localhost:3306/bd_help4traveling?useSSL=false", "root", "");
             return c;
         } catch (SQLException ex) {
             return null;
            // Logger.getLogger(ManejadorSQL.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(ManejadorSQL.class.getName()).log(Level.SEVERE, null, ex);
+            return null;
         }
         //return null;
     }
@@ -840,6 +846,20 @@ public class ManejadorSQL {
             Logger.getLogger(ManejadorSQL.class.getName()).log(Level.SEVERE, null, ex2);
         } catch (FileNotFoundException ex) {
             Logger.getLogger(ManejadorSQL.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+    public void insertImgUsuariov2(InputStream f, String nickU) throws SQLException, IOException{
+        String sql1 = "UPDATE USUARIOS SET imagen = ? WHERE nickname = '" + nickU + "';";
+        try{
+            Connection conex = getConex();
+            PreparedStatement usuario = conex.prepareStatement(sql1);
+            
+            usuario.setBinaryStream(1, f, f.available());
+            usuario.executeUpdate();
+            usuario.close();
+        } catch (SQLException ex2) {
+            Logger.getLogger(ManejadorSQL.class.getName()).log(Level.SEVERE, null, ex2);
         }
     }
     
