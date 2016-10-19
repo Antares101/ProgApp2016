@@ -1,0 +1,2 @@
+DROP DATABASE IF EXISTS bd_help4traveling;
+CREATE DATABASE bd_help4traveling;

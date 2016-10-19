@@ -64,9 +64,5 @@ public class DtInfoReserva {
     public float getPrecioArticulo() {
         return this.precioArticulo;
     }
-    
-    public void setCantidad(int cant){
-        this.cantidad = cant;
-    }
-    
+  
 }

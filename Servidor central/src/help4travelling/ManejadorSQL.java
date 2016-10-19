@@ -467,20 +467,19 @@ public class ManejadorSQL {
             Connection conex = getConex();
             usuario = conex.createStatement();
             ManejadorSQL.GetInstance().setForeignKeysOff(usuario);
+            usuario.executeUpdate(sql1);
             ResultSet rs = usuario.executeQuery(sql2);
             rs.next();
-            int id = rs.getInt("MAX(id)")+1;
-            usuario.executeUpdate(sql1);
-            DtInfoReserva inf = null;
+            int id = rs.getInt("MAX(id)");
             for(int x = 0; x < r.GetInfoReservas().size(); x++){
-                inf = r.GetInfoReservas().get(x);
-                String sql3 = "INSERT INTO INFO_RESERVA(id,cantArticulos,nicknameProveedor,nombreArticulo,fechaIni,fechaFin,precioUnitario,precioTotal)";
-                sql3 += " VALUES (" + id + "," + inf.GetCantidad() + ",'" + inf.getNickProveedor() + "','" + inf.GetNombreArticulo() + "','";
-                sql3 += inf.GetFechaIni().getAnio() + "/" + inf.GetFechaIni().getMes() + "/" + inf.GetFechaIni().getDia() + "','";
-                sql3 += inf.GetFechaFin().getAnio() + "/" + inf.GetFechaFin().getMes() + "/" + inf.GetFechaFin().getDia() + "',";
+                DtInfoReserva inf = r.GetInfoReservas().get(x);
+                String sql3 = "INSERT INTO INFO_RESERVA(id,cantArticulos,nicknameProveedor,nombreArticulo,precioUnitario,precioTotal)";
+                sql3 += " VALUES (" + id + "," + inf.GetCantidad() + ",'" + inf.getNickProveedor() + "','" + inf.GetNombreArticulo() + "',";
                 sql3 += inf.getPrecioArticulo() + "," + (inf.getPrecioArticulo()*inf.GetCantidad()) + ");";
+                //System.out.println(sql3);
                 usuario.executeUpdate(sql3);
             }
+                     
             ManejadorSQL.GetInstance().setForeignKeysOn(usuario);
             conex.close();
             ret = true;
@@ -674,7 +673,7 @@ public class ManejadorSQL {
     }
     
         // DEVOLVER RESERVA
-    public DtReserva devolverReserva(int idReserva){
+   public DtReserva devolverReserva(int idReserva){
         DtReserva ret = null;
         String sql1 = "SELECT precioTotal, fechaCreacion, estado, nicknameCliente FROM RESERVAS WHERE id = " + idReserva + ";";
         String sql2 = "SELECT cantArticulos, nicknameProveedor, nombreArticulo, fechaIni, fechaFin, precioUnitario, precioTotal FROM INFO_RESERVA WHERE id = " + idReserva + ";";
@@ -690,9 +689,16 @@ public class ManejadorSQL {
             fc = new DtFecha(Fecha);
             estado = rs.getString("estado");
             nickC = rs.getString("nicknameCliente");
-            rs = usuario.executeQuery(sql2);
-            while(rs.next()){
-                r.add(new DtInfoReserva(new DtFecha(rs.getDate("fechaIni").toString()), new DtFecha(rs.getDate("fechaFin").toString()), rs.getInt("cantArticulos"), rs.getString("nombreArticulo"), rs.getString("nicknameProveedor"), idReserva, rs.getFloat("precioUnitario")));          
+            ResultSet rs2 = usuario.executeQuery(sql2);
+            while(rs2.next()){
+                System.out.println(rs2.getDate("fechaIni"));
+                if (rs2.getDate("fechaIni") == null || rs2.getDate("fechaFin") == null){
+                    System.out.println("true");
+                    r.add(new DtInfoReserva(null, null, rs2.getInt("cantArticulos"), rs2.getString("nombreArticulo"), rs2.getString("nicknameProveedor"), idReserva, rs2.getFloat("precioUnitario")));          
+                }else{
+                    r.add(new DtInfoReserva(new DtFecha(rs2.getDate("fechaIni").toString()), new DtFecha(rs2.getDate("fechaFin").toString()), rs2.getInt("cantArticulos"), rs2.getString("nombreArticulo"), rs2.getString("nicknameProveedor"), idReserva, rs2.getFloat("precioUnitario")));
+                }
+                
             }
             ret = new DtReserva(idReserva, Estado.valueOf(estado), fc, r, nickC, ptR);
             usuario.close();
@@ -738,9 +744,13 @@ public class ManejadorSQL {
             ResultSet rs = usuario.executeQuery(sql1), rs2, rs3;
             while(rs.next()){
                 cantArt = rs.getInt("cantArticulos");
-                fechaIni = new DtFecha(rs.getDate("fechaIni").toString());
-                fechaFin = new DtFecha(rs.getDate("fechaFin").toString());
-                
+                if (rs.getDate("fechaIni") == null || rs.getDate("fechaFin") == null){
+                        fechaIni=null;
+                        fechaFin=null;
+                }else{
+                        fechaIni = new DtFecha(rs.getDate("fechaIni").toString());
+                        fechaFin = new DtFecha(rs.getDate("fechaFin").toString());
+                }
                 nomArt=rs.getString("nombreArticulo");
                 provArt=rs.getString("nicknameProveedor");
                 precio = rs.getFloat("precioUnitario");
@@ -776,7 +786,7 @@ public class ManejadorSQL {
     public Connection getConex() {
         try {
             Class.forName("com.mysql.jdbc.Driver");
-            Connection c = DriverManager.getConnection("jdbc:mysql://localhost:3306/bd_help4traveling?useSSL=false", "root", "");
+            Connection c = DriverManager.getConnection("jdbc:mysql://"+ this.ip +":3306/bd_help4traveling?useSSL=false", "root", "tecnoDBweb2016");
             return c;
         } catch (SQLException ex) {
             return null;

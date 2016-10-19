@@ -1,0 +1,5 @@
+GRANT ALL PRIVILEGES ON *.* TO root@0.0.0.0 IDENTIFIED BY 'tecnoDBweb2016';
+GRANT ALL ON bd_help4traveling.* TO 'tecnico'@'%';
+GRANT ALL ON bd_help4traveling.* TO 'cliente'@'%';
+GRANT ALL ON bd_help4traveling.* TO 'proveedor'@'%';
+FLUSH PRIVILEGES;

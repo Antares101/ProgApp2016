@@ -18,10 +18,7 @@ public class ControladorReserva implements IControladorReserva{
     
     @Override
     public boolean CrearReserva(DtReserva dtRes){ 
-        this.dtRes = dtRes;
-        Cliente cli = ManejadorUsuario.getinstance().ObtenerCliente(dtRes.GetCliente());
-        /*esta reserva no tiene id*/res = ManejadorReserva.GetInstance().CrearReserva(dtRes, cli);
-        return true;
+        return ManejadorReserva.GetInstance().CrearReserva(dtRes);
     }
     
     @Override

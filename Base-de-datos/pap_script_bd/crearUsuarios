@@ -1,0 +1,3 @@
+CREATE USER IF NOT EXISTS 'tecnico'@'%' IDENTIFIED BY 'tecnico16';
+CREATE USER IF NOT EXISTS 'cliente'@'%' IDENTIFIED BY 'cliente16';
+CREATE USER IF NOT EXISTS 'proveedor'@'%' IDENTIFIED BY 'proveedor16';

@@ -1,0 +1,366 @@
+#insert PAISES
+INSERT INTO PAISES(nombre)
+VALUES ('Uruguay'), ('Argentina'), ('Colombia'),
+('EEUU'), ('España'), ('Francia'), ('Alemania'),
+('Suiza'), ('Australia'), ('Brasil'), ('China');
+
+#insert CIUDADES
+INSERT INTO CIUDADES(nombre,nombrePais)
+VALUES ('Montevideo','Uruguay'),
+('Buenos Aires','Argentina'),
+('Bogotá','Colombia'),
+('Miami','EEUU'),
+('Valencia','España'),
+('Madrid','España'),
+('París','Francia'),
+('Berlín','Alemania'),
+('Ginebra','Suiza'),
+('Sidney','Australia'),
+('Pekín','China'),
+('Cantón','China'),
+('Florianópolis','Brasil'),
+('Bariloche','Argentina');
+
+#insert USUARIOS
+INSERT INTO USUARIOS(nickname,nombre,apellido,fechaNac,email,clave)
+VALUES
+('tCook','Tim','Cook','1960/11/01','air.f@gmail.com','da011288216a8116773dbc751dcf9fb1'),
+('moody','Alastor','Moody','1965/09/02','eu.car@eucar.com','69547acb697857925d686dc81eeaaaf7'),
+('remus','Remus','Lupin','1970/05/04','iberia@gmail.com','47937fdeb6c8ca00a75ae7ba593f1799'),
+('adippet','Armando','Dippet','1967/02/12','tam@outlook.com','159743c60b0ecb9123af5750192cf034'),
+('mHooch','Madam','Hooch','1963/08/05','segHogar@gmail.com','7d8b75af46e26ccc028577881343df9d'),
+('oWood','Oliver','Wood','1988/12/28','quidditch28@gmail.com','8574824b71f72c55de074c0f1090413f'),
+('eWatson','Emma','Watson','1990/04/15','e.watson@gmail.com','f53e14d9bec5c8ec1fd82210a269c01a');
+
+UPDATE USUARIOS SET imagen = LOAD_FILE('/var/lib/mysql-files/18s1096bn21ul.jpg') WHERE nickname = 'tCook';
+UPDATE USUARIOS SET imagen = LOAD_FILE('/var/lib/mysql-files/mody.jpg') WHERE nickname = 'moody';
+UPDATE USUARIOS SET imagen = LOAD_FILE('/var/lib/mysql-files/iberia-new-logo-large.jpg') WHERE nickname = 'remus';
+UPDATE USUARIOS SET imagen = LOAD_FILE('/var/lib/mysql-files/TAM-logo.jpg') WHERE nickname = 'adippet';
+UPDATE USUARIOS SET imagen = LOAD_FILE('/var/lib/mysql-files/segundohogar_on.jpg') WHERE nickname = 'mHooch';
+UPDATE USUARIOS SET imagen = LOAD_FILE('/var/lib/mysql-files/Sean_Biggerstaff_(Oliver_Wood).jpg') WHERE nickname = 'oWood';
+UPDATE USUARIOS SET imagen = LOAD_FILE('/var/lib/mysql-files/base_image.jpg') WHERE nickname = 'eWatson';
+
+INSERT INTO USUARIOS(nickname,nombre,apellido,fechaNac,email,clave)
+VALUES ('BruceS','Bruce','Sewell','1978/12/03','bruce.sewell@gmail.com','bb9849f8412c6725a9c2c004ca4cd650'),
+('JeffW','Jeff','Wiliams','1984/11/27','jeff.williams@gmail.com','8eca568f1ff2d1c825b7a08df5eb6143');
+
+#insert CLIENTES
+INSERT INTO CLIENTES(nicknameCliente)
+VALUES ('oWood'), ('eWatson'),
+('BruceS'), ('JeffW');
+
+#insert PROVEDORES
+INSERT INTO PROVEEDORES(nicknameProveedor, nombreEmp, linkEmp)
+VALUES
+('tCook','AirFrance','http://www.airfrance.com/'),
+('moody','EuropCar','http://www.europcar.com.uy/'),
+('remus','Iberia','http://www.iberia.com/uy/'),
+('adippet','Tam','http://www.tam.com.br/'),
+('mHooch','Segundo Hogar','http://www.segundohogar.com/');
+
+#insert CATEGORIAS
+INSERT INTO CATEGORIAS(nombre)
+VALUES ('todas'),
+('Vuelos'),
+('Alojamientos'),
+('Automóviles'),
+('Cruceros'),
+#
+('Empresas'),
+('Tipo vuelo'),
+#
+('Iberia'),
+('American Airlines'),
+('Air France'),
+('TAM'),
+#
+('Tipo alojamiento'),
+('Ubicación'),
+('Habitaciones'),
+#
+('Tarifa'),
+('Tipo vehículo'),
+('Marca'),
+#
+('Mediterráneo'),
+('Mar Negro'),
+('Caribe'),
+('Nilo'),
+('Alaska'),
+##
+('LowCost'),
+('Standard'),
+('First Class'),
+##
+('Hotel'),
+('Hostal'),
+('Apartamento'),
+('Casa'),
+##
+('Playa'),
+('Rural'),
+('Montaña'),
+##
+('1 ambiente'),
+('1 dormitorio'),
+('2 dormitorios'),
+##
+('Mini'),
+('Económico'),
+#('Standard') Atributo reptido
+('Full'),
+##
+('Auto'),
+('Camioneta'),
+('Camión'),
+('Moto'),
+##
+('Chevrolet'),
+('Peugeot'),
+('Daihatsu'),
+('Fiat'),
+('Ford');
+
+#insert HEREDA
+INSERT INTO HEREDA(nombre, nombreCategoriaPadre)
+VALUES
+
+#Nivel 1
+('Vuelos','todas'),
+('Alojamientos','todas'),
+('Automóviles','todas'),
+('Cruceros','todas'),
+
+#Nivel 1
+('Empresas','Vuelos'),
+('Tipo vuelo','Vuelos'),
+
+#Nivel 1
+('Tipo alojamiento','Alojamientos'),
+('Ubicación','Alojamientos'),
+('Habitaciones','Alojamientos'),
+
+#Nivel 1
+('Tarifa','Automóviles'),
+('Tipo vehículo','Automóviles'),
+('Marca','Automóviles'),
+
+#Nivel 1
+('Mediterráneo','Cruceros'),
+('Mar Negro','Cruceros'),
+('Caribe','Cruceros'),
+('Nilo','Cruceros'),
+('Alaska','Cruceros'),
+
+#Nivel 2
+('Iberia','Empresas'),
+('American Airlines','Empresas'),
+('Air France','Empresas'),
+('TAM','Empresas'),
+
+#Nivel 2
+('LowCost','Tipo vuelo'),
+('Standard','Tipo vuelo'),
+('First Class','Tipo vuelo'),
+
+#Nivel 2
+('Hotel','Tipo alojamiento'),
+('Hostal','Tipo alojamiento'),
+('Apartamento','Tipo alojamiento'),
+('Casa','Tipo alojamiento'),
+
+#Nivel 2
+('Playa','Ubicación'),
+('Rural','Ubicación'),
+('Montaña','Ubicación'),
+
+#Nivel 2
+('1 ambiente','Habitaciones'),
+('1 dormitorio','Habitaciones'),
+('2 dormitorios','Habitaciones'),
+
+#Nivel 2
+('Mini','Tarifa'),
+('Económico','Tarifa'),
+('Standard','Tarifa'),
+('Full','Tarifa'),
+
+#Nivel 2
+('Auto','Tipo vehículo'),
+('Camioneta','Tipo vehículo'),
+('Camión','Tipo vehículo'),
+('Moto','Tipo vehículo'),
+
+#Nivel 2
+('Chevrolet','Marca'),
+('Peugeot','Marca'),
+('Daihatsu','Marca'),
+('Fiat','Marca'),
+('Ford','Marca');
+
+#insert ARTICULOS;
+INSERT INTO ARTICULOS(nicknameProveedor,nombre)
+VALUES
+('remus','Euro-Vuelo-S'),
+('remus','Euro-Vuelo-LC'),
+('remus','Euro-Vuelo-FC'),
+('remus','Euro-Vuelos-S-FC'),
+('remus','Euro-Vuelos-S-LC'),
+('remus','Euro-Vuelos-LC-FC'),
+('moody','Euro-Car-1'),
+('moody','Euro-Car-2'),
+('moody','Euro-Car-3'),
+('moody','Euro-Cars-E-S'),
+('moody','Euro-Cars-E-F'),
+('moody','Euro-Cars-S-F'),
+('mHooch','Casa para p4 BsAs'),
+('mHooch','Floripa G. House'),
+('mHooch','Luxury south beach corner apartment'),
+('mHooch','Coche-Miami'),
+('mHooch','Sudamerica-Casas'),
+('mHooch','Miami-Viaje'),
+('tCook','Air-France-FC'),
+('adippet','TAM-FC');
+
+SET FOREIGN_KEY_CHECKS=0;
+
+#insert POSEEN
+INSERT INTO POSEEN(nicknameProveedor,nombreArticulo,nombreCategoria)
+VALUES ('remus','Euro-Vuelo-S','Iberia'),
+('remus','Euro-Vuelo-S','Standard'),
+('remus','Euro-Vuelo-LC','Iberia'),
+('remus','Euro-Vuelo-LC','LowCost'),
+('remus','Euro-Vuelo-FC','Iberia'),
+('remus','Euro-Vuelo-FC','First Class'),
+('moody','Euro-Car-1','Económico'),
+('moody','Euro-Car-1','Auto'),
+('moody','Euro-Car-1','Chevrolet'),
+('moody','Euro-Car-2','Standard'),
+('moody','Euro-Car-2','Auto'),
+('moody','Euro-Car-2','Chevrolet'),
+('moody','Euro-Car-3','Full'),
+('moody','Euro-Car-3','Camioneta'),
+('moody','Euro-Car-3','Chevrolet'),
+('mHooch','Casa para p4 BsAs','Casa'),
+('mHooch','Casa para p4 BsAs','2 dormitorios'),
+('mHooch','Floripa G. House','Casa'),
+('mHooch','Floripa G. House','2 dormitorios'),
+('tCook','Air-France-FC','Air France'),
+('tCook','Air-France-FC','Firs Class'),
+('adippet','TAM-FC','TAM'),
+('adippet','TAM-FC','FirstClass'),
+('mHooch','Luxury south beach corner apartment','Hotel'),
+('mHooch','Luxury south beach corner apartment','Playa'),
+('mHooch','Luxury south beach corner apartment','2 dormitorios'),
+('mHooch','Coche-Miami','Económico'),
+('mHooch','Coche-Miami','Auto'),
+('mHooch','Coche-Miami','Chevrolet');
+SET FOREIGN_KEY_CHECKS=1;
+
+#insert SERVICIOS
+INSERT INTO SERVICIOS(nicknameProveedor,nombreArticulo,descripcion,precio,ciudadO,ciudadD)
+VALUES ('remus','Euro-Vuelo-S','Vuelo con excelente atención y comodidad.',1100,'Montevideo','Valencia'), #S1
+('remus','Euro-Vuelo-LC','Vuelo con excelente atención y comodidad a un precio accesible.',850,'Montevideo','Valencia'), #S2
+('remus','Euro-Vuelo-FC','Vuelo de primera clase. Excelente atención, comodidad y servicio.',1300,'Montevideo','Valencia'), #S3
+('moody','Euro-Car-1','Euro-Car. Autos de buena calidad y comodidad. Versión Económica',300,'Madrid','Valencia'), #S4
+('moody','Euro-Car-2','Euro-Car. Autos de buena calidad y comodidad. Versión  Standard.',300,'Madrid','Valencia'), #S5
+('tCook','Air-France-FC','¡Un vuelo de primera! Excelencia y experiencia en mejorar sus viajes.',100,'París','Berlín'), #S9
+('adippet','TAM-FC','¡Un vuelo de primera! Excelencia y experiencia.',150,'Florianópolis','Pekín'); #S10
+
+# TC = tCook, moody = AM, remus = RL, adippet = AD, mHooch = MH
+#insert SERVICIOS sin destino
+INSERT INTO SERVICIOS(nicknameProveedor,nombreArticulo,descripcion,precio,ciudadO) VALUES
+('moody','Euro-Car-3','Euro-Car. Autos de buena calidad y comodidad. Una camioneta para toda la familia.',300,'Valencia'), #S6
+
+('mHooch','Luxury south beach corner apartment','Beautiful large 2 bedrooms 2 bathrooms apartment CORNER UNIT. Marble floor
+throughout, beautiful open kitchen, granite counter top, spacious dining room area
+and living room area. Spectacular views of Miami from all windows and balcony',300,'Miami'), #S11
+
+('mHooch','Coche-Miami','A useful car to travel around Miami',360,'Miami'); #S12
+
+INSERT INTO SERVICIOS(nicknameProveedor,nombreArticulo,descripcion,precio,ciudadO) VALUES
+('mHooch','Casa para p4 BsAs','Esta hermosa casa, se encuentra ubicada en el corazón de Buenos Aires y ofrece una
+capacidad para cuatro personas. La propiedad cuenta con un dormitorio con dos
+camas simples, que pueden transformarse en una matrimonial y dos baños
+completos, que incluyen toallas.',80,'Buenos Aires'); #S7
+
+INSERT INTO SERVICIOS(nicknameProveedor,nombreArticulo,descripcion,precio,ciudadO) VALUES
+('mHooch','Floripa G. House','Estamos a sólo unos pasos de un supermercado, restaurantes, cajero automático, gasolinera, farmacia, gimnasio, etc. Lagoa da Conceição es 7 km de nuestra casa de huéspedes y tarda sólo 10-15 minutos en el transporte público. Allí se encuentra una
+buena vida nocturna con bares y música en vivo',190,'Florianópolis'); #S8
+
+SET FOREIGN_KEY_CHECKS=0;
+
+UPDATE SERVICIOS SET imagen1 = LOAD_FILE('/var/lib/mysql-files/00011655.jpg') WHERE nicknameProveedor = 'remus' and nombreArticulo = 'Euro-Vuelo-S';
+UPDATE SERVICIOS SET imagen1 = LOAD_FILE('/var/lib/mysql-files/00011655.jpg') WHERE nicknameProveedor = 'remus' and nombreArticulo = 'Euro-Vuelo-LC';
+UPDATE SERVICIOS SET imagen1 = LOAD_FILE('/var/lib/mysql-files/00011655.jpg') WHERE nicknameProveedor = 'remus' and nombreArticulo = 'Euro-Vuelo-FC';
+UPDATE SERVICIOS SET imagen1 = LOAD_FILE('/var/lib/mysql-files/965a9540-36d5-4fe6-b4c4-7da60fd42889.jpg') WHERE nicknameProveedor = 'moody' and nombreArticulo = 'Euro-Car-1';
+UPDATE SERVICIOS SET imagen1 = LOAD_FILE('/var/lib/mysql-files/2013-chevrolet-cobalt-exterior-diseño-980x476.jpg') WHERE nicknameProveedor = 'moody' and nombreArticulo = 'Euro-Car-2';
+UPDATE SERVICIOS SET imagen1 = LOAD_FILE('/var/lib/mysql-files/AW-001737.jpg') WHERE nicknameProveedor = 'tCook' and nombreArticulo = 'Air-France-FC';
+UPDATE SERVICIOS SET imagen1 = LOAD_FILE('/var/lib/mysql-files/TAM.jpg') WHERE nicknameProveedor = 'adippet' and nombreArticulo = 'TAM-FC';
+UPDATE SERVICIOS SET imagen1 = LOAD_FILE('/var/lib/mysql-files/2013-chevrolet-spin-espacio-carga.jpg') WHERE nicknameProveedor = 'moody' and nombreArticulo = 'Euro-Car-3';
+UPDATE SERVICIOS SET imagen1 = LOAD_FILE('/var/lib/mysql-files/luxury.jpg') WHERE nicknameProveedor = 'mHooch' and nombreArticulo = 'Luxury south beach corner apartment';
+UPDATE SERVICIOS SET imagen1 = LOAD_FILE('/var/lib/mysql-files/965a9540-36d5-4fe6-b4c4-7da60fd42889.jpg') WHERE nicknameProveedor = 'mHooch' and nombreArticulo = 'Coche-Miami';
+UPDATE SERVICIOS SET imagen1 = LOAD_FILE('/var/lib/mysql-files/743411-MLA20529509134_122015-F.jpg') WHERE nicknameProveedor = 'mHooch' and nombreArticulo = 'Casa para p4 BsAs';
+UPDATE SERVICIOS SET imagen2 = LOAD_FILE('/var/lib/mysql-files/561311-MLA20522842529_122015-F.jpg') WHERE nicknameProveedor = 'mHooch' and nombreArticulo = 'Casa para p4 BsAs';
+UPDATE SERVICIOS SET imagen1 = LOAD_FILE('/var/lib/mysql-files/flo_30204476.jpg') WHERE nicknameProveedor = 'mHooch' and nombreArticulo = 'Floripa G. House';
+UPDATE SERVICIOS SET imagen2 = LOAD_FILE('/var/lib/mysql-files/flo_30204968.jpg') WHERE nicknameProveedor = 'mHooch' and nombreArticulo = 'Floripa G. House';
+UPDATE SERVICIOS SET imagen3 = LOAD_FILE('/var/lib/mysql-files/flo_46384.jpg') WHERE nicknameProveedor = 'mHooch' and nombreArticulo = 'Floripa G. House';
+
+#insert COMPUESTOS
+INSERT INTO COMPUESTOS(nicknameProvServ,nombreArticuloServ,nicknameProvProm,nombreArticuloProm)
+VALUES
+('moody','Euro-Car-1','moody','Euro-Cars-E-S'), #S4
+('moody','Euro-Car-2','moody','Euro-Cars-E-S'), #S5
+('moody','Euro-Car-1','moody','Euro-Cars-E-F'), #S4
+('moody','Euro-Car-3','moody','Euro-Cars-E-F'), #S6
+('moody','Euro-Car-2','moody','Euro-Cars-S-F'), #S5
+('moody','Euro-Car-3','moody','Euro-Cars-S-F'), #S6
+('remus','Euro-Vuelo-S','remus','Euro-Vuelos-S-LC'),  #S1
+('remus','Euro-Vuelo-LC','remus','Euro-Vuelos-S-LC'), #S2
+('remus','Euro-Vuelo-LC','remus','Euro-Vuelos-S-FC'), #S2
+('remus','Euro-Vuelo-FC','remus','Euro-Vuelos-S-FC'), #S3
+('remus','Euro-Vuelo-LC','remus','Euro-Vuelos-LC-FC'), #S2
+('remus','Euro-Vuelo-FC','remus','Euro-Vuelos-LC-FC'), #S3
+('mHooch','Casa para p4 BsAs','mHooch','Sudamerica-Casas'), #S7
+('mHooch','Floripa G. House','mHooch','Sudamerica-Casas'),  #S8
+('mHooch','Luxury south beach corner apartment','mHooch','Miami-Viaje'), #S11
+('mHooch','Coche-Miami','mHooch','Miami-Viaje'); #S12
+SET FOREIGN_KEY_CHECKS=1;
+
+#insert PROMOCIONES
+INSERT INTO PROMOCIONES(nicknameProveedor,nombreArticulo,descuento,precio)
+VALUES ('moody','Euro-Cars-E-S',30,420), #S4
+('moody','Euro-Cars-E-F',30,420), #S4
+('moody','Euro-Cars-S-F',30,420), #S5
+('remus','Euro-Vuelos-S-LC',40,1170),  #S1
+('remus','Euro-Vuelos-S-FC',40,1440), #S2
+('remus','Euro-Vuelos-LC-FC',40,1290), #S2
+('mHooch','Sudamerica-Casas',50,135), #S7
+('mHooch','Miami-Viaje',30,462); #S8
+
+#OW = oWood, EW = eWatson, DT = BruceS, JW = jeffW
+#insert RESERVAS
+INSERT INTO RESERVAS(precioTotal,fechaCreacion,estado,nicknameCliente) VALUES
+(1100,'2015/1/1','Facturada','oWood'),
+(3050,'2015/1/1','Cancelada','eWatson'),
+(80,'2015/3/5','Pagada','BruceS'),
+(200,'2015/8/7','Registrada','oWood'),
+(270,'2015/8/7','Registrada','eWatson'),
+(1700,'2015/8/7','Registrada','BruceS');
+
+SET FOREIGN_KEY_CHECKS=0;
+
+#insert INFO_RESERVA
+INSERT INTO INFO_RESERVA(id,cantArticulos,nicknameProveedor,nombreArticulo,fechaIni,fechaFin,precioUnitario,precioTotal)
+VALUES
+(1,1,'remus','Euro-Vuelo-S','2015/1/1','2015/1/1',1100,1100),
+(2,2,'remus','Euro-Vuelo-S','2015/1/1','2015/1/1',1100,2200),
+(2,1,'remus','Euro-Vuelo-LC','2015/1/1','2015/1/1',850,850),
+(3,1,'mHooch','Sudamerica-Casas','2015/3/5','2015/4/2',135,135),
+(4,1,'moody','Euro-Car-2','2015/5/8','2015/5/12',300,300),
+(4,1,'moody','Euro-Car-3','2015/5/8','2015/5/15',300,300),
+(5,2,'tCook','Air-France-FC','2015/8/7','2015/8/10',100,200),
+(6,1,'mHooch','Miami-Viaje','2015/8/7','2015/8/10',462,462),
+(6,1,'mHooch','Casa para p4 BsAs','2015/8/14','2015/8/21',80,80);
+SET FOREIGN_KEY_CHECKS=1;
+#Tercer final... la comunidad del anillo

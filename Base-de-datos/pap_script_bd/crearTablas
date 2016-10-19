@@ -1,0 +1,66 @@
+USE bd_help4traveling;
+SET FOREIGN_KEY_CHECKS=0;
+
+DROP TABLE IF EXISTS USUARIOS;
+DROP TABLE IF EXISTS ARTICULOS;
+DROP TABLE IF EXISTS CATEGORIAS;
+DROP TABLE IF EXISTS CIUDADES;
+DROP TABLE IF EXISTS CLIENTES;
+DROP TABLE IF EXISTS COMPUESTOS;
+DROP TABLE IF EXISTS EVALUACION;
+DROP TABLE IF EXISTS PAISES;
+DROP TABLE IF EXISTS POSEEN;
+DROP TABLE IF EXISTS PROMOCIONES;
+DROP TABLE IF EXISTS PROVEEDORES;
+DROP TABLE IF EXISTS RESERVAS;
+DROP TABLE IF EXISTS INFO_RESERVA;
+DROP TABLE IF EXISTS SERVICIOS;
+DROP TABLE IF EXISTS HEREDA;
+SET FOREIGN_KEY_CHECKS=1;
+
+CREATE TABLE USUARIOS (nickname varchar(40) NOT NULL, nombre varchar(40) NOT NULL, apellido varchar(40) NOT NULL, email varchar(40) NOT NULL UNIQUE, fechaNac date NOT NULL, imagen mediumblob, clave varchar(40) NOT NULL, PRIMARY KEY (nickname));
+
+CREATE TABLE CLIENTES (nicknameCliente varchar(40) NOT NULL, PRIMARY KEY (nicknameCliente), FOREIGN KEY (nicknameCliente) REFERENCES USUARIOS(nickname));
+
+CREATE TABLE PROVEEDORES (nicknameProveedor varchar(40) NOT NULL, nombreEmp varchar(40) NOT NULL, linkEmp varchar(40) NOT NULL, PRIMARY KEY (nicknameProveedor), FOREIGN KEY (nicknameProveedor) REFERENCES USUARIOS(nickname));
+
+CREATE TABLE CATEGORIAS (nombre varchar(40) NOT NULL, PRIMARY KEY (nombre));
+
+CREATE TABLE HEREDA (nombre varchar(40) NOT NULL, nombreCategoriaPadre varchar(40) NOT NULL, PRIMARY KEY (nombre,nombreCategoriaPadre), FOREIGN KEY (nombre) REFERENCES CATEGORIAS(nombre), FOREIGN KEY (nombreCategoriaPadre) REFERENCES CATEGORIAS(nombre));
+
+CREATE TABLE PAISES (nombre varchar(40) NOT NULL, PRIMARY KEY (nombre));
+
+CREATE TABLE CIUDADES (nombre varchar(40) NOT NULL, nombrePais varchar(40) NOT NULL, PRIMARY KEY (nombre, nombrePais), FOREIGN KEY (nombrePais) REFERENCES PAISES(nombre));
+
+CREATE TABLE ARTICULOS (nicknameProveedor varchar(40) NOT NULL, nombre varchar(40) NOT NULL, PRIMARY KEY (nicknameProveedor, nombre), FOREIGN KEY (nicknameProveedor) REFERENCES PROVEEDORES(nicknameProveedor));
+
+CREATE TABLE SERVICIOS (nicknameProveedor varchar(40) NOT NULL, nombreArticulo varchar(40) NOT NULL, descripcion varchar(500) NOT NULL, precio float NOT NULL,ciudadO varchar(40) NOT NULL, ciudadD varchar(40),imagen1 mediumblob, imagen2 mediumblob, imagen3 mediumblob, PRIMARY KEY (nicknameProveedor, nombreArticulo), FOREIGN KEY (nicknameProveedor,nombreArticulo) REFERENCES ARTICULOS(nicknameProveedor,nombre), FOREIGN KEY (ciudadO) REFERENCES CIUDADES(nombre));
+
+CREATE TABLE COMPUESTOS (nicknameProvServ varchar(40) NOT NULL, nombreArticuloServ varchar(40) NOT NULL, nicknameProvProm varchar(40) NOT NULL, nombreArticuloProm varchar(40) NOT NULL, PRIMARY KEY (nicknameProvServ, nombreArticuloServ, nicknameProvProm, nombreArticuloProm));
+
+CREATE TABLE PROMOCIONES (nicknameProveedor varchar(40) NOT NULL, nombreArticulo varchar(40) NOT NULL, descuento float NOT NULL, precio float NOT NULL, PRIMARY KEY (nicknameProveedor, nombreArticulo), FOREIGN KEY (nicknameProveedor,nombreArticulo) REFERENCES ARTICULOS(nicknameProveedor,nombre));
+
+CREATE TABLE POSEEN (nicknameProveedor varchar(40) NOT NULL, nombreArticulo varchar(40) NOT NULL, nombreCategoria varchar(40) NOT NULL, PRIMARY KEY (nicknameProveedor, nombreArticulo, nombreCategoria));
+
+#CREATE TABLE IMAGENES (nicknameProveedor varchar(40) NOT NULL, nombreArticulo 
+#varchar(40) NOT NULL, nroImagen int NOT NULL, imagen mediumblob, PRIMARY KEY( 
+#nicknameProveedor,nombreArticulo,nroImagen), FOREIGN KEY (
+#nicknameProveedor,nombreArticulo) REFERENCES SERVICIOS(
+#nicknameProveedor,nombreArticulo));
+
+CREATE TABLE RESERVAS(id int NOT NULL AUTO_INCREMENT, precioTotal float NOT NULL, fechaCreacion date NOT NULL, estado varchar(40) NOT NULL, nicknameCliente varchar(40) NOT NULL, PRIMARY KEY (id), FOREIGN KEY (nicknameCliente) REFERENCES CLIENTES(nicknameCliente));
+
+CREATE TABLE INFO_RESERVA(id int NOT NULL, cantArticulos int NOT NULL, nicknameProveedor varchar(40) NOT NULL, nombreArticulo varchar(40) NOT NULL, fechaIni date, fechaFin date, precioUnitario int NOT NULL, precioTotal int NOT NULL,PRIMARY KEY(id,nombreArticulo,nicknameProveedor), FOREIGN KEY (id) REFERENCES RESERVAS(id), FOREIGN KEY(nicknameProveedor,nombreArticulo) REFERENCES ARTICULOS(nicknameProveedor,nombre));
+
+CREATE TABLE EVALUACION (id int NOT NULL, texto mediumblob NOT NULL, calificacion varchar(40) NOT NULL, PRIMARY KEY (id), FOREIGN KEY (id) REFERENCES INFO_RESERVA(id));
+
+# ALTERs#
+ALTER TABLE SERVICIOS ADD(FOREIGN KEY (ciudadD) REFERENCES CIUDADES(nombre), FOREIGN KEY (nicknameProveedor,nombreArticulo) REFERENCES POSEEN(nicknameProveedor,nombreArticulo));
+
+ALTER TABLE COMPUESTOS ADD (FOREIGN KEY (nicknameProvProm, nombreArticuloProm) REFERENCES PROMOCIONES(nicknameProveedor,nombreArticulo));
+
+ALTER TABLE PROMOCIONES ADD(FOREIGN KEY (nicknameProveedor,nombreArticulo) REFERENCES COMPUESTOS(nicknameProvProm,nombreArticuloProm));
+
+ALTER TABLE POSEEN ADD (FOREIGN KEY (nicknameProveedor, nombreArticulo) REFERENCES SERVICIOS(nicknameProveedor,nombreArticulo), FOREIGN KEY (nombreCategoria) REFERENCES CATEGORIAS(nombre)); 
+
+#/ALTERs#
