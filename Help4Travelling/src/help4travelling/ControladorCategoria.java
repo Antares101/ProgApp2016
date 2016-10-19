@@ -16,16 +16,19 @@ public class ControladorCategoria implements IControladorCategoria{
         return ManejadorCategoria.GetInstance().listarServicios(nombre);
     }
     
+    @Override
     public DtServicio datosServicio(String nombreServ){
         return ManejadorCategoria.GetInstance().datosServicio(nombreServ);
     }
     
-    public void IngresarCategoria(String nombre){
-        ManejadorCategoria.GetInstance().IngresarCategoria(nombre);
+    @Override
+    public boolean IngresarCategoria(String nombre){
+        return ManejadorCategoria.GetInstance().IngresarCategoria(nombre);
     }
     
-    public void IngresarCategoria(String nombre, String padre){
-        ManejadorCategoria.GetInstance().IngresarCategoria(nombre, padre);
+    @Override
+    public boolean IngresarCategoria(String nombre, String padre){
+        return ManejadorCategoria.GetInstance().IngresarCategoria(nombre, padre);
     }
     
     public Categoria BuscarCategoria(String nombre){

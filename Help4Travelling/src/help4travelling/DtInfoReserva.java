@@ -63,7 +63,5 @@ public class DtInfoReserva {
     
     public float getPrecioArticulo() {
         return this.precioArticulo;
-    }
-    
-    
+    }  
 }

@@ -26,8 +26,8 @@ public class ManejadorReserva {
         return instance;
     }
     
-    public Reserva CrearReserva(DtReserva dtRes, Cliente c){
-        return new Reserva(dtRes.GetId());
+    public boolean CrearReserva(DtReserva dtRes){
+        return ManejadorSQL.GetInstance().agregarReserva(dtRes);
     }
     
    /* public void AgregarReserva(Reserva r){

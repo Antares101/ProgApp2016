@@ -92,5 +92,10 @@ public class DtProveedor {
     public String getClave() {
         return clave;
     }
+
+    public void setClave(String clave) {
+        this.clave = clave;
+    }
+    
     
 }
