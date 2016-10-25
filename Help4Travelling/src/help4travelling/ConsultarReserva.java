@@ -288,8 +288,13 @@ public class ConsultarReserva extends javax.swing.JFrame {
         for(DtInfoReserva i: lir){
             if(i.GetNombreArticulo().equals(nomart)){
                 txt_cantidadR.setText(Integer.toString(i.GetCantidad()));
-                txt_finicio.setText(Integer.toString(i.GetFechaIni().getDia()) + "/" + Integer.toString(i.GetFechaIni().getMes()) + "/" + Integer.toString(i.GetFechaIni().getAnio()));
-                txt_ffin.setText(Integer.toString(i.GetFechaFin().getDia()) + "/" + Integer.toString(i.GetFechaFin().getMes()) + "/" + Integer.toString(i.GetFechaFin().getAnio()));
+                if (i.GetFechaIni() != null && i.GetFechaFin() != null){
+                    txt_finicio.setText(Integer.toString(i.GetFechaIni().getDia()) + "/" + Integer.toString(i.GetFechaIni().getMes()) + "/" + Integer.toString(i.GetFechaIni().getAnio()));
+                    txt_ffin.setText(Integer.toString(i.GetFechaFin().getDia()) + "/" + Integer.toString(i.GetFechaFin().getMes()) + "/" + Integer.toString(i.GetFechaFin().getAnio()));
+                }else{
+                    txt_finicio.setText("");
+                    txt_ffin.setText("");
+                }
             }
         }
     }//GEN-LAST:event_jList_reservasRValueChanged

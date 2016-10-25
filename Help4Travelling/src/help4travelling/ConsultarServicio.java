@@ -304,6 +304,7 @@ public class ConsultarServicio extends javax.swing.JFrame {
         cmb_serviciosXcat.removeAllItems();
         jLabel163.setText("");
         jLabel164.setText("");
+        jLabel165.setText("");
         jLabel166.setText("");
         jLabel155.setText("");
         jLabel167.setText("");
@@ -316,6 +317,7 @@ public class ConsultarServicio extends javax.swing.JFrame {
         try{
             jLabel163.setText("");
             jLabel164.setText("");
+            jLabel165.setText("");
             jLabel166.setText("");
             jLabel155.setText("");
             jLabel167.setText("");
