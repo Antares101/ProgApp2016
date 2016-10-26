@@ -20,7 +20,7 @@ public class ControladorArticulo implements IControladorArticulo{
             Ciudad ciudadD = ManejadorCiudad.GetInstance().BuscarCiudad(DtServ.getCiudadDestino());
             return ManejadorArticulo.GetInstance().insertarServicio(DtServ, ciudadO, ciudadD);
         }else{
-            System.out.println("nulllllll");
+            //System.out.println("nulllllll");
             return ManejadorArticulo.GetInstance().insertarServicio(DtServ, ciudadO, null);
         }
     }

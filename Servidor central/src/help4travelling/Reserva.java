@@ -74,7 +74,7 @@ public class Reserva {
     
     public Set<DtInfoReserva> GetArticulosReservados(){
         Set<DtInfoReserva> ret = new HashSet<DtInfoReserva>();
-        System.out.println("bandera 3");
+        //System.out.println("bandera 3");
         infoReserva.forEach( i -> ret.add( ((infoReserva)i).GetDtInfoReserva() ) );
         return ret;
     }
