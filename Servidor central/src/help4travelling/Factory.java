@@ -31,9 +31,6 @@ public class Factory {
     public IControladorUsuario getIControladorUsuario() {
       return new ControladorUsuario();
     }
-    
-    public IControladorRegistro getIControladorRegistro() {
-      return new ControladorRegistro();
-    }
+
 
  }

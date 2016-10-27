@@ -28,9 +28,7 @@ public class Publicador {
 
     @WebMethod(exclude = true)
     public void publicar(){
-        //System.out.println("init");
         ManejadorSQL.GetInstance().init("192.168.10.132");
-        //System.out.println(ICUsuario.chequearNick("eWatson"));
         endpoint = Endpoint.publish("http://localhost:9130/publicadorWeb", this);
     }
     
@@ -44,9 +42,7 @@ public class Publicador {
     
     @WebMethod
     public ArrayList<DtPromocion> listarPromociones(){
-        System.out.println("++++++" + ICArticulo.listarPromociones().get(0).getNombre());
         return ICArticulo.listarPromociones();
-        //return ICArticulo.listarPromociones();
     }   
     
     @WebMethod
@@ -60,7 +56,7 @@ public class Publicador {
         ArrayList<DtPromocion> lart = ICArticulo.listarPromociones();
         boolean ret = true;
         for(DtPromocion x : lart){
-            if(x.getNombre().equalsIgnoreCase(nombreServicio)) ret = false;
+            if(x.GetNombre().equalsIgnoreCase(nombreServicio)) ret = false;
         }
         return ret;
     }

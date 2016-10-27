@@ -135,12 +135,12 @@ public class ManejadorArticulo {
     
     public boolean insertarPromocion(DtPromocion promo){
        for (int i = 0; i < articulos.size(); i++) {
-            if (articulos.get(i).GetNombre().equals(promo.getNombre()) && articulos.get(i).getProv().equals(promo.getNickProv()) )
+            if (articulos.get(i).GetNombre().equals(promo.GetNombre()) && articulos.get(i).getProv().equals(promo.getNickProv()) )
                 return false;
        }
-       Promocion p = new Promocion(promo.getNombre(), promo.getNickProv());
+       Promocion p = new Promocion(promo.GetNombre(), promo.getNickProv());
        articulos.add((Articulo)p);
-       return ManejadorSQL.GetInstance().agregarPromocion(promo, promo.getNickProv(), promo.getServicios());
+       return ManejadorSQL.GetInstance().agregarPromocion(promo, promo.getNickProv(), promo.GetServicios());
     }
     
 }
