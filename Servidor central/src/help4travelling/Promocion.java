@@ -12,10 +12,10 @@ public class Promocion extends Articulo {
     private ArrayList<Servicio> servicios = new ArrayList<Servicio>();
     
     public Promocion(DtPromocion DtProm){
-        String name = DtProm.GetNombre();
+        String name = DtProm.getNombre();
         this.SetNombre(name);
-        this.descuento = DtProm.GetDescuento();
-        this.precioTotal = DtProm.GetPrecio();
+        this.descuento = DtProm.getDescuento();
+        this.precioTotal = DtProm.getPrecio();
     }
     
     public Promocion(String nick, String nombre){
