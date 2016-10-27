@@ -26,7 +26,7 @@ public class ControladorArticulo implements IControladorArticulo{
     }
     
     public boolean CrearPromocion(DtPromocion DtProm){
-        String nameProm = DtProm.GetNombre();
+        String nameProm = DtProm.getNombre();
         ManejadorArticulo manArt = ManejadorArticulo.GetInstance();
         boolean ok = manArt.IsPromocion(nameProm, DtProm.getNickProv());
         
@@ -35,7 +35,7 @@ public class ControladorArticulo implements IControladorArticulo{
             Promocion p = new Promocion(DtProm);
             manArt.AgregarPromocion(p);            
             
-            ManejadorSQL.GetInstance().agregarPromocion(DtProm, nameProm, DtProm.GetServicios());
+            ManejadorSQL.GetInstance().agregarPromocion(DtProm, nameProm, DtProm.getServicios());
         }
         
         return !ok;

@@ -523,8 +523,8 @@ public class ManejadorSQL {
 
         // ALTA DE PROMOCION.
     public boolean agregarPromocion(DtPromocion p, String nickProveedor, ArrayList<String> servicios){
-        String sql1 = "INSERT INTO ARTICULOS(nicknameProveedor, nombre) VALUES ('" + p.getNickProv() + "','" + p.GetNombre()+ "');";
-        String sql2 = "INSERT INTO PROMOCIONES(nicknameProveedor, nombreArticulo, descuento, precio) VALUES ('" + p.getNickProv() + "', '" + p.GetNombre() + "', '" + p.GetDescuento() + "', '" + p.GetPrecio() + "');";
+        String sql1 = "INSERT INTO ARTICULOS(nicknameProveedor, nombre) VALUES ('" + p.getNickProv() + "','" + p.getNombre()+ "');";
+        String sql2 = "INSERT INTO PROMOCIONES(nicknameProveedor, nombreArticulo, descuento, precio) VALUES ('" + p.getNickProv() + "', '" + p.getNombre() + "', '" + p.getDescuento() + "', '" + p.getPrecio() + "');";
         String sql3;
         Statement usuario;
         boolean ret = false;
@@ -535,7 +535,7 @@ public class ManejadorSQL {
             usuario.executeUpdate(sql1);
             usuario.executeUpdate(sql2);
             for(int x = 0; x < servicios.size(); x++){
-                sql3 = "INSERT INTO COMPUESTOS(nicknameProvServ, nombreArticuloServ, nicknameProvProm, nombreArticuloProm) VALUES ('" + p.getNickProv() + "', '" + servicios.get(x) + "', '" + p.getNickProv() + "', '" + p.GetNombre() + "');";
+                sql3 = "INSERT INTO COMPUESTOS(nicknameProvServ, nombreArticuloServ, nicknameProvProm, nombreArticuloProm) VALUES ('" + p.getNickProv() + "', '" + servicios.get(x) + "', '" + p.getNickProv() + "', '" + p.getNombre() + "');";
                 usuario.executeUpdate(sql3); // ingreso las categorias, asumo que estas ya existen debido a que fueron seleccionadas.
             }
             ret = true;
@@ -876,16 +876,18 @@ public class ManejadorSQL {
 
     public Connection getConex() {
         try {
-            Class.forName("com.mysql.jdbc.Driver");
+            //Class.forName("com.mysql.jdbc.Driver");
+            //System.out.println(this.ip);
             Connection c = DriverManager.getConnection("jdbc:mysql://"+ this.ip +":3306/bd_help4traveling?useSSL=false", "root", "tecnoDBweb2016");
             return c;
         } catch (SQLException ex) {
+            //System.out.println(ex);
             return null;
            // Logger.getLogger(ManejadorSQL.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (ClassNotFoundException ex) {
+        /*} catch (ClassNotFoundException ex) {
             Logger.getLogger(ManejadorSQL.class.getName()).log(Level.SEVERE, null, ex);
             return null;
-        }
+        */}
         //return null;
     }
 
