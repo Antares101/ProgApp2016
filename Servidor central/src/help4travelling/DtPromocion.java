@@ -1,19 +1,20 @@
 package help4travelling;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlElement;
 
 @XmlAccessorType(XmlAccessType.FIELD)
-public class DtPromocion {
+public class DtPromocion implements Serializable {
     private String nombre;
     private String nickProv;
     private float descuento;
     private float precio;
     private ArrayList<String> servicios;
         
-    public DtPromocion(){}
+    public DtPromocion(){
+    }
     
     public DtPromocion(String nombre, String nickProv, float descuento, float precio, ArrayList<String> servicios){
        this.nombre=nombre;

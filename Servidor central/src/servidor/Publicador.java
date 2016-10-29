@@ -1,9 +1,7 @@
 package servidor;
 
 import help4travelling.*;
-//import java.sql.Blob;
 import java.util.ArrayList;
-//import java.util.List;
 import javax.jws.WebMethod;
 import javax.jws.WebService;
 import javax.jws.soap.SOAPBinding;
@@ -43,10 +41,11 @@ public class Publicador {
     //Articulos
     
     @WebMethod
-    public ArrayList<DtPromocion> listarPromociones(){
-        System.out.println("++++++" + ICArticulo.listarPromociones().get(0).getNombre());
-        return ICArticulo.listarPromociones();
+    public DtPromocion[] listarPromociones(){
         //return ICArticulo.listarPromociones();
+        ArrayList<DtPromocion> prom = ICArticulo.listarPromociones();             
+        DtPromocion[] ret = prom.toArray(new DtPromocion[prom.size()]);
+        return ret;
     }   
     
     @WebMethod
@@ -66,23 +65,35 @@ public class Publicador {
     }
     
     @WebMethod
-    public ArrayList<DtServicio> serviciosXprov(String nickP){
-        return ICArticulo.ListarServiciosProv(nickP);
+    public DtServicio[] serviciosXprov(String nickP){
+        //return ICArticulo.ListarServiciosProv(nickP);
+        ArrayList<DtServicio> servXprom = ICArticulo.ListarServiciosProv(nickP);             
+        DtServicio[] ret = servXprom.toArray(new DtServicio[servXprom.size()]);
+        return ret;
     }
     
     @WebMethod
-    public ArrayList<DtCategoria> listarCategorias(){
-        return ICCategoria.listarCategorias();
+    public DtCategoria[] listarCategorias(){
+        //return ICCategoria.listarCategorias();
+        ArrayList<DtCategoria> cat = ICCategoria.listarCategorias();             
+        DtCategoria[] ret = cat.toArray(new DtCategoria[cat.size()]);
+        return ret;
     }
     
     @WebMethod
-    public ArrayList<DtServicio> listarServicios(){
-        return ICArticulo.ListarServicios();
+    public DtServicio[] listarServicios(){
+        //return ICArticulo.ListarServicios();
+        ArrayList<DtServicio> serv = ICArticulo.ListarServicios();             
+        DtServicio[] ret = serv.toArray(new DtServicio[serv.size()]);
+        return ret;
     }
     
     @WebMethod
-    public ArrayList<DtServicio> serviciosXcat(String nameCat){
-        return ICCategoria.listarServicios(nameCat);
+    public DtServicio[] serviciosXcat(String nameCat){
+        //return ICCategoria.listarServicios(nameCat);
+        ArrayList<DtServicio> servXcat = ICCategoria.listarServicios(nameCat);             
+        DtServicio[] ret = servXcat.toArray(new DtServicio[servXcat.size()]);
+        return ret;
     }
     
     @WebMethod
@@ -99,8 +110,11 @@ public class Publicador {
     //Reservas
     
     @WebMethod
-    public ArrayList<Integer> listarReservas(String nickname){
-        return ICReserva.listarReservasXcli(nickname);
+    public Integer[] listarReservas(String nickname){
+        //return ICReserva.listarReservasXcli(nickname);
+        ArrayList<Integer> res = ICReserva.listarReservasXcli(nickname);             
+        Integer[] ret = res.toArray(new Integer[res.size()]);
+        return ret;
     }
     
     @WebMethod
@@ -121,8 +135,11 @@ public class Publicador {
     }
     
     @WebMethod
-    public ArrayList<DtInfoReserva> ObtenerDatosReserva(int idRes){
-        return ICReserva.ObtenerInfoArticulosReservados(idRes);
+    public DtInfoReserva[] ObtenerDatosReserva(int idRes){
+        //return ICReserva.ObtenerInfoArticulosReservados(idRes);
+        ArrayList<DtInfoReserva> datRes = ICReserva.ObtenerInfoArticulosReservados(idRes);             
+        DtInfoReserva[] ret = datRes.toArray(new DtInfoReserva[datRes.size()]);
+        return ret;
     }
     
     @WebMethod  
@@ -149,8 +166,11 @@ public class Publicador {
     }
     
     @WebMethod
-    public ArrayList<String> listarProveedores(){
-        return (ArrayList)ICUsuario.listarProveedores();
+    public String[] listarProveedores(){
+        //return (ArrayList)ICUsuario.listarProveedores();
+        ArrayList<String> listProv = (ArrayList)ICUsuario.listarProveedores();             
+        String[] ret = listProv.toArray(new String[listProv.size()]);
+        return ret;
     } 
     
     @WebMethod
@@ -169,13 +189,14 @@ public class Publicador {
     }
 
     @WebMethod
-    public ArrayList<DtProveedor> listarProveedoresDatos(){
+    public DtProveedor[] listarProveedoresDatos(){
         ArrayList<DtProveedor> ret = new ArrayList<DtProveedor>();
         ArrayList<String> provs = (ArrayList)ICUsuario.listarProveedores();
         for(int x = 0; x < provs.size(); x++){
             ret.add(ICUsuario.datosProveedor(provs.get(x).trim()));
-        }
-        return ret;
+        }             
+        DtProveedor[] ret2 = ret.toArray(new DtProveedor[ret.size()]);
+        return ret2;
     }
     
     @WebMethod
