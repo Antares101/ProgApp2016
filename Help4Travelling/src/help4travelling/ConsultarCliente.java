@@ -327,11 +327,11 @@ public class ConsultarCliente extends javax.swing.JFrame {
         if(ReservasCli.getModel().getSize() != 0){
             String NroRes = ReservasCli.getSelectedValue().toString();
             DtReserva DtRes = ICReserva.ObtenerDatosReserva(Integer.parseInt(NroRes));
-            FCCli.setText(Integer.toString(DtRes.GetFecha().getDia()) +"/"+ DtRes.GetFecha().getMes()+"/"+ DtRes.GetFecha().getAnio());
+            FCCli.setText(Integer.toString(DtRes.getDate().getDia()) +"/"+ DtRes.getDate().getMes()+"/"+ DtRes.getDate().getAnio());
             PrecioCli.setText(Float.toString(DtRes.getPrecio()));
-            ArrayList<DtInfoReserva> ListInfoRes = DtRes.GetInfoReservas();
+            ArrayList<DtInfoReserva> ListInfoRes = DtRes.getInfoReserva();
             list3.clear();
-            ListInfoRes.forEach(i -> list3.addElement(i.GetNombreArticulo()));
+            ListInfoRes.forEach(i -> list3.addElement(i.getNameArticulo()));
             Articulo.setModel(list3);
         }
 

@@ -136,11 +136,11 @@ public class CancelarReserva extends javax.swing.JFrame {
         ArrayList<DtReserva> r = ICReserva.listarReservas();
         Object row[] = new Object[5];
         for(int x = 0; x < r.size(); x++){
-            row[0] = r.get(x).GetId();
-            row[1] = r.get(x).GetCliente();
+            row[0] = r.get(x).getId();
+            row[1] = r.get(x).getCli();
             row[2] = r.get(x).getPrecio();
-            row[3] = r.get(x).GetFecha().toString();
-            row[4] = r.get(x).GetEstado().toString();
+            row[3] = r.get(x).getDate().toString();
+            row[4] = r.get(x).getEstado().toString();
             tm.addRow(row);
         }
         
@@ -159,11 +159,11 @@ public class CancelarReserva extends javax.swing.JFrame {
                     ArrayList<DtReserva> r = ICReserva.listarReservas();
                     Object row[] = new Object[5];
                     for(int x = 0; x < r.size(); x++){
-                        row[0] = r.get(x).GetId();
-                        row[1] = r.get(x).GetCliente();
+                        row[0] = r.get(x).getId();
+                        row[1] = r.get(x).getCli();
                         row[2] = r.get(x).getPrecio();
-                        row[3] = r.get(x).GetFecha().toString();
-                        row[4] = r.get(x).GetEstado().toString();
+                        row[3] = r.get(x).getDate().toString();
+                        row[4] = r.get(x).getEstado().toString();
                         tm.addRow(row);
                     }
                 }

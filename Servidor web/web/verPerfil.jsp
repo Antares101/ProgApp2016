@@ -1,8 +1,9 @@
-<%@page import="help4travelling.DtInfoReserva"%>
+<%@page import="java.util.List"%>
+<%@page import="servidor.DtInfoReserva"%>
 <%@page import="java.util.ArrayList"%>
-<%@page import="help4travelling.DtReserva"%>
+<%@page import="servidor.DtReserva"%>
 <%@page import="Modelo.ModelReserva"%>
-<%@page import="help4travelling.DtCliente"%>
+<%@page import="servidor.DtCliente"%>
 <%@page import="Modelo.ModelUsuario"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -53,11 +54,11 @@
                                  
                                     %>
    
-                                    <button style="height: 32px; width: 100%; font-family: Helvetica; font-size: 18px" class="btn btn-primary" data-toggle="modal" data-target="#<%="modal"+(dtres.GetId())%>"><%= dtres.GetId()%></button>
+                                    <button style="height: 32px; width: 100%; font-family: Helvetica; font-size: 18px" class="btn btn-primary" data-toggle="modal" data-target="#<%="modal"+(dtres.getId())%>"><%= dtres.getId()%></button>
                                     
                                     <!-- Modal -->
                                     <!-- COMIENZO MODAL RESERVA -->
-                                    <div id="<%="modal"+dtres.GetId()%>" class="modal fade" role="dialog">
+                                    <div id="<%="modal"+dtres.getId()%>" class="modal fade" role="dialog">
                                         <div class="modal-dialog" style="width: 70%">
                                             <div class="modal-content">
                                                 <div class="modal-header" style="background-color: #4A4C4E; min-height: 50px; max-height: 50px">
@@ -86,19 +87,19 @@
                                                                 </div>
                                                             </div>
                                                             
-                                                            <%  DtReserva res = ModelReserva.getInstance().devolverReserva(dtres.GetId());   %>
+                                                            <%  DtReserva res = ModelReserva.getInstance().devolverReserva(dtres.getId());   %>
                                                             <script>
                                                        
                                                             </script>
                                                             <div class="col-md-4">
                                                                 <div class="row" style="height: 20%; min-height: 30%; margin-top: 20px">
-                                                                    <h3 style="margin-top: 7px; margin-left: 10px; border-bottom-style: solid; border-color: #01529e"><%= res.GetId() %></h3>
+                                                                    <h3 style="margin-top: 7px; margin-left: 10px; border-bottom-style: solid; border-color: #01529e"><%= res.getId() %></h3>
                                                                 </div>
                                                                 <div class="row" style="height: 20%; min-height: 30%">
                                                                     <h3 style="margin-top: 7px; margin-left: 10px; border-bottom-style: solid; border-color: #01529e"><%= res.getPrecio() %></h3>
                                                                 </div>
                                                                 <div class="row" style="height: 20%; min-height: 30%">
-                                                                    <h3 style="margin-top: 7px; margin-left: 10px; border-bottom-style: solid; border-color: #01529e"><%= res.GetEstado().toString() %></h3>
+                                                                    <h3 style="margin-top: 7px; margin-left: 10px; border-bottom-style: solid; border-color: #01529e"><%= res.getEstado().toString() %></h3>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -111,14 +112,14 @@
                                                             <div class="col-md-12">
                                                                 
                                                                 <%
-                                                                    ArrayList<DtInfoReserva> infores = dtres.GetInfoReservas();
+                                                                    List<DtInfoReserva> infores = dtres.getInfoReserva();
                                                                     for(int e = 0; e < infores.size(); e++){
                                                                 %>
                                                                 
                                                                     <!-- comienzo fila a tener por cada articulo en la reserva -->
                                                                     <div class="row" style="height: 30%; max-height: 43%; min-height: 30%; background-color: #E6E6E6">
                                                                         <div class="row" style="width: 100%; margin-left: 0px; height: 40%; max-height: 40%; min-height: 40%; background-color: white; border-bottom-style: solid; border-color: #01529e; border-size: 9px">
-                                                                            <h4 style="margin-top: 9px; margin-left: 20px; color: #01529e; "><%= infores.get(e).GetNombreArticulo() %></h4>
+                                                                            <h4 style="margin-top: 9px; margin-left: 20px; color: #01529e; "><%= infores.get(e).getNameArticulo() %></h4>
                                                                         </div>
                                                                         <div class="row" style="width: 100%; margin-left: 0px; height: 60%; max-height: 60%; min-height: 60%;">
                                                                             <div class="col-md-4">
@@ -138,7 +139,7 @@
                                                                                     </h4>
                                                                                 </div>
                                                                                 <div class="col-md-7">
-                                                                                    <h4 style="font-family: helvetica"><%= infores.get(e).GetCantidad() %></h4>
+                                                                                    <h4 style="font-family: helvetica"><%= infores.get(e).getCantidad() %></h4>
                                                                                 </div>
                                                                             </div>
                                                                             <div class="col-md-4">
@@ -185,9 +186,9 @@
                                 </center>
                             </div>
                             <div class="col-md-6" style="height: 85%">
-                                <div class="row" style="height: 25%; max-height: 25%"></div>
+                                <div class="row" style="height: 15%; max-height: 15%"></div>
                                 <div class="row" style="height: 50%; max-height: 50%">
-                                    <img src="" class="img-rounded img-responsive">
+                                    <img src="devolverImagenUsuario?nickU=<%= c.getNick().trim()%>" class="img-rounded img-responsive">
                                 </div>
                                 <div class="row" style="height: 25%; max-height: 25%"></div>
                             </div>

@@ -1,8 +1,6 @@
 package help4travelling;
 
-import java.sql.Blob;
 import java.util.ArrayList;
-import java.util.Set;
 
 public class DtCliente {
     
@@ -12,73 +10,77 @@ public class DtCliente {
     private String apellido;
     private String email;
     private DtFecha fechaN;
-    private Blob[] avatar;
     private ArrayList<Integer> reservas;
     
-    public DtCliente(String nick, String nombre, String apellido, String email, DtFecha fechaN, Blob[] avatar, ArrayList<Integer> r){
+    public DtCliente(){
+    }
+    
+    public DtCliente(String nick, String nombre, String apellido, String email, DtFecha fechaN, ArrayList<Integer> r, String clave){
         this.nick=nick;
         this.nombre=nombre;
         this.apellido=apellido;
         this.email=email;
         this.fechaN=fechaN;
-        this.avatar=avatar;
         this.reservas=r;
-    }
-    
-    public DtCliente(String nick, String nombre, String apellido, String email, DtFecha fechaN, Blob[] avatar, ArrayList<Integer> r, String clave){
-        this.nick=nick;
         this.clave=clave;
-        this.nombre=nombre;
-        this.apellido=apellido;
-        this.email=email;
-        this.fechaN=fechaN;
-        this.avatar=avatar;
-        this.reservas=r;
-    }
-    
-    public DtCliente(String nick, String nombre, String apellido, String email, DtFecha fechaN, ArrayList<Integer> r){
-        this.nick=nick;
-        this.nombre=nombre;
-        this.apellido=apellido;
-        this.email=email;
-        this.fechaN=fechaN;
-        this.reservas=r;
     }
 
-    public ArrayList<Integer> getReservas() {
-        return reservas;
-    }
-    
-    public String getNick(){
-        return this.nick;
-    }
-    
-    public String getNombre(){
-        return this.nombre;
-    }
-    
-    public String getApellido(){
-        return this.apellido;
-    }
-    
-    public String getEmail(){
-        return this.email;
-    }
-    
-    public DtFecha getFechaN(){
-        return this.fechaN;
-    }
-    
-    public Blob[] getAvatar(){
-        return this.avatar;
+    public String getNick() {
+        return nick;
     }
 
     public String getClave() {
         return clave;
     }
 
+    public String getNombre() {
+        return nombre;
+    }
+
+    public String getApellido() {
+        return apellido;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public DtFecha getFechaN() {
+        return fechaN;
+    }
+
+    public ArrayList<Integer> getReservas() {
+        return reservas;
+    }
+
+    public void setNick(String nick) {
+        this.nick = nick;
+    }
+
     public void setClave(String clave) {
         this.clave = clave;
     }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public void setApellido(String apellido) {
+        this.apellido = apellido;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public void setFechaN(DtFecha fechaN) {
+        this.fechaN = fechaN;
+    }
+
+    public void setReservas(ArrayList<Integer> reservas) {
+        this.reservas = reservas;
+    }
+
+    
     
 }

@@ -5,7 +5,8 @@
  */
 package Control;
 
-import help4travelling.DtInfoReserva;
+//import help4travelling.DtInfoReserva;
+import servidor.DtInfoReserva;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
@@ -62,7 +63,7 @@ public class AgregarAlCarrito extends HttpServlet {
             session = request.getSession();
         }
         listInfoRes = (ArrayList<DtInfoReserva>) session.getAttribute("ListaInfoRes");
-        System.out.println(listInfoRes);
+        //System.out.println(listInfoRes);
         if (listInfoRes == null){
             ArrayList<DtInfoReserva> carrito2 = new ArrayList<DtInfoReserva>();
             carrito2.add(carrito);
@@ -72,8 +73,8 @@ public class AgregarAlCarrito extends HttpServlet {
             int pos = 0;
             DtInfoReserva carrito3 = null;
             for (int i=0; i < listInfoRes.size(); i++){
-                if(listInfoRes.get(i).GetNombreArticulo().equals(carrito.GetNombreArticulo())  && listInfoRes.get(i).getNickProveedor().equals(carrito.getNickProveedor())){
-                    carrito3 = new DtInfoReserva(null, null, carrito.GetCantidad() + listInfoRes.get(i).GetCantidad(), listInfoRes.get(i).GetNombreArticulo(), listInfoRes.get(i).getNickProveedor(), listInfoRes.get(i).getPrecioArticulo());
+                if(listInfoRes.get(i).getNameArticulo().equals(carrito.getNameArticulo())  && listInfoRes.get(i).getNickProveedor().equals(carrito.getNickProveedor())){
+                    carrito3 = new DtInfoReserva(null, null, carrito.getCantidad() + listInfoRes.get(i).getCantidad(), listInfoRes.get(i).getNameArticulo(), listInfoRes.get(i).getNickProveedor(), listInfoRes.get(i).getPrecioArticulo());
                     pos = i;
                     ent = true;
                 }

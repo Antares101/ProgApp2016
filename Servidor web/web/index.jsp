@@ -1,9 +1,3 @@
-<%-- 
-    Document   : index
-    Created on : 16/09/2016, 12:45:38 PM
-    Author     : Agustin
---%>
-
 <%@page import="java.sql.PreparedStatement"%>
 <%@page import="java.util.logging.Logger"%>
 <%@page import="java.util.logging.Level"%>
@@ -12,9 +6,8 @@
 <%@page import="java.util.concurrent.ExecutionException"%>
 <%@page import="java.sql.DriverManager"%>
 <%@page import="java.sql.Connection"%>
-<%@page import="help4travelling.DtCliente"%>
-<%@page import="help4travelling.DtFecha"%>
-<%@page import="help4travelling.ManejadorSQL"%>
+<%@page import="servidor.DtCliente"%>
+<%@page import="servidor.DtFecha"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html><head>

@@ -1,10 +1,10 @@
 package Control;
 
 import Modelo.ModelArticulo;
-import help4travelling.DtCategoria;
+import servidor.DtCategoria;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.ArrayList;
+import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -16,7 +16,7 @@ public class DevolverCategoria extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
         try {
-            ArrayList<DtCategoria> cats = ModelArticulo.getInstance().listarCategorias();
+            List<DtCategoria> cats = ModelArticulo.getInstance().listarCategorias();
             request.setAttribute("categorias", cats);
         } finally {
             out.close();

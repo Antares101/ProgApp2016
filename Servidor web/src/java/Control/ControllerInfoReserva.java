@@ -7,8 +7,8 @@ package Control;
 
 import Modelo.ModelReserva;
 import com.google.gson.Gson;
-import help4travelling.DtInfoReserva;
-import help4travelling.DtReserva;
+import servidor.DtInfoReserva;
+import servidor.DtReserva;
 import java.io.IOException;
 import java.util.List;
 import javax.servlet.ServletException;
@@ -54,8 +54,9 @@ public class ControllerInfoReserva extends HttpServlet {
             }
         } else {
             String nick = (String) request.getSession().getAttribute("usuario_logueado");
-            Integer[] idReservas = modRes.ObtenerReservas(nick);
-            request.setAttribute("arrayReservas", idReservas);
+            List<Integer> idReservas = modRes.ObtenerReservas(nick);
+            Integer[] Ires = idReservas.toArray(new Integer[idReservas.size()]);
+            request.setAttribute("arrayReservas", Ires);
             request.setAttribute("namecli", nick);
             request.getRequestDispatcher("consultarReservas.jsp").forward(request, response);
         }       

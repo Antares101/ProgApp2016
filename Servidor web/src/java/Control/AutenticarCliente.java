@@ -1,8 +1,6 @@
 package Control;
 
 import Modelo.ModelUsuario;
-import help4travelling.ManejadorSQL;
-import help4travelling.ManejadorSQL;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;

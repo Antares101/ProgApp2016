@@ -361,7 +361,7 @@ public class IngresarUsuario extends javax.swing.JFrame {
             String pass = new String(txt_pass.getPassword());
             
             DtFecha nacimiento = new DtFecha(Integer.valueOf(cmb_anio_u.getSelectedItem().toString().trim()),Integer.valueOf(cmb_mes.getSelectedItem().toString().trim()),Integer.valueOf(cmb_dia.getSelectedItem().toString().trim()));
-            if (!ICUsuario.AltaCliente(new DtCliente (txt_nickname.getText(), txt_nombre.getText(), txt_apellido.getText(), txt_email.getText(), nacimiento,null,null,pass)))
+            if (!ICUsuario.AltaCliente(new DtCliente (txt_nickname.getText(), txt_nombre.getText(), txt_apellido.getText(), txt_email.getText(), nacimiento,null,pass)))
                 JOptionPane.showMessageDialog(null, "Nickname o email repetidos","Error",JOptionPane.WARNING_MESSAGE);
             else{
                 try {
@@ -385,7 +385,7 @@ public class IngresarUsuario extends javax.swing.JFrame {
             String pass = new String(txt_pass.getPassword());
                     
             DtFecha nacimiento = new DtFecha(Integer.valueOf(cmb_anio_u.getSelectedItem().toString().trim()),Integer.valueOf(cmb_mes.getSelectedItem().toString().trim()),Integer.valueOf(cmb_dia.getSelectedItem().toString().trim()));
-            if (!ICUsuario.AltaProveedor(new DtProveedor (txt_nickname.getText(), txt_nombre.getText(), txt_apellido.getText(), txt_email.getText(),nacimiento,null,txt_nombreEmpresa.getText(),txt_linkEmpresa.getText(), null, pass)))
+            if (!ICUsuario.AltaProveedor(new DtProveedor (txt_nickname.getText(), txt_nombre.getText(), txt_apellido.getText(), txt_email.getText(),nacimiento,txt_nombreEmpresa.getText(),txt_linkEmpresa.getText(), null, pass)))
                 JOptionPane.showMessageDialog(null, "Nickname o email repetidos","Error",JOptionPane.WARNING_MESSAGE);
             else{
                 try {

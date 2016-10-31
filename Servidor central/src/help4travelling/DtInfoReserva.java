@@ -9,6 +9,10 @@ public class DtInfoReserva {
     private int idReserva;
     private float precioArticulo;
 
+    public DtInfoReserva() {
+
+    }
+    
     public DtInfoReserva(DtFecha fechaIni, DtFecha fechaFin, int cantidad, String nameArticulo, String nickProveedor, int idReserva, float precioArticulo) {
         this.fechaIni = fechaIni;
         this.fechaFin = fechaFin;
@@ -36,33 +40,63 @@ public class DtInfoReserva {
         this.fechaFin = fechaFin;
         this.precioArticulo = precio;
     }
-    
-    public DtFecha GetFechaIni(){
-        return this.fechaIni;
+
+    public DtFecha getFechaIni() {
+        return fechaIni;
     }
-    
-    public DtFecha GetFechaFin(){
-        return this.fechaFin;
+
+    public DtFecha getFechaFin() {
+        return fechaFin;
     }
-    
-    public int GetCantidad(){
-        return this.cantidad;
+
+    public int getCantidad() {
+        return cantidad;
     }
-    
-    public String GetNombreArticulo(){
-        return this.nameArticulo;
-    }
-    
-    public int GetIdReserva(){
-        return this.idReserva;
+
+    public String getNameArticulo() {
+        return nameArticulo;
     }
 
     public String getNickProveedor() {
         return nickProveedor;
     }
-    
-    public float getPrecioArticulo() {
-        return this.precioArticulo;
+
+    public int getIdReserva() {
+        return idReserva;
     }
+
+    public float getPrecioArticulo() {
+        return precioArticulo;
+    }
+
+    public void setFechaIni(DtFecha fechaIni) {
+        this.fechaIni = fechaIni;
+    }
+
+    public void setFechaFin(DtFecha fechaFin) {
+        this.fechaFin = fechaFin;
+    }
+
+    public void setCantidad(int cantidad) {
+        this.cantidad = cantidad;
+    }
+
+    public void setNameArticulo(String nameArticulo) {
+        this.nameArticulo = nameArticulo;
+    }
+
+    public void setNickProveedor(String nickProveedor) {
+        this.nickProveedor = nickProveedor;
+    }
+
+    public void setIdReserva(int idReserva) {
+        this.idReserva = idReserva;
+    }
+
+    public void setPrecioArticulo(float precioArticulo) {
+        this.precioArticulo = precioArticulo;
+    }
+    
+    
   
 }

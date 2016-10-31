@@ -219,14 +219,14 @@ public class ConsultarReserva extends javax.swing.JFrame {
         //asd
         list2.clear();
         DtReserva dtRes = ICReserva.ObtenerDatosReserva(Integer.parseInt(cmb_reservasI.getSelectedItem().toString()));
-        String fecha = Integer.toString(dtRes.GetFecha().getDia()) + "/" + Integer.toString(dtRes.GetFecha().getMes()) + "/" + Integer.toString(dtRes.GetFecha().getAnio());
+        String fecha = Integer.toString(dtRes.getDate().getDia()) + "/" + Integer.toString(dtRes.getDate().getMes()) + "/" + Integer.toString(dtRes.getDate().getAnio());
         txt_creacionR.setText(fecha);
         txt_precioR.setText(Float.toString(dtRes.getPrecio()));
-        txt_estadoR.setText(dtRes.GetEstado().toString());
-        List<DtInfoReserva> infoRes = dtRes.GetInfoReservas();
+        txt_estadoR.setText(dtRes.getEstado().toString());
+        List<DtInfoReserva> infoRes = dtRes.getInfoReserva();
 
         List<String> lnomser = new ArrayList<String>();
-        infoRes.forEach(i -> lnomser.add(i.GetNombreArticulo()));
+        infoRes.forEach(i -> lnomser.add(i.getNameArticulo()));
 
         //DefaultListModel<String> list2 = new DefaultListModel<>();
 
@@ -270,7 +270,7 @@ public class ConsultarReserva extends javax.swing.JFrame {
         //Carga las Id de Reservas
         ArrayList<DtReserva> arrres = ICReserva.listarReservas();
         List<String> idReservas = new ArrayList<String>();
-        arrres.forEach(i -> idReservas.add(Integer.toString(i.GetId()))); 
+        arrres.forEach(i -> idReservas.add(Integer.toString(i.getId()))); 
         cmb_reservasI.setModel(new DefaultComboBoxModel(idReservas.toArray()));
         txt_creacionR.setText("");
         txt_precioR.setText("");
@@ -284,13 +284,13 @@ public class ConsultarReserva extends javax.swing.JFrame {
     private void jList_reservasRValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_jList_reservasRValueChanged
         DtReserva dtRes = ICReserva.ObtenerDatosReserva(this.idReserva);
         String nomart = jList_reservasR.getSelectedValue();
-        List<DtInfoReserva> lir = new ArrayList<DtInfoReserva>(dtRes.GetInfoReservas());
+        List<DtInfoReserva> lir = new ArrayList<DtInfoReserva>(dtRes.getInfoReserva());
         for(DtInfoReserva i: lir){
-            if(i.GetNombreArticulo().equals(nomart)){
-                txt_cantidadR.setText(Integer.toString(i.GetCantidad()));
-                if (i.GetFechaIni() != null && i.GetFechaFin() != null){
-                    txt_finicio.setText(Integer.toString(i.GetFechaIni().getDia()) + "/" + Integer.toString(i.GetFechaIni().getMes()) + "/" + Integer.toString(i.GetFechaIni().getAnio()));
-                    txt_ffin.setText(Integer.toString(i.GetFechaFin().getDia()) + "/" + Integer.toString(i.GetFechaFin().getMes()) + "/" + Integer.toString(i.GetFechaFin().getAnio()));
+            if(i.getNameArticulo().equals(nomart)){
+                txt_cantidadR.setText(Integer.toString(i.getCantidad()));
+                if (i.getFechaIni() != null && i.getFechaFin() != null){
+                    txt_finicio.setText(Integer.toString(i.getFechaIni().getDia()) + "/" + Integer.toString(i.getFechaIni().getMes()) + "/" + Integer.toString(i.getFechaIni().getAnio()));
+                    txt_ffin.setText(Integer.toString(i.getFechaFin().getDia()) + "/" + Integer.toString(i.getFechaFin().getMes()) + "/" + Integer.toString(i.getFechaFin().getAnio()));
                 }else{
                     txt_finicio.setText("");
                     txt_ffin.setText("");

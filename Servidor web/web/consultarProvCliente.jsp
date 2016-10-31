@@ -1,16 +1,14 @@
-<%@page import="help4travelling.DtServicio"%>
+<%@page import="servidor.DtServicio"%>
 <%@page import="javax.servlet.jsp.PageContext"%>
 <%@page import="Modelo.ModelArticulo"%>
 <%@page import="java.util.List"%>
 <%@page import="java.lang.String"%>
-<%@page import="help4travelling.DtProveedor"%>
-<%@page import="help4travelling.Usuario"%>
+<%@page import="servidor.DtProveedor"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="java.sql.DriverManager"%>
 <%@page import="java.sql.ResultSet"%>
 <%@page import="java.sql.Statement"%>
 <%@page import="java.sql.Connection"%>
-<%@page import="help4travelling.ManejadorSQL"%>
 <%@page import="Modelo.ModelUsuario"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -29,7 +27,7 @@
 <!---->
     
     <%!
-        ArrayList<DtProveedor> p = ModelUsuario.getInstance().listarProveedoresDatos();
+        List<DtProveedor> p = ModelUsuario.getInstance().listarProveedoresDatos();
     %>
     
     <div class="divPrincipal">
@@ -137,7 +135,7 @@
                                   <div class="modal-body" style="height: 70%; max-height: 70%; min-height: 420px; overflow-y: auto">
                             
                             <%   for(int e = 0; e < p.get(x).getServicio().size(); e++){   %>
-                            <%      ArrayList<DtServicio> s = ModelArticulo.getInstance().serviciosXprov(p.get(x).getNick().trim());  %>
+                            <%      List<DtServicio> s = ModelArticulo.getInstance().serviciosXprov(p.get(x).getNick().trim());  %>
                                       
                                     <div class="row" style="background-color: #E6E6E6; min-height: 390px; max-height: 390px">
                                       <div class="row" style="width: 100%; margin-left: 0; min-height: 40px; max-height: 40px; background-color: #D0D0D0">
@@ -146,27 +144,27 @@
                                     <div class="row" style="width: 100%; margin-left: 0; min-height: 350px; max-height: 350px;">
                                       <!-- CARRUSEL DE IMAGENES -->
                                       <div class="col-md-6">
-                                        <div id="imgs" class="carousel slide" data-ride="carousel" style="margin-top: 20px">
+                                        <div id="imgs<%= e+""+x %>" class="carousel slide" data-ride="carousel" style="margin-top: 20px">
                                           <ol class="carousel-indicators">
-                                            <li data-target="#imgs" data-slide-to="0" class="active"></li>
-                                            <li data-target="#imgs" data-slide-to="1"></li>
-                                            <li data-target="#imgs" data-slide-to="2"></li>
+                                            <li data-target="#imgs<%= e+""+x %>" data-slide-to="0" class="active"></li>
+                                            <li data-target="#imgs<%= e+""+x %>" data-slide-to="1"></li>
+                                            <li data-target="#imgs<%= e+""+x %>" data-slide-to="2"></li>
                                           </ol>
                                           <div class="carousel-inner" role="listbox">
                                             <div class="item active">
-                                              <img src="img/R4IMYQNVRI.jpg" style="min-height: 315px; height: auto; max-height: 315px; max-width: 100%">
+                                              <img src="devolverImagenServicio?nickP=<%=s.get(e).getNickProveedor()%>&nomA=<%=s.get(e).getNombre()%>&campo=1" style="min-height: 270px; max-height: 270px; max-width: 470px; min-width: 470px">
                                             </div>
                                             <div class="item">
-                                              <img src="img/YH1RSSLXJC.jpg" style="min-height: 315px; height: auto; max-height: 315px; max-width: 100%">
+                                              <img src="devolverImagenServicio?nickP=<%=s.get(e).getNickProveedor()%>&nomA=<%=s.get(e).getNombre()%>&campo=2" style="min-height: 270px; max-height: 270px; max-width: 470px; min-width: 470px">
                                             </div>
                                             <div class="item">
-                                              <img src="img/R4IMYQNVRI.jpg" style="min-height: 315px; height: auto; max-height: 315px; max-width: 100%">
+                                              <img src="devolverImagenServicio?nickP=<%=s.get(e).getNickProveedor()%>&nomA=<%=s.get(e).getNombre()%>&campo=3" style="min-height: 270px; max-height: 270px; max-width: 470px; min-width: 470px">
                                             </div>
                                           </div>
-                                          <a class="left carousel-control" href="#imgs" role="button" data-slide="prev">
+                                          <a class="left carousel-control" href="#imgs<%= e+""+x %>" role="button" data-slide="prev">
                                             <span aria-hidden="true" style="font-family: Helvetica; font-style: italic; font-size: 26px;">&lt;</span>
                                           </a>
-                                          <a class="right carousel-control" href="#imgs" role="button" data-slide="next">
+                                          <a class="right carousel-control" href="#imgs<%= e+""+x %>" role="button" data-slide="next">
                                             <span aria-hidden="true" style="font-family: Helvetica; font-style: italic; font-size: 26px">&gt;</span>
                                           </a>
                                         </div>

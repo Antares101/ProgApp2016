@@ -2,7 +2,7 @@ package Control;
 
 import Modelo.ModelArticulo;
 import com.google.gson.Gson;
-import help4travelling.DtPromocion;
+import servidor.DtPromocion;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
@@ -22,25 +22,25 @@ public class DevolverPromocion extends HttpServlet {
         try {
             if (ajax) {
                 if (promo == null){
-                    String descuento = String.valueOf(p.GetDescuento());
+                    String descuento = String.valueOf(p.getDescuento());
                     response.setContentType("text/plain");
                     response.setCharacterEncoding("UTF-8");
                     response.getWriter().write(descuento);
 
                 }else if (promo2 == null){
-                    String precio = String.valueOf(p.GetPrecio());
+                    String precio = String.valueOf(p.getPrecio());
                     response.setContentType("text/plain");
                     response.setCharacterEncoding("UTF-8");
                     response.getWriter().write(precio);
                 }else {
-                    List<String> servicos = p.GetServicios();
+                    List<String> servicos = p.getServicios();
                     String json = new Gson().toJson(servicos);
                     response.setContentType("application/json");
                     response.setCharacterEncoding("UTF-8");
                     response.getWriter().write(json);   
                 }
             } else {
-                System.out.println("????????");
+                //System.out.println("????????");
                 // Handle regular (JSP) response.
             }
             

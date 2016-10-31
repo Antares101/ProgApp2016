@@ -2,10 +2,9 @@ package Control;
 
 import Modelo.ModelArticulo;
 import com.google.gson.Gson;
-import help4travelling.DtServicio;
+import servidor.DtServicio;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.ArrayList;
 import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;

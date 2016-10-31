@@ -1,4 +1,5 @@
-<%@page import="help4travelling.DtPromocion"%>
+<%@page import="java.util.List"%>
+<%@page import="servidor.DtPromocion"%>
 <%@page import="Modelo.ModelArticulo"%>
 <%@page import="Modelo.ModelUsuario"%>
 <%@page import="java.util.ArrayList"%>
@@ -47,11 +48,11 @@
                     </tr>
                   </thead>
                   <tbody style="color: black; font-family: Helvetica; font-size: 13">
-                    <%! ArrayList<DtPromocion> prom = ModelArticulo.getInstance().listarPromociones(); %>
+                    <%! List<DtPromocion> prom = ModelArticulo.getInstance().listarPromociones(); %>
                     <% for(int i=0; i<prom.size(); i++){ %>
                     <tr>
                       <td style="border-bottom-style: solid; border-width: 1px; border-color: #01529e"><%= prom.get(i).getNickProv() %></td>
-                      <td style="border-bottom-style: solid; border-width: 1px; border-color: #01529e"><%= prom.get(i).GetNombre() %></td>
+                      <td style="border-bottom-style: solid; border-width: 1px; border-color: #01529e"><%= prom.get(i).getNombre() %></td>
                       <% } %>
                     </tr>
                   </tbody>

@@ -14,9 +14,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.util.*;
 import javax.servlet.http.HttpSession;
-import help4travelling.DtInfoReserva;
-import help4travelling.DtFecha;
-import help4travelling.Estado;
+import servidor.DtInfoReserva;
+import servidor.DtFecha;
+import servidor.Estado;
 
 
 
@@ -27,12 +27,7 @@ public class ControllerReserva extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
         try {
-            
-            Calendar fecha = new GregorianCalendar();
-            int anio = fecha.get(Calendar.YEAR);
-            int mes = fecha.get(Calendar.MONTH);
-            int dia = fecha.get(Calendar.DAY_OF_MONTH);
-            DtFecha fechaActual = new DtFecha (anio, mes, dia);
+            DtFecha fechaActual = new DtFecha();
             HttpSession session=request.getSession();
             ArrayList<DtInfoReserva> infodeReserva = (ArrayList<DtInfoReserva>) session.getAttribute("ListaInfoRes");
             session.setAttribute("ListaInfoRes", null);
@@ -40,14 +35,14 @@ public class ControllerReserva extends HttpServlet {
             //System.out.println(infodeReserva.size());
             for(int i=0; i< infodeReserva.size(); i++)
             {
-               precio+=infodeReserva.get(i).getPrecioArticulo() * infodeReserva.get(i).GetCantidad();
+               precio+=infodeReserva.get(i).getPrecioArticulo() * infodeReserva.get(i).getCantidad();
             }
             
             String nickname = request.getSession().getAttribute("usuario_logueado").toString();
              
             
             ModelReserva modRes = ModelReserva.getInstance();
-            modRes.agregarRes(Estado.Registrada, fechaActual, infodeReserva, nickname, precio);
+            modRes.agregarRes(Estado.REGISTRADA, fechaActual, infodeReserva, nickname, precio);
             request.getRequestDispatcher("inicioCliente.jsp").forward(request, response);
             
         } finally {

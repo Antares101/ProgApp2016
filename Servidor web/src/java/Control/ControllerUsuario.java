@@ -6,8 +6,8 @@
 package Control;
 
 import Modelo.ModelUsuario;
-import help4travelling.DtCliente;
-import help4travelling.DtFecha;
+import servidor.DtCliente;
+import servidor.DtFecha;
 import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -61,9 +61,9 @@ public class ControllerUsuario extends HttpServlet {
             request.getRequestDispatcher("index.jsp").forward(request, response);
         }
         
-        DtCliente dtcli = new DtCliente(nick, name, lastname, mail, new DtFecha(fnac), null, null, pass);
-        System.out.println(nick +"-"+ name +"-"+ lastname +"-"+ mail +"-"+ pass);
-        System.out.println(fnac);
+        DtCliente dtcli = new DtCliente(nick, name, lastname, mail, new DtFecha(fnac), null, pass);
+        //System.out.println(nick +"-"+ name +"-"+ lastname +"-"+ mail +"-"+ pass);
+        //System.out.println(fnac);
         modUsu.agregarCliente(dtcli);
 
         request.setAttribute("mensaje", "Se agrego el cliente");

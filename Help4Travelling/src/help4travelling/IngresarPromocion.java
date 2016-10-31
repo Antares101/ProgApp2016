@@ -357,7 +357,7 @@ public class IngresarPromocion extends javax.swing.JFrame {
                     }
 
                     if((l1.contains(list_serviciosProv.getSelectedValue().toString())){
-                        System.out.println("banderarequeteloca1");
+                       // System.out.println("banderarequeteloca1");
                         //((DefaultListModel)list_serviciosInc.getModel()).addElement(list_serviciosProv.getSelectedValue());
                     }
 

@@ -1,6 +1,5 @@
 package Modelo;
 
-import help4travelling.IControladorUsuario;
 import java.io.IOException;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -10,8 +9,6 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 public class login extends HttpServlet {
-    
-    private static IControladorUsuario ICUsuario;
     
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

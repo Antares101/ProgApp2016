@@ -1,16 +1,13 @@
+<%@page import="java.util.List"%>
 <%@page import="Modelo.ModelArticulo"%>
-<%@page import="help4travelling.DtServicio"%>
-<%@page import="help4travelling.DtCategoria"%>
-<%@page import="help4travelling.IControladorCategoria"%>
+<%@page import="servidor.DtServicio"%>
+<%@page import="servidor.DtCategoria"%>
 <%@page import="java.lang.String"%>
-<%@page import="help4travelling.Usuario"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="java.sql.DriverManager"%>
 <%@page import="java.sql.ResultSet"%>
 <%@page import="java.sql.Statement"%>
 <%@page import="java.sql.Connection"%>
-<%@page import="help4travelling.ManejadorSQL"%>
-<%@page import="help4travelling.Factory"%>
 <%@page import="Modelo.ModelUsuario"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -63,7 +60,7 @@
                 </h3>
               </div>
                 
-                <%!   ArrayList<DtCategoria> c = ModelArticulo.getInstance().listarCategorias();   %>
+                <%!   List<DtCategoria> c = ModelArticulo.getInstance().listarCategorias();   %>
                 
               <!-- FILA A TENER POR CADA CATEGORIA -->
               <%    for(int x=0; x < c.size(); x++){    %>
@@ -79,7 +76,7 @@
           <div id="listaQNoEsLista" class="col-md-9" style="height: 550px; max-height: 550px; overflow-y: auto; background-color: #E6E6E6">
             <!-- COMIENZO FILA A TENER POR CADA SERVICIO -->
             
-            <% ArrayList<DtServicio> s = ModelArticulo.getInstance().listarServicios(); %>
+            <% List<DtServicio> s = ModelArticulo.getInstance().listarServicios(); %>
             
             <%   for(int x = 0; x < s.size(); x++){   %>
             
@@ -149,27 +146,27 @@
                           <div class="row" style="margin-left: 0; width: 100%; height: 270px; max-height: 270px; min-height: 270px">
                             <div class="col-md-3"></div>
                             <div class="col-md-6">
-                              <div id="imgs" class="carousel slide" data-ride="carousel">
+                              <div id="imgs<%= x %>" class="carousel slide" data-ride="carousel">
                                 <ol class="carousel-indicators">
-                                  <li data-target="#imgs" data-slide-to="0" class="active"></li>
-                                  <li data-target="#imgs" data-slide-to="1"></li>
-                                  <li data-target="#imgs" data-slide-to="2"></li>
+                                  <li data-target="#imgs<%= x %>" data-slide-to="0" class="active"></li>
+                                  <li data-target="#imgs<%= x %>" data-slide-to="1"></li>
+                                  <li data-target="#imgs<%= x %>" data-slide-to="2"></li>
                                 </ol>
                                 <div class="carousel-inner" role="listbox">
                                   <div class="item active">
-                                    <img src="R4IMYQNVRI.jpg" style="min-height: 270px; max-height: 270px; max-width: 470px; min-width: 470px">
+                                      <img src="devolverImagenServicio?nickP=<%=s.get(x).getNickProveedor()%>&nomA=<%=s.get(x).getNombre()%>&campo=1" style="min-height: 270px; max-height: 270px; max-width: 470px; min-width: 470px">
                                   </div>
                                   <div class="item">
-                                    <img src="YH1RSSLXJC.jpg" style="min-height: 270px; max-height: 270px; max-width: 470px; min-width: 470px">
+                                    <img src="devolverImagenServicio?nickP=<%=s.get(x).getNickProveedor()%>&nomA=<%=s.get(x).getNombre()%>&campo=2" style="min-height: 270px; max-height: 270px; max-width: 470px; min-width: 470px">
                                   </div>
                                   <div class="item">
-                                    <img src="left.svg" style="min-height: 270px; max-height: 270px; max-width: 470px; min-width: 470px">
+                                    <img src="devolverImagenServicio?nickP=<%=s.get(x).getNickProveedor()%>&nomA=<%=s.get(x).getNombre()%>&campo=3" style="min-height: 270px; max-height: 270px; max-width: 470px; min-width: 470px">
                                   </div>
                                 </div>
-                                <a class="left carousel-control" href="#imgs" role="button" data-slide="prev">
+                                <a class="left carousel-control" href="#imgs<%= x %>" role="button" data-slide="prev">
                                   <span aria-hidden="true" style="font-family: Helvetica; font-style: italic; font-size: 26px">&lt;</span>
                                 </a>
-                                <a class="right carousel-control" href="#imgs" role="button" data-slide="next">
+                                <a class="right carousel-control" href="#imgs<%= x %>" role="button" data-slide="next">
                                   <span aria-hidden="true" style="font-family: Helvetica; font-style: italic; font-size: 26px">&gt;</span>
                                 </a>
                               </div>

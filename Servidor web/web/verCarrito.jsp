@@ -1,7 +1,7 @@
-<%@page import="help4travelling.DtServicio"%>
-<%@page import="help4travelling.DtPromocion"%>
+<%@page import="servidor.DtServicio"%>
+<%@page import="servidor.DtPromocion"%>
 <%@page import="Modelo.ModelArticulo"%>
-<%@page import="help4travelling.DtInfoReserva"%>
+<%@page import="servidor.DtInfoReserva"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="Modelo.ModelReserva"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -84,11 +84,11 @@
                   <td>
                     <div class="col-md-12" style="height: 150px">
                       <div class="row" style="width: 100%; margin-left: 0px; height: 25%; min-height: 25%; max-height: 25%; background-color: #e0e0e0; border-left-style: solid; border-width: 5px; border-color: #01529e">
-                        <h3 style="margin-top: 7px; margin-left: 10; font-family: Helvetica; color: #01529e"><%= lserv.get(i).GetNombreArticulo() %></h3>
+                        <h3 style="margin-top: 7px; margin-left: 10; font-family: Helvetica; color: #01529e"><%= lserv.get(i).getNameArticulo() %></h3>
                       </div>
                       <div class="row" style="width: 100%; margin-left: 0px; height: 75%; min-height: 75%; max-height: 75%; overflow-y: auto">
-                        <% if(modArt.EsServicio(lserv.get(i).GetNombreArticulo())){ %>
-                          <h4 style="margin-top: 7px; margin-left: 10; font-family: Helvetica;"><%= (modArt.ObtenerDatosServicio(lserv.get(i).GetNombreArticulo(), lserv.get(i).getNickProveedor())).getDescripcion() %> </h4>
+                        <% if(modArt.EsServicio(lserv.get(i).getNameArticulo())){ %>
+                          <h4 style="margin-top: 7px; margin-left: 10; font-family: Helvetica;"><%= (modArt.ObtenerDatosServicio(lserv.get(i).getNameArticulo(), lserv.get(i).getNickProveedor())).getDescripcion() %> </h4>
                         <% } %>
                       </div>
                     </div>
@@ -97,10 +97,10 @@
                     <h4 style="font-family: Helvetica; font-size: 20px; margin-top: 50%">$ <%= lserv.get(i).getPrecioArticulo() %></h4>
                   </td>
                   <td>
-                    <h4 style="font-family: Helvetica; font-size: 20px; margin-top: 50%"><%= lserv.get(i).GetCantidad() %></h4>
+                    <h4 style="font-family: Helvetica; font-size: 20px; margin-top: 50%"><%= lserv.get(i).getCantidad() %></h4>
                   </td>
                   <td>
-                    <h4 style="font-family: Helvetica; font-size: 20px; margin-top: 50%"><%= (lserv.get(i).getPrecioArticulo())*(lserv.get(i).GetCantidad()) %></h4>
+                    <h4 style="font-family: Helvetica; font-size: 20px; margin-top: 50%"><%= (lserv.get(i).getPrecioArticulo())*(lserv.get(i).getCantidad()) %></h4>
                   </td>
                 </tr>
                 <%total += lserv.get(i).getPrecioArticulo(); %>                    
@@ -118,19 +118,15 @@
             <button class="btn btn-danger" style="width: 100%; height: 45px; font-family: Helvetica; font-size: 22px; margin-top: 100" onclick="BorrarCarrito()">Cancelar</button>
           </div>
           <div class="col-md-8">
-            <div class="row" style="height: 60%; min-height: 65%; max-height: 65%">
               <div class="col-md-6"></div>
               <div class="col-md-2">
-                <h3 style="font-family: Helvetica; color: #01529e; margin-top: 50px; margin-left: 40px">Subtotal: <%= total %></h3>
+                <h3 style="font-family: Helvetica; color: #01529e; margin-left: -20px">Total: <%= total %> $</h3>
               </div>
               <div class="col-md-4">
-                <h3 style="font-family: Helvetica; margin-top: 50px">$</h3>
-              </div>
-            </div>
-            <div class="row" style="height: 40%; min-height: 30%; max-height: 30%"></div>
-            <form action="../ControllerReserva" method="post">
-                <button type="submit" class="btn btn-success" style="width: 20%; height: 45px; font-family: Helvetica; font-size: 22px; margin-left: 75%; margin-top: -55px" onclick="comprar()">Comprar</button>
-            </form>
+                <form action="../ControllerReserva" method="post">
+                <button type="submit" class="btn btn-success" style="width: 100%; height: 45px; font-family: Helvetica; font-size: 22px; margin-top: 100" onclick="comprar()">Comprar</button>
+                </form>
+              </div>            
           </div>
         </div>
       </div>

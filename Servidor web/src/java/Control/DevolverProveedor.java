@@ -5,8 +5,8 @@
  */
 package Control;
 
-import help4travelling.DtProveedor;
-import help4travelling.ManejadorSQL;
+import Modelo.ModelUsuario;
+import servidor.DtProveedor;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -24,8 +24,7 @@ public class DevolverProveedor extends HttpServlet {
         try {
             if(request.getParameter("listProv") != null){
                 String nickP = request.getParameter("listProv");
-                ManejadorSQL.GetInstance().init("192.168.10.132");
-                DtProveedor p = ManejadorSQL.GetInstance().devolverProveedor(nickP);
+                DtProveedor p = ModelUsuario.getInstance().devolverProveedor(nickP);
                 //if(ManejadorSQL.GetInstance().selectImgUsuario(p.getNick().trim()) != null){
                 //    byte[] img = ManejadorSQL.GetInstance().selectImgUsuario(nickP);
                 //}

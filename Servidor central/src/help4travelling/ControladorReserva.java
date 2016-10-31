@@ -23,7 +23,7 @@ public class ControladorReserva implements IControladorReserva{
     
     @Override
     public void ReservarArticulo(DtInfoReserva dtir){
-        Articulo art = ManejadorArticulo.GetInstance().ObtenerArticulo(dtir.GetNombreArticulo(),dtir.getNickProveedor());
+        Articulo art = ManejadorArticulo.GetInstance().ObtenerArticulo(dtir.getNameArticulo(),dtir.getNickProveedor());
         infoReserva ir = res.ReservarArticulo(dtir, art);
         this.artmem = art;
         this.irmem = ir;

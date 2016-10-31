@@ -1,54 +1,53 @@
 package Modelo;
 
-import help4travelling.DtFecha;
-import help4travelling.DtInfoReserva;
-import help4travelling.Factory;
-import help4travelling.IControladorReserva;
-import help4travelling.DtReserva;
-import help4travelling.Estado;
-import java.util.ArrayList;
-import help4travelling.ManejadorSQL;
 import java.util.List;
+import servidor.Estado;
 
 public class ModelReserva {
-    private static IControladorReserva ICReserva = Factory.GetInstance().getIControladorReserva();
     private static ModelReserva instancia;
-    
+    private static servidor.PublicadorService service;
+    private static servidor.Publicador port;
+
     public static ModelReserva getInstance(){
         if (instancia==null){
             instancia = new ModelReserva();
-            ManejadorSQL.GetInstance().init("192.168.10.132");
+            service =  new servidor.PublicadorService();
+            port = service.getPublicadorPort();
         }
         return instancia;
     }
     
-    public ArrayList<Integer> listarReservas(String nickname){
-        return ICReserva.listarReservasXcli(nickname);
+    public List<Integer> listarReservas(String nickname){
+        //return ICReserva.listarReservasXcli(nickname);
+        return port.listarReservas(nickname).getItem();
     }
     
-    public DtReserva devolverReserva(int id){
-        return ICReserva.datosReservas(id);
+    public servidor.DtReserva devolverReserva(int id){
+        //return ICReserva.datosReservas(id);
+        return port.devolverReserva(id);
     }
     
-    public void agregarReserva(int id, Estado estado, DtFecha date, ArrayList<DtInfoReserva> infoReserva ,String nickCli, float precio){
-        ICReserva.CrearReserva(new DtReserva(id, estado, date, infoReserva ,nickCli, precio));
-    }
-    
-    public Integer[] ObtenerReservas(String cli){
-        List<Integer> res = ICReserva.listarReservasXcli(cli);             
+    public List<Integer> ObtenerReservas(String cli){
+        /*List<Integer> res = ICReserva.listarReservasXcli(cli);             
         Integer[] Iret = res.toArray(new Integer[res.size()]);
-        return Iret;
+        return Iret;*/
+        return port.obtenerReservas(cli).getItem();
     }
     
-    public ArrayList<DtInfoReserva> ObtenerDatosReserva(int idRes){
-        return ICReserva.ObtenerInfoArticulosReservados(idRes);
+    public List<servidor.DtInfoReserva> ObtenerDatosReserva(int idRes){
+        //return ICReserva.ObtenerInfoArticulosReservados(idRes);
+        return port.obtenerDatosReserva(idRes).getItem();
     }
     //DtReserva reserva = new DtReserva(Estado.Registrada,fechaActual,infodeReserva,"eWatson",90);      
-    public boolean agregarRes(Estado E, DtFecha fecha, ArrayList<DtInfoReserva> DtInf,String nick,float F){
-        return ICReserva.CrearReserva(new DtReserva(E, fecha, DtInf, nick, F));
+    public boolean agregarRes(Estado E, servidor.DtFecha fecha, List<servidor.DtInfoReserva> DtInf ,String nick,float F){
+        //return ICReserva.CrearReserva(new DtReserva(E, fecha, DtInf, nick, F));
+        //servidor.DtInfoReserva[] g = null;
+        servidor.DtInfoReservaArray h = new servidor.DtInfoReservaArray(DtInf);
+        return port.agregarRes(E, fecha, h, nick, F);
     }
     
     public boolean cancelarReserva(int id){
-        return ICReserva.actualizarEstado(Estado.Cancelada, id);
+        //return ICReserva.actualizarEstado(Estado.Cancelada, id);
+        return port.cancelarReserva(id);
     }
 }

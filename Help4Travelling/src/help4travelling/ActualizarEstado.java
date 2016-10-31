@@ -179,7 +179,7 @@ public class ActualizarEstado extends javax.swing.JFrame {
         TableModel md = table_reservas.getModel();
         int idSel = (int)md.getValueAt(i, 1);
         DtReserva actual = ICReserva.ObtenerDatosReserva(idSel);
-        lbl_estadoActual.setText(actual.GetEstado().toString());
+        lbl_estadoActual.setText(actual.getEstado().toString());
     }//GEN-LAST:event_table_reservasMouseClicked
 
     private void table_reservasCaretPositionChanged(java.awt.event.InputMethodEvent evt) {//GEN-FIRST:event_table_reservasCaretPositionChanged
@@ -209,9 +209,9 @@ public class ActualizarEstado extends javax.swing.JFrame {
         DefaultTableModel tm = (DefaultTableModel)table_reservas.getModel();
         Object[] row = new Object[2];
         for(int x = 0; x < r.size(); x++){
-            if(r.get(x).GetEstado() == Estado.Registrada){
-                row[0] = r.get(x).GetCliente();
-                row[1] = r.get(x).GetId();
+            if(r.get(x).getEstado() == Estado.Registrada){
+                row[0] = r.get(x).getCli();
+                row[1] = r.get(x).getId();
                 tm.addRow(row);
             }
         }

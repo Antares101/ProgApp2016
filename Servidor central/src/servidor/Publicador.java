@@ -1,7 +1,9 @@
 package servidor;
 
 import help4travelling.*;
+import java.io.InputStream;
 import java.util.ArrayList;
+import java.util.Arrays;
 import javax.jws.WebMethod;
 import javax.jws.WebService;
 import javax.jws.soap.SOAPBinding;
@@ -102,7 +104,7 @@ public class Publicador {
     }
     
     @WebMethod
-    public byte[] getImagenArt(String nickP, String nomA, String num){
+    public byte[] getImagenArt(String nickP, String nomA, String num){        
         return ManejadorSQL.GetInstance().selectImgServicio(num, nickP, nomA);
     }
     
@@ -123,11 +125,6 @@ public class Publicador {
     }
     
     @WebMethod
-    public void agregarReserva(int id, Estado estado, DtFecha date, ArrayList<DtInfoReserva> infoReserva ,String nickCli, float precio){
-        ICReserva.CrearReserva(new DtReserva(id, estado, date, infoReserva ,nickCli, precio));
-    }
-    
-    @WebMethod
     public Integer[] ObtenerReservas(String cli){
         ArrayList<Integer> res = ICReserva.listarReservasXcli(cli);             
         Integer[] Iret = res.toArray(new Integer[res.size()]);
@@ -143,8 +140,9 @@ public class Publicador {
     }
     
     @WebMethod  
-    public boolean agregarRes(Estado E, DtFecha fecha, ArrayList<DtInfoReserva> DtInf,String nick,float F){
-        return ICReserva.CrearReserva(new DtReserva(E, fecha, DtInf, nick, F));
+    public boolean agregarRes(Estado E, DtFecha fecha, DtInfoReserva[] DtInf,String nick,float F){
+        ArrayList<DtInfoReserva> infRes = new ArrayList<>(Arrays.asList(DtInf));
+        return ICReserva.CrearReserva(new DtReserva(E, fecha, infRes, nick, F));
     }
     
     @WebMethod
@@ -190,7 +188,7 @@ public class Publicador {
 
     @WebMethod
     public DtProveedor[] listarProveedoresDatos(){
-        ArrayList<DtProveedor> ret = new ArrayList<DtProveedor>();
+        ArrayList<DtProveedor> ret = new ArrayList<>();
         ArrayList<String> provs = (ArrayList)ICUsuario.listarProveedores();
         for(int x = 0; x < provs.size(); x++){
             ret.add(ICUsuario.datosProveedor(provs.get(x).trim()));
@@ -201,12 +199,24 @@ public class Publicador {
     
     @WebMethod
     public byte[] getImagenUsu(String nickP){
+        //System.out.println(ManejadorSQL.GetInstance().selectImgUsuario(nickP));
         return ManejadorSQL.GetInstance().selectImgUsuario(nickP);
     }
     
     @WebMethod
     public DtCliente devolverCliente(String nick){
         return ICUsuario.datosCliente(nick);
+    }
+    
+    @WebMethod
+    public DtProveedor devolverProveedor(String nick){
+        return ICUsuario.datosProveedor(nick);
+    }
+    
+    public void agregarImagenCliente(InputStream f, String NickC){
+        try{
+            ManejadorSQL.GetInstance().insertImgUsuariov2(f, NickC);
+        }catch(Exception e){}
     }
     
 }

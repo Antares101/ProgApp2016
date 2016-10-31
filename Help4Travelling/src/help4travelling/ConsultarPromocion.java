@@ -307,11 +307,11 @@ public class ConsultarPromocion extends javax.swing.JFrame {
             DtPromocion prom = ManejadorSQL.GetInstance().devolverPromocion(nickP, nombreA);
             jLabel178.setText(nickP);
             jLabel177.setText(nombreA);
-            jLabel165.setText(""+prom.GetDescuento());
-            jLabel179.setText(""+prom.GetPrecio());
+            jLabel165.setText(""+prom.getDescuento());
+            jLabel179.setText(""+prom.getPrecio());
             DefaultListModel lm = new DefaultListModel();
-            for(int x = 0; x < prom.GetServicios().size(); x++){
-                lm.addElement(prom.GetServicios().get(x));
+            for(int x = 0; x < prom.getServicios().size(); x++){
+                lm.addElement(prom.getServicios().get(x));
             }
             list_servs.setModel(lm);
 
@@ -363,7 +363,7 @@ public class ConsultarPromocion extends javax.swing.JFrame {
                 ArrayList<DtPromocion> promos = ICArticulo.listarPromociones();
         DefaultComboBoxModel listModel = new DefaultComboBoxModel();
         for(int x = 0; x < promos.size(); x++){
-            listModel.addElement(promos.get(x).getNickProv() + ", " + promos.get(x).GetNombre());
+            listModel.addElement(promos.get(x).getNickProv() + ", " + promos.get(x).getNombre());
         }
         cmb_consultar_promociones.setModel(listModel);
         
